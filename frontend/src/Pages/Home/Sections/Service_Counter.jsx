@@ -1,6 +1,6 @@
 import {React, useRef,useEffect} from 'react'
-import {CounterData} from '../../Constants/Counter_data'
-import Counter from '../../Components/Counter';
+import {CounterData} from '../../../Constants/Counter_data'
+import Counter from '../../../Components/Counter';
 
 const Service_Counter = () => {
   console.log(CounterData);
