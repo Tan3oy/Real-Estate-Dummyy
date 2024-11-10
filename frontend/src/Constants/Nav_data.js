@@ -5,29 +5,29 @@ export const NavItems=[
     },
     {
         name:"About Us",
-        link:"/About",
+        link:"/about",
     },
     {
         name:"Properties",
         subLinks:[
             {
-                link:"/All_Properties",
+                link:"/all_properties",
                 name:"All Properties"                
             },
             {
-                link:"/Featured_Properties",
+                link:"/featured_properties",
                 name:"Featured Properties"
             } ,
             {
-                link:"/Top_Properties",
+                link:"/top_properties",
                 name:"Top Properties"
             },
             {
-                link:"/Urgent_Properties",
+                link:"/urgent_properties",
                 name:"Urgent Properties"
             },
             {
-                link:"/Agents",
+                link:"/agents",
                 name:"Agents"
             }
         ]
@@ -35,7 +35,7 @@ export const NavItems=[
     },
     {
         name:"Pricing Plan",
-        link:"/Pricing_Plan",
+        link:"/pricing_plan",
     },
     {
         name:"Pages",
@@ -43,25 +43,25 @@ export const NavItems=[
         subLinks:[
             {
                 name:"Page 1",
-                link:"/Page_1"
+                link:"/page_1"
             },
             {
                 name:"Page 2",
-                link:"/Page_2"
+                link:"/page_2"
             },
             {
                 name:"FAQ",
-                link:"/FAQ"
+                link:"/faq"
             }
         ]
     },
     {
         name:"Blog",
-        link:"/Blog",
+        link:"/blog",
     },
     {
         name:"Contact",
-        link:"/Contact",
+        link:"/contact",
     },
     
 ]
