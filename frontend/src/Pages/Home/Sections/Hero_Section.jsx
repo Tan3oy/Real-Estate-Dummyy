@@ -1,7 +1,6 @@
-import { propertyTypeOptions,locationOptions } from "../../Constants/Menu_data"
-import './Hero.css'
+import { propertyTypeOptions,locationOptions } from "../../../Constants/Menu_data"
 import { useState } from "react"
-import Dropdown from "../../Components/Dropdown"
+import Dropdown from "../../../Components/Dropdown"
 
 const Hero_Section = () => {  
         const [toggleTab, setToggleTab] = useState(0)       
