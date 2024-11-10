@@ -1,0 +1,60 @@
+import React from 'react'
+import { useState } from "react"
+import { IoMdArrowDropdown , IoMdArrowDropup } from "react-icons/io"
+import Select from 'react-select'
+
+const Dropdown = ({placeholder,options}) => {
+    const [IsOpen,setIsOpen] = useState(null);
+    
+    const customStyles = {
+        container: (basestyles) => ({
+        ...basestyles,
+        width: '100%', // Set the width
+        height: '100%', // Set the height
+        }),
+        control : (basestyles) => ({
+        ...basestyles,
+        height: '100%', // Set the height
+        cursor: 'pointer',
+        border: 'none',
+        boxShadow: 'none',
+        padding: '0px 8px',
+        }),
+        option: (styles, { isFocused, isSelected }) => ({
+            ...styles,
+            cursor: 'pointer',
+            backgroundColor: isFocused ? '#27AE60' : isSelected ? 'lightgray' : undefined,
+            color: isFocused ? 'white' : 'black',
+        })
+        
+    };
+    const customTheme = (theme) => ({
+        ...theme,
+        borderRadius: 0,
+        colors: {
+        ...theme.colors,
+        primary25: "#27AE60", // Background color of options on hover
+        primary50: "#27AE60",
+        primary: "#27AE60"
+        },
+    });
+
+    return (
+    <div className="relative text-lg w-full sm:w-auto border border-slate-400"  >
+        <Select          
+            options={options}
+            placeholder={placeholder}
+            components={{DropdownIndicator:()=> null, IndicatorSeparator:()=> null}}
+            onMenuOpen={() => setIsOpen(true)} // Trigger when menu opens
+            onMenuClose={() => setIsOpen(false)} // Trigger when menu closes           
+            styles={customStyles}
+            theme={customTheme}
+        />
+        <span className="absolute top-[40%] right-4">
+            { IsOpen ? <IoMdArrowDropup/>:<IoMdArrowDropdown/>}
+        </span> 
+    </div>
+    )
+}
+
+export default Dropdown
