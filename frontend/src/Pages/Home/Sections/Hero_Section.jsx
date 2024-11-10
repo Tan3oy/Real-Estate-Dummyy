@@ -1,6 +1,6 @@
 import { propertyTypeOptions,locationOptions } from "../../../Constants/Menu_data"
 import { useState } from "react"
-import Dropdown from "../../../Components/Dropdown"
+import Dropdown from "../../../Components/Select_dropdown"
 
 const Hero_Section = () => {  
         const [toggleTab, setToggleTab] = useState(0)       
@@ -9,7 +9,7 @@ return (
     <section id="hero" className="relative bg-home-hero-image bg-no-repeat bg-cover bg-center [border-image:linear-gradient(#0b2c3d70,#0b2c3d70)_fill_1]">
         <div className="hero-container pt-40 pb-44 w-full ">
             <div className="hero-heading flex justify-center items-center">
-                <p className='hero-heading-text ' >find your next pefect place to live</p>
+                <p className='hero-heading-text capitalize font-bold text-4xl md:text-[56px] md:leading-tight px-2 text-white text-center max-w-[33rem] md:max-w-[40rem] lg:max-w-[48rem] xl:max-w-[60rem] 2xl:max-w-[63rem] mb-28' >find your next pefect place to live</p>
             </div>
             
             <div className="hero-contents">

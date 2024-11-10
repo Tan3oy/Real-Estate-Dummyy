@@ -1,11 +1,20 @@
 import React from 'react'
 import { useState } from "react"
 import { IoMdArrowDropdown , IoMdArrowDropup } from "react-icons/io"
-import Select from 'react-select'
+import Select, {components} from 'react-select'
 
 const Dropdown = ({placeholder,options}) => {
     const [IsOpen,setIsOpen] = useState(null);
-    
+    const customIndicator = (props) => {
+        return(
+            <components.DropdownIndicator {...props}>
+                <span className='text-black '>
+                    { IsOpen ? <IoMdArrowDropup/>:<IoMdArrowDropdown/>}
+                </span>
+            </components.DropdownIndicator>
+        )       
+    }
+
     const customStyles = {
         container: (basestyles) => ({
         ...basestyles,
@@ -43,16 +52,13 @@ const Dropdown = ({placeholder,options}) => {
     <div className="relative text-lg w-full sm:w-auto border border-slate-400"  >
         <Select          
             options={options}
-            placeholder={placeholder}
-            components={{DropdownIndicator:()=> null, IndicatorSeparator:()=> null}}
+            placeholder={placeholder}           
+            components={{DropdownIndicator:customIndicator, IndicatorSeparator:()=> null}}
             onMenuOpen={() => setIsOpen(true)} // Trigger when menu opens
             onMenuClose={() => setIsOpen(false)} // Trigger when menu closes           
             styles={customStyles}
             theme={customTheme}
         />
-        <span className="absolute top-[40%] right-4">
-            { IsOpen ? <IoMdArrowDropup/>:<IoMdArrowDropdown/>}
-        </span> 
     </div>
     )
 }
