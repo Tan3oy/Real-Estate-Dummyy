@@ -20,7 +20,10 @@ export default {
         'about-hero-image': "url(https://res.cloudinary.com/dx42ztqx9/image/upload/v1731082362/banner-2021-10-10-10-17-15-2159_wmyes3.jpg)",
         'pricing-hero-image' : "url(https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085087/banner-2021-10-07-08-14-29-5678_e58vxf.jpg)",
         'blog-hero-image': "url(https://demo.websolutionus.com/findestate/uploads/website-images/home-page-banner-2023-12-14-04-21-19-3202.jpg)",
-        'contact-hero-image' : "url(https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085536/banner-2021-10-07-08-14-48-4464_osnzkp.png)"
+        'contact-hero-image' : "url(https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085536/banner-2021-10-07-08-14-48-4464_osnzkp.png)",
+        'faq-hero-image' : "url(https://res.cloudinary.com/dx42ztqx9/image/upload/v1731356643/banner-2021-10-07-08-16-47-8007_r45xid.jpg)",
+        'page1-hero-image' : "url(https://demo.websolutionus.com/findestate/uploads/website-images/home-page-banner-2023-12-14-04-21-19-3202.jpg)",
+        'page2-hero-image' : "url(https://demo.websolutionus.com/findestate/uploads/website-images/home-page-banner-2023-12-14-04-21-19-3202.jpg)"
 
       }
     },

@@ -5,12 +5,12 @@ import Footer_Find_Estate from './Components/Footer_Find_Estate/Footer_Find_Esta
 import Home from './Pages/Home/Home'
 import About from './Pages/About/About'
 import Pricing_plan from './Pages/Pricing Plan/Pricing_plan'
-    import Page_1 from './Pages/Pages/Sections/Page_1'
-    import Page_2 from './Pages/Pages/Sections/Page_2'
+    import Page_1 from './Pages/Pages/Page 1/Page_1'
+    import Page_2 from './Pages/Pages/Page 2/Page_2'
 import Blog from './Pages/Blog/Blog'
 import Contact from './Pages/Contact/Contact'
 import { Route, Routes } from 'react-router-dom'
-import FAQ from './Pages/Pages/Sections/FAQ'
+import FAQ from './Pages/Pages/FAQ/FAQ'
 
 function App() {
   

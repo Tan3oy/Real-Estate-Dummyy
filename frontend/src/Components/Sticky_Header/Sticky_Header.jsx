@@ -1,4 +1,4 @@
-// import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect} from 'react';
 import './Sticky_Header-style.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,59 +10,24 @@ import GoogleTranslate from '../Google_Translate'
 
 
 const Sticky_Header = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
 
-    // const [lastScrollTop, setLastScrollTop] = useState(0);
-    // const stickyHeaderGridContainerRef = useRef(null);
-
-    // const handleScroll = () => {
-    //     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    //     if (stickyHeaderGridContainerRef.current) {
-    //         if (scrollTop > lastScrollTop) {
-    //             // User is scrolling down
-    //                 if (scrollTop > '100') {
-    //                     stickyHeaderGridContainerRef.current.style.top = '-95px';
-    //                 }
-    //         } else {
-    //             // User is scrolling up
-    //             stickyHeaderGridContainerRef.current.style.top = '0';
-    //         }
-    //     }
-
-    //     setLastScrollTop(scrollTop);
-    //     // console.log(scrollTop);
-    // };
-
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     // Cleanup the event listener on component unmount
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, [lastScrollTop]);
-
-
-    // var lastScrollTop = 0; 
-    // var navbar = document.getElementById("sticky-header-grid-container");
-    
-    // window.addEventListener("scroll", function() { 
-    //     var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    //     if (scrollTop > lastScrollTop) {
-    //         // User is scrolling down
-    //         navbar.style.top = "-80px";
-    //     } else {
-    //         // User is scrolling up
-    //         navbar.style.top = "0";
-    //     }
-    //     lastScrollTop = scrollTop;
-    // });
-
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            // console.log(scrollPosition);
+                setIsScrolled(scrollPosition>80? true : false)     
+            }
+        document.addEventListener('scroll',handleScroll)
+        return ()=>(
+            document.removeEventListener('scroll',handleScroll)
+        )
+        },[isScrolled])
 
   return (
     <div>
 
-        <div className='sticky-header-grid-container'>
+        <div className={`sticky-header-grid-container ${isScrolled?"hidden":"visible"}`}>
             <div className='sticky-header-grid-items'>
                 <div className='sticky-header-grid-items-column1-and-column2'>
                     <div><i className="fa-solid fa-envelope sticky-header-flag"></i></div>
