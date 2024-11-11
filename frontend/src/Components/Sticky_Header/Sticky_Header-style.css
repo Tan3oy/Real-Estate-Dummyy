@@ -1,4 +1,5 @@
-.goog-logo-link {
+/* Hide the Google Translate logo and toolbar */
+/* .goog-logo-link {
     display: none !important;
 }
 .goog-te-gadget {
@@ -7,7 +8,7 @@
 .goog-te-banner-frame {
     display: none !important;
 }
-/* body {
+body {
     top: 0px !important;
 } */
 
@@ -40,8 +41,9 @@
     position: fixed;
     top: 0;
     width: 100%;
+    height: 95px;
+    transition: top 1s ease;
     /* Smooth transition for hiding */
-    transition: top 1s ease ;
     z-index: 1000;
     /* Ensure the header is above other content */
 }
@@ -94,5 +96,5 @@
 }
 
 .sticky-header-grid-container-bottom-empty-div {
-    padding-top: 80px; /* Adds space to prevent content from being hidden behind the navbar */
+    padding-top: 90px; /* Adds space to prevent content from being hidden behind the navbar */
 }

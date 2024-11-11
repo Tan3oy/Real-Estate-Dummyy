@@ -27,7 +27,7 @@ const GoogleTranslate = () => {
     window.googleTranslateElementInit = () => {
         if (!document.getElementById('google_translate_element').hasChildNodes()) {
             new window.google.translate.TranslateElement(
-                { pageLanguage: 'en', autoDisplay: false },
+                { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.VERTICAL },
                 'google_translate_element'
             );
         }
