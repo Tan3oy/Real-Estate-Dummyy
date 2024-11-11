@@ -1,7 +1,7 @@
 import React from 'react'
-import { customPagesData } from '../../../Constants/Custom_Pages_data'
+import { customPagesData } from '../../../../Constants/Custom_Pages_data'
 
-const Page_2 = () => {
+const Contents = () => {
 
   const { para1: para1_2, para2: para2_2, para3: para3_2, para4: para4_2 } = customPagesData.customPagesData2;
 
@@ -18,4 +18,4 @@ const Page_2 = () => {
   )
 }
 
-export default Page_2
+export default Contents

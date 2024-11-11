@@ -42,11 +42,11 @@ export const NavItems=[
         link:"",
         subLinks:[
             {
-                name:"Page 1",
+                name:"Custom Page 1",
                 link:"/page_1"
             },
             {
-                name:"Page 2",
+                name:"Custom Page 2",
                 link:"/page_2"
             },
             {

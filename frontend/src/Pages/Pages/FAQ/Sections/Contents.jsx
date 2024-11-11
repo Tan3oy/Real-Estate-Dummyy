@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import Accordion from '../../../Components/Accordion'
-import { faq_data } from '../../../Constants/FAQ_data'
+import Accordion from '../../../../Components/Accordion'
+import { faq_data } from '../../../../Constants/FAQ_data'
 
-const FAQ = () => {
+const Contents = () => {
     const [isOpen,setIsOpen] =useState(false);
     const toggleShow=(id)=>{
         setIsOpen(isOpen==id?false:id)       
@@ -21,4 +21,4 @@ const FAQ = () => {
   )
 }
 
-export default FAQ
+export default Contents
