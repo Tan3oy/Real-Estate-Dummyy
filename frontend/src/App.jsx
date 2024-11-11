@@ -10,6 +10,7 @@ import Pricing_plan from './Pages/Pricing Plan/Pricing_plan'
 import Blog from './Pages/Blog/Blog'
 import Contact from './Pages/Contact/Contact'
 import { Route, Routes } from 'react-router-dom'
+import FAQ from './Pages/Pages/Sections/FAQ'
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
               <Route path="/page_1" element={<Page_1 />} />
               <Route path="/page_2" element={<Page_2 />} />
+          <Route path='/faq' element={<FAQ/>}/>
           <Route path='/blog' element={<Blog/>}/>
         </Routes>
         <Footer_Find_Estate />
