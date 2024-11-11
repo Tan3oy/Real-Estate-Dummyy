@@ -30,7 +30,6 @@ const Navbar = () => {
         setIsMenuDropdownOpen(null);
         setIsNavDropdownOpen(null); // Only set to null once scrolling starts
       }
-      console.log(scrollPosition);
       setIsScrolled(scrollPosition>80?true:false) 
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {

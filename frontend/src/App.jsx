@@ -7,6 +7,7 @@ import Pricing_plan from './Pages/Pricing Plan/Pricing_plan'
 import Blog from './Pages/Blog/Blog'
 import Contact from './Pages/Contact/Contact'
 import { Route, Routes } from 'react-router-dom'
+import FAQ from './Pages/Pages/Sections/FAQ'
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
+          <Route path='/faq' element={<FAQ/>}/>
           <Route path='/blog' element={<Blog/>}/>
         </Routes>
       </div>     
