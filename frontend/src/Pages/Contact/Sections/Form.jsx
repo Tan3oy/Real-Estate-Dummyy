@@ -2,7 +2,7 @@ import React from 'react'
 import { FaRegUser } from "react-icons/fa";
 const Form = () => {
   return (
-    <div className='pt-40'>
+    <div className='pt-20'>
         <div className='mx-auto p-6 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px]
                 flex flex-col xl:flex-row
                 gap-8'>
