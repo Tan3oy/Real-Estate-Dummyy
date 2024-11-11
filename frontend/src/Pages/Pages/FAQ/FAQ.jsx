@@ -1,6 +1,6 @@
 import React from 'react'
 import { Hero_FAQ } from './Sections/Hero_FAQ'
-import Contents from './Sections/contents'
+import Contents from './Sections/Contents'
 
 export const FAQ = () => {
   return (
