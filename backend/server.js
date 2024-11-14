@@ -1,12 +1,17 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const cookieParser = require("cookie-parser");
+// const cors = require("cors");
+import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "./utils/dbConnection.js";
 
 const port = 5000;
 const app = express();
-const connectDB = require("./utils/dbConnection");
-require("dotenv").config();
+
+connectDB();
 
 // cors
 app.use(
@@ -15,8 +20,8 @@ app.use(
   })
 );
 
-const mongodbURI = process.env.MONGODB_URL;
-mongoose.connect(mongodbURI);
+// const mongodbURI = process.env.MONGODB_URL;
+// mongoose.connect(mongodbURI);
 
 // Middlewires
 
