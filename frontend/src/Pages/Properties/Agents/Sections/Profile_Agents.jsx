@@ -64,7 +64,7 @@ const Profile_Agents = () => {
         </div>
 
         {/* Pagination Control */}
-        <div className="pagination flex justify-center items-center gap-2 pb-24">
+        <div className="pagination flex justify-center items-center gap-2 pb-24 group">
             <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -80,7 +80,7 @@ const Profile_Agents = () => {
                                   key       = { index }
                                   onClick   = { () => handlePageChange(index + 1) }
                                   className = {
-                                                  `px-3 py-1 rounded-full ${ currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-300' }`
+                                                  `px-3 py-1 rounded-full ${ currentPage === index + 1 ? ' outline-[#27ae60] outline outline-1 text-[#27ae60] font-medium group-hover:bg-[#27ae60] group-hover:text-[#fff]' : 'bg-gray-300' }`
                                               }
                             >
                                   {index + 1}

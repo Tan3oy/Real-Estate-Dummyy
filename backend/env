@@ -1,1 +1,1 @@
-MONGODB_URL = 'mongodb+srv://devsp:FMMk2atvME2Y69bz@cluster0.o67bc.mongodb.net/Realestate?retryWrites=true&w=majority&appName=Cluster0'
+MONGODB_URL = 'mongodb+srv://Tanmoy:tanmoy123@cluster0.6l8klpe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
