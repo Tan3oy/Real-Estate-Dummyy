@@ -7,15 +7,20 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./utils/dbConnection.js";
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const cookieParser = require("cookie-parser");
+// const cors = require("cors");
+import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "./utils/dbConnection.js";
 
 const port = 5000;
 const app = express();
 
 connectDB();
-
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
 
 // cors
 app.use(
