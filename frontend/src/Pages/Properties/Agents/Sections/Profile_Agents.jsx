@@ -1,21 +1,36 @@
-import React, { useState } from 'react'
-import { AgentData } from '../../../../Constants/Agent_data1'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
+// import { AgentData } from '../../../../Constants/Agent_data1'
 import { FaFacebook ,FaTwitter,FaWhatsapp,FaLinkedin } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6"
 import { CiLocationOn } from "react-icons/ci"
 
 const Profile_Agents = () => {
+  const [isOpen,setIsOpen] =useState(null);
+  const [Agent_data, setAgent_data] = useState([]);
+  useEffect(()=>{
+      axios
+      .get("http://localhost:5000/api/allagents")
+      .then((res)=>(
+          setAgent_data(res.data),
+          console.log(res.data))
+      )
+      .catch((err)=>console.log(err))
+  },[])
+
+
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 4; // Number of cards per page
 
   // Calculate the number of pages
-  const totalPages = Math.ceil(AgentData.length / cardsPerPage);
+  const totalPages = Math.ceil(Agent_data.length / cardsPerPage);
 
   // Get the cards for the current page
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = AgentData.slice(indexOfFirstCard, indexOfLastCard);
+  const currentCards = Agent_data.slice(indexOfFirstCard, indexOfLastCard);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {

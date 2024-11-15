@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const agentSchema= new mongoose.Schema({
     name:{
@@ -29,9 +29,9 @@ const agentSchema= new mongoose.Schema({
         linkedin: {
             type:String,
             required: true
-        },
+        }
     }
 });
 
-const Agent_data=mongoose.model("Agent_data",agentSchema);
-export default Agent_data;
+const Agent_data = mongoose.model("Agent_data", agentSchema);
+export default Agent_data
