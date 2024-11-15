@@ -23,7 +23,8 @@ app.use(express.json({ limit: "50mb" }));
 
 //cookie parser
 app.use(cookieParser());
-app.use("/api",FAQ_Routes)
+app.use("/api", FAQ_Routes)
+app.use("/api", Agents_Routes)
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server started at port ${port} successfully`);

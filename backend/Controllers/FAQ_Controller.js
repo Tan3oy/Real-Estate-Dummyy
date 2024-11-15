@@ -1,6 +1,6 @@
-import Faq_data from "../Models/FAQ_data.js"; // Make sure this is correctly imported
- console.log(Faq_data);
- 
+import Faq_data from "../Models/FAQ_data.js";
+console.log(Faq_data);
+
 // Get all FAQs
 export const getAllFaq = async (req, res) => {
     try {
