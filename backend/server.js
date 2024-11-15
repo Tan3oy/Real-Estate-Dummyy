@@ -1,12 +1,10 @@
-// const express = require("express");
-// const mongoose = require("mongoose");
-// const cookieParser = require("cookie-parser");
-// const cors = require("cors");
+
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import dotenv from "dotenv";
 import connectDB from "./utils/dbConnection.js";
+import FAQ_Routes from "./Routes/FAQ_Routes.js";
+import Agents_Routes from "./Routes/Agents_Routes.js";
 
 const port = 5000;
 const app = express();
@@ -20,15 +18,14 @@ app.use(
   })
 );
 
-// const mongodbURI = process.env.MONGODB_URL;
-// mongoose.connect(mongodbURI);
-
 // Middlewires
 
 app.use(express.json({ limit: "50mb" }));
 
 //cookie parser
 app.use(cookieParser());
+app.use("/api",FAQ_Routes)
+app.use("/api",Agents_Routes)
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server started at port ${port} successfully`);

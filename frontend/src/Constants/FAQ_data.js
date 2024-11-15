@@ -1,6 +1,6 @@
 export const faq_data = [
     {
-        id: 1 ,
+        id: 1,
         question: "Who Are Our Clients?",
         answer:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum mauris quis ante posuere aliquet. Suspendisse egestas eu dolor mollis tristique. Vivamus feugiat rhoncus aliquet. Fusce suscipit lacus quis libero sagittis, elementum vulputate magna bibendum. Mauris scelerisque, justo vel sodales vestibulum, elit metus ultrices ipsum, ut eleifend risus quam vitae."
     },

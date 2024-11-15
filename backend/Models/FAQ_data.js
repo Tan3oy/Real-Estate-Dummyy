@@ -1,9 +1,15 @@
 import mongoose from "mongoose";
 
 const faqSchema= new mongoose.Schema({
-    question: String,
-    answer: String,
-    required: true
+    question: {
+        type: String,
+        required: true
+    },
+    answer:{
+        type: String,
+        required: true
+    }
 })
 
-export default mongoose.model("FAQ", faqSchema)
+const Faq_data= mongoose.model("Faq_data", faqSchema)
+export default Faq_data
