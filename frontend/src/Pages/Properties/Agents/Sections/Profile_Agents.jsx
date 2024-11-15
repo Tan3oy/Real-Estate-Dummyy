@@ -46,9 +46,9 @@ const Profile_Agents = () => {
         {/* Code for Cards */}
         <div className="agent-card-container sm:w-[36rem] md:w-[48rem] lg:w-[62rem] xl:w-[75rem] flex flex-wrap gap-y-6 mx-auto py-11">
               {
-                currentCards.map((item,index) =>
+                currentCards.map((item) =>
                   (
-                      <div key={index} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
+                      <div key={item._id} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
                           <div className="dp w-full h-auto px-4 pt-4">
                               <img src={item.image} className="object-cover rounded-t-md h-full w-full" />                                      
                           </div>

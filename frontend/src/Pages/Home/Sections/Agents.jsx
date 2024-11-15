@@ -32,8 +32,8 @@ const Agents = () => {
                 <p className='text-base'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo unde et voluptate, mollitia, illum eligendi dignissimos tenetur incidunt in asperiores, quaerat aliquam deserunt quo!</p>
               </div>
             {
-              Agent_data.slice(0,4).map((item,index) =>(
-                <div key={index} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
+              Agent_data.slice(0,4).map((item) =>(
+                <div key={item._id} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
                   <div className="dp w-full h-auto px-4 pt-4"> 
                     <img src={item.image} className="object-cover rounded-t-md h-full w-full" />                                      
                   </div>

@@ -15,8 +15,8 @@ export const getAllAgents = async (req, res)=>{
 // Post a new Agent
 export const CreateAgent = async (req, res) => {
     try {
-        const { name, image, address, links } = req.body;
-        let newAgent = new Agent_data({ name, image, address, links });
+        const { name, ...rest } = req.body;
+        let newAgent = new Agent_data({ name, ...rest });
         newAgent = await newAgent.save();
         res.status(201).json(newAgent);
     } catch (error) {
