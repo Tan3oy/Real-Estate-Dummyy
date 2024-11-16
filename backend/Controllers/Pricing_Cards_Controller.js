@@ -1,25 +1,24 @@
-import Pricing_Cards_data from '../Models/Pricing_Cards_data.js';
-console.log(Pricing_Cards_data);
+import Pricing_Cards_data from "../Models/Pricing_Cards_data.js";
 
-export const getAllPricingCardsdata = async (req, res)=>{
-    try {
-        const PricingCardsdata = await Pricing_Cards_data.find();
-        res.status(201).json(PricingCardsdata)
-    } catch (error) {
-        res
-        .status(500)
-        .json({message:error.message})
+//fetching Pricing data
+export const getAllPricingCardsdata= async(req,res)=>{
+    try{
+        const PricingCardsdata= await Pricing_Cards_data.find()
+        res.json(PricingCardsdata)
+    } catch(err){
+        res.status(500).json({message:err.message})
     }
-};
+}
 
-// Post a new Pricing Card
-export const CreatePricingCardsdata = async (req, res) => {
-    try {
-        const { name, ...rest } = req.body;
-        let newPricingCardsdata = new Pricing_Cards_data({ name, ...rest });
-        newPricingCardsdata = await newPricingCardsdata.save();
-        res.status(201).json(newPricingCardsdata);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+//Creating Pricing data
+
+export const createPricingCardsdata= async (req,res)=>{
+    try{
+    const {name, ...rest} =req.body
+    let newPricingCardsdata= new Pricing_Cards_data({name, ...rest})
+    newPricingCardsdata= await newPricingCardsdata.save()
+    res.status(201).json(newPricingCardsdata)
+    }catch(err){
+        res.status(500).json({message:err.message})
     }
-};
+}
