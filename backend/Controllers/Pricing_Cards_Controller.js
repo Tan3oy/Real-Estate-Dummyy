@@ -12,7 +12,7 @@ export const getAllPricingCardsdata = async (req, res)=>{
     }
 };
 
-// Post a new Agent
+// Post a new Pricing Card
 export const CreatePricingCardsdata = async (req, res) => {
     try {
         const { name, ...rest } = req.body;
