@@ -1,8 +1,24 @@
-import React from 'react'
-import {Pricing_Cards_data} from '../../../Constants/Pricing_Cards_data'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
+// import {Pricing_Cards_data} from '../../../Constants/Pricing_Cards_data'
 import { FaDollarSign } from "react-icons/fa";
 import {Enabled_icon,Disabled_icon} from '../../../Components/Custom_icons'
+
 const Pricing_Plans = () => {
+  const [isOpen,setIsOpen] =useState(null);
+  const [Pricing_Cards_data, setPricing_Cards_data] = useState([]);
+  useEffect(()=>{
+      axios
+      .get("http://localhost:5000/api/allpricingcards")
+      .then((res)=>(
+          setPricing_Cards_data(res.data),
+          console.log(res.data))
+      )
+      .catch((err)=>console.log(err))
+  },[])
+  
+  
+
   return (
     <div className='py-24'>
     <div className="price-card-container sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap sm:mx-auto gap-x-6 gap-y-8  px-6">
