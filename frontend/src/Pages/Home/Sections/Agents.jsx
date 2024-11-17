@@ -1,12 +1,25 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
 import { FaFacebook ,FaTwitter,FaWhatsapp,FaLinkedin } from "react-icons/fa";
 import ParallaxContainer from '../../../Components/Parallax'
-import { AgentData } from '../../../Constants/Agent_data'
+// import { AgentData } from '../../../Constants/Agent_data'
 import { FaRegEye } from "react-icons/fa6"
 import { CiLocationOn } from "react-icons/ci"
 
 
 const Agents = () => {
+  const [isOpen,setIsOpen] =useState(null);
+  const [Agent_data, setAgent_data] = useState([]);
+  useEffect(()=>{
+      axios
+      .get("http://localhost:5000/api/allagents")
+      .then((res)=>(
+          setAgent_data(res.data),
+          console.log(res.data))
+      )
+      .catch((err)=>console.log(err))
+  },[])
+
   const icons=[<FaFacebook/>,<FaTwitter/>,<FaWhatsapp/>,<FaLinkedin/>] 
   return (
     <section>
@@ -19,8 +32,8 @@ const Agents = () => {
                 <p className='text-base'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo unde et voluptate, mollitia, illum eligendi dignissimos tenetur incidunt in asperiores, quaerat aliquam deserunt quo!</p>
               </div>
             {
-              AgentData.map((item,index) =>(
-                <div key={index} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
+              Agent_data.slice(0,4).map((item) =>(
+                <div key={item._id} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
                   <div className="dp w-full h-auto px-4 pt-4"> 
                     <img src={item.image} className="object-cover rounded-t-md h-full w-full" />                                      
                   </div>

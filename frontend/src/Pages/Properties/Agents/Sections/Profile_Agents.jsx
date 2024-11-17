@@ -1,21 +1,36 @@
-import React, { useState } from 'react'
-import { AgentData } from '../../../../Constants/Agent_data1'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
+// import { AgentData } from '../../../../Constants/Agent_data1'
 import { FaFacebook ,FaTwitter,FaWhatsapp,FaLinkedin } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6"
 import { CiLocationOn } from "react-icons/ci"
 
 const Profile_Agents = () => {
+  const [isOpen,setIsOpen] =useState(null);
+  const [Agent_data, setAgent_data] = useState([]);
+  useEffect(()=>{
+      axios
+      .get("http://localhost:5000/api/allagents")
+      .then((res)=>(
+          setAgent_data(res.data),
+          console.log(res.data))
+      )
+      .catch((err)=>console.log(err))
+  },[])
+
+
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 4; // Number of cards per page
 
   // Calculate the number of pages
-  const totalPages = Math.ceil(AgentData.length / cardsPerPage);
+  const totalPages = Math.ceil(Agent_data.length / cardsPerPage);
 
   // Get the cards for the current page
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = AgentData.slice(indexOfFirstCard, indexOfLastCard);
+  const currentCards = Agent_data.slice(indexOfFirstCard, indexOfLastCard);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {
@@ -31,9 +46,9 @@ const Profile_Agents = () => {
         {/* Code for Cards */}
         <div className="agent-card-container sm:w-[36rem] md:w-[48rem] lg:w-[62rem] xl:w-[75rem] flex flex-wrap gap-y-6 mx-auto py-11">
               {
-                currentCards.map((item,index) =>
+                currentCards.map((item) =>
                   (
-                      <div key={index} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
+                      <div key={item._id} className="agent-card rounded-lg bg-white shadow-lg sm:w-[46%] lg:w-[21%] xl:w-[23%] shadow-slate-500 mx-auto">
                           <div className="dp w-full h-auto px-4 pt-4">
                               <img src={item.image} className="object-cover rounded-t-md h-full w-full" />                                      
                           </div>
@@ -64,7 +79,7 @@ const Profile_Agents = () => {
         </div>
 
         {/* Pagination Control */}
-        <div className="pagination flex justify-center items-center gap-2 pb-24">
+        <div className="pagination flex justify-center items-center gap-2 pb-24 group">
             <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -80,7 +95,7 @@ const Profile_Agents = () => {
                                   key       = { index }
                                   onClick   = { () => handlePageChange(index + 1) }
                                   className = {
-                                                  `px-3 py-1 rounded-full ${ currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-300' }`
+                                                  `px-3 py-1 rounded-full ${ currentPage === index + 1 ? ' outline-[#27ae60] outline outline-1 text-[#27ae60] font-medium group-hover:bg-[#27ae60] group-hover:text-[#fff]' : 'bg-gray-300' }`
                                               }
                             >
                                   {index + 1}
