@@ -37,7 +37,7 @@ const Pricing_Plans = () => {
           items.facilities.map((facilities,k)=>(
             <div className={`flex gap-2 text-lg ${facilities.type=="enabled"?"text-black":"text-[#848385]" }`} key={k}>
               <span className=' content-center'>{facilities.type=="enabled"?<Enabled_icon/>:<Disabled_icon/>}</span>
-              <span>{facilities.count}</span>
+              { facilities.count != null && <span>{facilities.count}</span> }
               <span>{facilities.name}</span>
             </div>
           ))
