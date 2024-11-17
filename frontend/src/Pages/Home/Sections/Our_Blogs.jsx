@@ -17,8 +17,8 @@ const Our_Blogs = () => {
             ever since the when an unknown printer took.
           </h1>
         </div>
-        <div className="card-container  gap-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-around">
-          <div className="card-container-1 bg-[#fff] w-[416px] h-[547px] shadow-3xl rounded-lg ">
+        <div className="card-container  gap-6 grid  sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3  justify-around">
+          <div className="card-container-1 bg-[#fff] w-[416px] h-[547px] shadow-2xl rounded-lg ">
             <div className="relative">
               <img src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731505854/coffee_shop_h4nqnz.jpg" className="object-cover rounded-lg " alt="" />
               <p className="absolute bottom-4 left-4  bg-white text-lg font-semibold  h-[44px] w-[153px] mr-20 rounded-lg flex flex-row  overflow-hidden ">
@@ -47,7 +47,7 @@ const Our_Blogs = () => {
                 soluta scripta, cum ne quot aeque nobis,
               </h1>
             </div>
-            <div className=" footer flex flex-row">
+            <div className="">
               <div className="mt-5 p-8 flex flex-row gap-2">
                 <img
                   src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731506503/Image_2024-11-13_at_19.11.37_19921db4_szbdgf.jpg"
@@ -82,7 +82,7 @@ const Our_Blogs = () => {
               <h4 className=" font-bold text-xl">
                 <a href=""className="cursor-pointer">America National Parks with Denver</a>
               </h4>
-              <span className=" flex flex-row items-center border border-green-500 p-2 rounded-full text-green-500 font-semibold">
+              <span className="flex flex-row items-center  border border-green-500 p-2 rounded-full text-green-500 font-semibold">
                 <i className="text-green-500">
                   <BsChatSquareText />
                 </i>
@@ -95,8 +95,8 @@ const Our_Blogs = () => {
                 soluta scripta, cum ne quot aeque nobis,
               </h1>
             </div>
-            <div className="flex flex-row">
-              <div className="footer  mt-5 p-8 flex flex-row gap-2">
+            <div className="">
+              <div className=" mt-5 p-8 flex flex-row gap-2">
                 <img
                   src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731506503/Image_2024-11-13_at_19.11.37_19921db4_szbdgf.jpg"
                   className="h-[40px] w-[40px] rounded-full"
@@ -127,7 +127,7 @@ const Our_Blogs = () => {
                 </div>
               </p>
             </div>
-            <div className="pr-10 pl-5 mt-[20px]  text-left flex gap-8">
+            <div className="pr-10 pl-5 mt-[20px] flex text-left gap-8">
               <h4 className=" font-bold text-xl">
                 <a href="" className="cursor-pointer">Lorem Ipsum Is Simply Dummy Text Of The Printing</a>
               </h4>
@@ -144,8 +144,8 @@ const Our_Blogs = () => {
                 soluta scripta, cum ne quot aeque nobis,
               </h1>
             </div>
-            <div className="flex flex-row">
-              <div className="footer  mt-5 p-8 flex flex-row gap-2">
+            <div className="">
+              <div className=" mt-5 p-8 flex flex-row gap-2">
                 <img
                   src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731506503/Image_2024-11-13_at_19.11.37_19921db4_szbdgf.jpg"
                   className="h-[40px] w-[40px] rounded-full"
