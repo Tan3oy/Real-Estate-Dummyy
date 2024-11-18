@@ -18,3 +18,9 @@ export const propertyTypeOptions = [
     { value: "housing", label: "Housing" },
     { value: "restaurant", label: "Restaurant" },
 ]; 
+
+export const propertyPurpose= [
+    { value: "Any", label: "Any" },
+    { value: "sale", label: "Sell" },
+    { value: "rent", label: "Rent" },
+]
