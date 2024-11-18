@@ -4,7 +4,6 @@ import axios from 'axios'
 import { FaFacebook ,FaTwitter,FaWhatsapp,FaLinkedin } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6"
 import { CiLocationOn } from "react-icons/ci"
-
 const Profile_Agents = () => {
   const [isOpen,setIsOpen] =useState(null);
   const [Agent_data, setAgent_data] = useState([]);
@@ -112,6 +111,8 @@ const Profile_Agents = () => {
             </button>
         </div>
     </div>
+   
+    
   )
 }
 
