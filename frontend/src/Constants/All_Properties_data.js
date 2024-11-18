@@ -1,19 +1,16 @@
 export const Property_Cards_data = [
     {
-        urgentLabel: null,
-        sellLabel: null,
+        label: ["Urgent","Featured"],
         imgUrl: "https://res.cloudinary.com/dx42ztqx9/image/upload/v1731839121/property-thumb-2021-10-19-09-05-30-3037_k6lksk.jpg",
         price: 300,
         
         speciality: "Library Road-6854",
         address: " Long Beach, Los Angeles, California, United State",
-
-        addButton: "Add To Wishlist",
-        reviewAnchor: "",
         view: 269,
         featured: null,
         rating: 4.5,    
 
+        propertyHero_Image:"https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751250/WhatsApp_Image_2024-11-13_at_19.11.39_b02541f3_nem2jn.jpg",
         propertyType: "House and Garden" ,
         area: 400,
         bedrooms: 15,
@@ -43,21 +40,17 @@ export const Property_Cards_data = [
         ]
     },
     {
-        urgentLabel: null,
-        sellLabel: null,
+        label: ["Urgent"],
         imgUrl: "https://res.cloudinary.com/dx42ztqx9/image/upload/v1731839121/property-thumb-2021-10-19-09-05-30-3037_k6lksk.jpg",
         price: 300,
         
         speciality: "Library Road-6854",
         address: " Long Beach, Los Angeles, California, United State",
-
-        addButton: "Add To Wishlist",
-        reviewAnchor: "",
         view: 269,
-        featured: null,
+        featured: true,
         rating: 4.4,    
 
-        propertyType: "House and Garden" ,
+        propertyHero_Image:'https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751479/WhatsApp_Image_2024-11-13_at_19.11.39_e609bc07_zd2muw.jpg' ,
         area: 400,
         bedrooms: 15,
         bathrooms: 30,
