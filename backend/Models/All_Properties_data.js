@@ -10,6 +10,7 @@ const NearestPlaceSchema = new mongoose.Schema({
 }, { _id: false });
 
 const allpropertySchema = new mongoose.Schema({
+        label: [{ type: String, required: true }],
         urgentLabel: { type: String, default: null },
         sellLabel: { type: String, default: null },
         imgUrl: { type: String, required: true },

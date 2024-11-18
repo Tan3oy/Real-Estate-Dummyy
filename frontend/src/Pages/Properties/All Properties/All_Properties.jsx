@@ -7,11 +7,11 @@ import Property_details from './Sections/Property_details'
 const All_Properties = () => {
   return (
     <div>
-      {/* <Hero_Property/>
+      <Hero_Property/>
       <div className="flex justify-between px-8 py-6 lg:px-4 md:w-[768px] lg:w-[992px] xl:w-[1200px] mx-auto">
       <Property_cards/>
       <Property_select/>
-      </div> */}
+      </div>
       <Property_details/>
     </div>
   )
