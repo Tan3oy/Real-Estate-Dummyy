@@ -11,6 +11,15 @@ export const getAllProperties=async(req,res)=>{
     }
 }
 
+//Fetch a specific Property
+export const  getProperty = async (req,res)=>{
+    try {const property = await All_Properties_data.findById(req.params.id)
+    res.json(property)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
 // Post a new Property
 export const createProperties=async(req,res)=>{
     try{

@@ -1,4 +1,6 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { RiHotelBedLine } from "react-icons/ri"
 import { FaShower } from "react-icons/fa";
@@ -8,10 +10,16 @@ import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 
 const Property_cards = () => {
+  const [propertyCards , setPropertyCards]=useState([])
+  useEffect(()=>{
+    axios.get("http://localhost:5000/api/allproperties")
+      .then((res)=>setPropertyCards(res.data))
+      .catch((err)=>console.log(err))
+  },[])
   return (
     <div className='px-4 sm:w-[576px] flex flex-col gap-8 md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
       {
-        Property_Cards_data.map((items,index)=>(
+        propertyCards.map((items,index)=>(
         <div className="card-wrapper lg:flex lg:gap-2 lg:justify-between p-4 h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md">
             <div className="model-pic h-64 xl:h-72 w-full lg:w-[50%] rounded-md overflow-hidden">
               <img src={items.imgUrl} className='object-cover h-full w-full' />
@@ -38,7 +46,7 @@ const Property_cards = () => {
                       </p>
                   </div>
                   <div className='button-place flex items-center justify-between pt-4'>
-                    <button className='px-6 py-3 rounded-md bg-[#0B2C3D] font-bold text-white'>View Details</button>
+                    <Link to={`/all_properties/${items._id}`}><button className='px-6 py-3 rounded-md bg-[#0B2C3D] font-bold text-white'>View Details</button></Link>
                     <div className='flex items-center'>
                       <div className="ratings-container flex items-center gap-1 pr-2">
                       {

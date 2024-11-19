@@ -12,7 +12,7 @@ const All_Properties = () => {
       <Property_cards/>
       <Property_select/>
       </div>
-      <Property_details/>
+      {/* <Property_details/> */}
     </div>
   )
 }

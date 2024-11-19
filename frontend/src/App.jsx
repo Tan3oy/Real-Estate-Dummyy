@@ -18,6 +18,7 @@ import Blog from './Pages/Blog/Blog'
 import Contact from './Pages/Contact/Contact'
 import { Route, Routes } from 'react-router-dom'
 import FAQ from './Pages/Pages/FAQ/FAQ'
+import Property_details from './Pages/Properties/All Properties/Sections/Property_details'
 
 function App() {
   
@@ -33,6 +34,8 @@ function App() {
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
 
           <Route path='/all_properties' element={<All_Properties/>}/>
+          <Route path='/all_properties/:_id' element={<Property_details/>}/>
+
           <Route path='/featured_properties' element={<Featured_Properties/>}/>
           <Route path='/top_properties' element={<Top_Properties/>}/>
           <Route path='/urgent_properties' element={<Urgent_Properties/>}/>
