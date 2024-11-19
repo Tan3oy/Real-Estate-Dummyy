@@ -16,7 +16,7 @@ export const CreateBlogs = async (req, res)=> {
     try {
        const { name, ...rest } = req.body;
        let newBlogs = new Blogs_data({ name, ...rest});
-       newBlogs =await new newBlogs.save();
+       newBlogs =await newBlogs.save();
        res.status(201).json(newBlogs);
     } catch (error) {
         res.status(500).json({message:error.message});

@@ -6,6 +6,7 @@ import Agents from './Sections/Agents'
 import Clients from './Sections/Clients'
 
 import Ourproperties from './Sections/Ourproperties'
+import Blogs from './Sections/Blogs'
 
  const Home = () => {
   return (
@@ -14,6 +15,7 @@ import Ourproperties from './Sections/Ourproperties'
         <Service_Counter/>
         <Featured_Properties />
         <Agents/>
+        <Blogs />
         <Clients/>
         
         <Ourproperties/>
