@@ -2,7 +2,7 @@ import React from 'react'
 import Hero_Property from './Sections/Hero_Property'
 import Property_cards from './Sections/Property_cards'
 import Property_select from './Sections/Property_select'
-import Property_details from './Sections/Property_details'
+
 
 const All_Properties = () => {
   return (
@@ -12,7 +12,7 @@ const All_Properties = () => {
       <Property_cards/>
       <Property_select/>
       </div>
-      {/* <Property_details/> */}
+      
     </div>
   )
 }

@@ -11,7 +11,7 @@ export const Property_Cards_data = [
         rating: 4.5,    
 
         propertyHero_Image:"https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751250/WhatsApp_Image_2024-11-13_at_19.11.39_b02541f3_nem2jn.jpg",
-        propertyType: "House and Garden" ,
+        propertyType: "House and Garden",
         area: 400,
         bedrooms: 15,
         bathrooms: 30,
