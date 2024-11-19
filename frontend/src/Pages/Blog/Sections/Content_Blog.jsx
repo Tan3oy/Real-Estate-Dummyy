@@ -16,7 +16,7 @@ const Content_Blog = () => {
   },[])
   console.log(Blogs_data)
   const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 5; // Number of cards per page
+  const cardsPerPage = 6; // Number of cards per page
 
   // Calculate the number of pages
   const totalPages = Math.ceil(Blogs_data.length / cardsPerPage);
@@ -33,9 +33,9 @@ const Content_Blog = () => {
 
   return (
     <div>
-       <div className="mx-auto p-8 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] md:flex md:flex-wrap md:gap-y-8 justify-between">
+       <div className="mx-auto p-8 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] md:flex md:flex-wrap gap-y-8 justify-between md:gap-x-3">
       {currentCards.map((items, index) => (
-        <div className="h-fit md:w-[48%] lg:w-[32%] bg-white shadow-[0_1px_10px_1px] shadow-[#97999db8] rounded-lg overflow-hidden" key={index}>
+        <div className="max-md:mb-8 h-fit md:w-[46%] lg:w-[30%] bg-white shadow-[0_1px_10px_1px] shadow-[#97999db8] rounded-lg overflow-hidden" key={index}>
           {/* Image Section */}
           <div className="relative">
             <div className=" w-full h-56">

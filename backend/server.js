@@ -11,7 +11,7 @@ import Pricing_Cards_Routes from "./Routes/Pricing_Cards_Routes.js";
 import All_Properties_Routes from "./Routes/All_Properties_Routes.js";
 
 import Blogs_Routers from "./Routes/Blogs_Routers.js"
-import All_Properties_Routes from "./Routes/All_Properties_Routes.js"
+
 const port = 5000;
 const app = express();
 

@@ -31,7 +31,7 @@ const BlogsData = [
     },
     {
       image: 'https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751130/WhatsApp_Image_2024-11-13_at_19.11.39_85801d79_tjwyzp.jpg',
-      yaer: 'Jul 2021',
+      year: 'Jul 2021',
       day: '29',
       title: 'Lorem Ipsum Is Simply Dummy Text Of The Printing',
       description: 'Lorem ipsum dolor sit amet, porro discere ex sea. Ius at mazim soluta scripta, cum ne quot aeque nobis.',
