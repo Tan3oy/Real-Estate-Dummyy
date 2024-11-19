@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
+// import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { RiHotelBedLine } from "react-icons/ri"
 import { FaShower } from "react-icons/fa";
 import { FaVectorSquare } from "react-icons/fa6";

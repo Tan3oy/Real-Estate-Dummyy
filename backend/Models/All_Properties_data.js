@@ -11,8 +11,6 @@ const NearestPlaceSchema = new mongoose.Schema({
 
 const allpropertySchema = new mongoose.Schema({
         label: [{ type: String, required: true }],
-        urgentLabel: { type: String, default: null },
-        sellLabel: { type: String, default: null },
         imgUrl: { type: String, required: true },
         price: { type: Number, required: true },
         speciality: { type: String, required: true },
@@ -22,6 +20,7 @@ const allpropertySchema = new mongoose.Schema({
         view: { type: Number, default: 0 },
         featured: { type: Boolean, default: null },
         rating: { type: Number, default: 0 },
+        propertyHero_Image: { type: String, required: true },
         propertyType: { type: String, required: true },
         area: { type: Number, required: true },
         bedrooms: { type: Number, required: true },
