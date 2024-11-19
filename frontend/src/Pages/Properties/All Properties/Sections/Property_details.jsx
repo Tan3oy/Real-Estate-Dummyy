@@ -25,7 +25,6 @@
             {
                 propertyData?(
                 <>
-                    <p>adadsdsds</p>
                     <div>
                         <section id='hero_Property' style={{backgroundImage: `url(${propertyData.propertyHero_Image})`}}  className={`bg-no-repeat bg-cover bg-center [border-image:linear-gradient(#0b2c3d70,#0b2c3d70)_fill_1]`}>
                             <div className=" pt-40 pb-44 w-full ">

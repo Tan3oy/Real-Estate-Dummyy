@@ -19,7 +19,7 @@ const Property_cards = () => {
   return (
     <div className='px-4 sm:w-[576px] flex flex-col gap-8 md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
       {
-        propertyCards.map((items,index)=>(
+        propertyCards.length>0 && propertyCards?(propertyCards.map((items,index)=>(
         <div className="card-wrapper lg:flex lg:gap-2 lg:justify-between p-4 h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md">
             <div className="model-pic h-64 xl:h-72 w-full lg:w-[50%] rounded-md overflow-hidden">
               <img src={items.imgUrl} className='object-cover h-full w-full' />
@@ -63,7 +63,9 @@ const Property_cards = () => {
                 </div>
             </div>
         </div>
-        ))
+        ))):(
+          <p className='pt-40'>No Property</p>
+        )
       }
     </div>
   )
