@@ -1,4 +1,5 @@
 import Pricing_Cards_data from "../Models/Pricing_Cards_data.js";
+console.log(Pricing_Cards_data);
 
 //fetching Pricing data
 export const getAllPricingCardsdata= async(req,res)=>{

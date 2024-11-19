@@ -7,52 +7,52 @@ const pricingCardsSchema= new mongoose.Schema({
         facilities:[
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         },
         {
         type: { type: String, required: true },
-        count:{ type: Number, required: true },
+        count:{ type: mongoose.Schema.Types.Mixed, default: null },
         name:{ type: String, required: true }
         }
         ],
