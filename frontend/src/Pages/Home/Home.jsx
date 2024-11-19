@@ -5,6 +5,9 @@ import Featured_Properties from './Sections/Featured_Properties/Featured_Propert
 import Agents from './Sections/Agents'
 import Clients from './Sections/Clients'
 
+import Ourproperties from './Sections/Ourproperties'
+import Blogs from './Sections/Blogs'
+
  const Home = () => {
   return (
     <div>
@@ -12,7 +15,10 @@ import Clients from './Sections/Clients'
         <Service_Counter/>
         <Featured_Properties />
         <Agents/>
+        <Blogs />
         <Clients/>
+        
+        <Ourproperties/>
     </div>
   )
 }

@@ -1,10 +1,40 @@
-import React from "react";
-import BlogsData from "../../../Constants/Blogs_data";
+import React,{useEffect ,useState} from "react";
+import axios from "axios";
+
 import { BsChatSquareText } from "react-icons/bs";
 const Content_Blog = () => {
+  const [isOpen,setIsOpen] =useState(null);
+  const [Blogs_data, setBlogs_data] = useState([]);
+  useEffect(()=>{
+      axios
+      .get("http://localhost:5000/api/AllBlogs")
+      .then((res)=>(
+          setBlogs_data(res.data),
+          console.log(res.data))
+      )
+      .catch((err)=>console.log(err))
+  },[])
+  console.log(Blogs_data)
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 5; // Number of cards per page
+
+  // Calculate the number of pages
+  const totalPages = Math.ceil(Blogs_data.length / cardsPerPage);
+
+  // Get the cards for the current page
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = Blogs_data.slice(indexOfFirstCard, indexOfLastCard);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
-    <div className="mx-auto p-8 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] md:flex md:flex-wrap md:gap-y-8 justify-between">
-      {BlogsData.map((items, index) => (
+    <div>
+       <div className="mx-auto p-8 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] md:flex md:flex-wrap md:gap-y-8 justify-between">
+      {currentCards.map((items, index) => (
         <div className="h-fit md:w-[48%] lg:w-[32%] bg-white shadow-[0_1px_10px_1px] shadow-[#97999db8] rounded-lg overflow-hidden" key={index}>
           {/* Image Section */}
           <div className="relative">
@@ -55,7 +85,41 @@ const Content_Blog = () => {
           </div>
         </div>
       ))}
-    </div>
+       </div>
+    {/* Pagination Control */}
+        <div className="pagination flex justify-center items-center gap-2 pb-24 group">
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1 bg-gray-300 rounded-full disabled:opacity-50"
+                >
+                  «
+                </button>
+
+                {
+                    [...Array(totalPages)].map((_, index) =>
+                          (
+                                <button
+                                      key       = { index }
+                                      onClick   = { () => handlePageChange(index + 1) }
+                                      className = {
+                                                      `px-3 py-1 rounded-full ${ currentPage === index + 1 ? ' outline-[#27ae60] outline outline-1 text-[#27ae60] font-medium group-hover:bg-[#27ae60] group-hover:text-[#fff]' : 'bg-gray-300' }`
+                                                  }
+                                >
+                                      {index + 1}
+                                </button>
+                          ))
+                }
+                
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1 bg-gray-300 rounded-full disabled:opacity-50"
+                >
+                  »
+                </button>
+         </div>
+  </div>
   );
 };
 
