@@ -9,7 +9,6 @@ import Services from './Sections/Services'
 import Clients from './Sections/Clients'
 import Blogs from './Sections/Blogs'
 import Top from './Sections/Top'
-import Services from './Sections/Services'
 
  const Home = () => {
   return (
@@ -23,7 +22,7 @@ import Services from './Sections/Services'
         <Agents/>
         <Services />
         <Clients/>
-        
+        <Blogs />
        
     </div>
   )
