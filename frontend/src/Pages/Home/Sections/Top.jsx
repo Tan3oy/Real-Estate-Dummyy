@@ -14,14 +14,14 @@ const Top = () => {
             ever since the when an unknown printer took.
           </h1>
         </div>
-        <div className="card-container  gap-20 lg:gap-20 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-center items-center cursor-pointer ">
+        <div className="card-container  gap-20 grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  m-auto lg:m-auto justify-center items-center cursor-pointer ">
           <a
             href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085087/banner-2021-10-07-08-14-29-5678_e58vxf.jpg"
-            className="card-container-1  h-[400px] w-[306px] relative rounded-xl m-auto lg:m-auto overflow-hidden group  "
+            className="card-container-1  h-[400px]   relative rounded-xl  overflow-hidden group  "
           >
             <img
               src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085087/banner-2021-10-07-08-14-29-5678_e58vxf.jpg"
-              className="   h-[100%] w-[100%] object-cover  group-hover:scale-110 transition-transform duration-300 ease-in-out  "
+              className="   h-[100%]  w-[100%]  object-cover  group-hover:scale-110 transition-transform duration-300 ease-in-out  "
               alt=""
             />
             <div className="card-overlay absolute top-0 left-0 bg-[#0b2c3d80] rounded-md w-[90%] h-[93%] m-[5%]  flex flex-col gap-5 px-5">
@@ -68,11 +68,11 @@ const Top = () => {
 
           <a
             href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731744422/property-thumb-2021-10-18-09-34-39-5668_bdq78z.jpg"
-            className="card-container-2 h-[400px] w-[306px] m-auto lg:m-auto relative rounded-xl overflow-hidden group "
+            className="card-container-2 h-[400px]   relative rounded-xl overflow-hidden group "
           >
             <img
               src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731744422/property-thumb-2021-10-18-09-34-39-5668_bdq78z.jpg"
-              className="   h-[100%] w-[100%] object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out  "
+              className="   h-[100%]  w-[100%]  object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out  "
               alt=""
             />
             <div className="card-overlay absolute top-0 left-0 bg-[#0b2c3d80] rounded-md w-[90%] h-[93%] m-[5%]  flex flex-col gap-5 px-5">
@@ -119,11 +119,11 @@ const Top = () => {
 
           <a
             href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507401/home-page-banner-2023-12-14-04-21-19-3202_yxknz3.jpg"
-            className="card-container-3 h-[400px] w-[306px] m-auto lg:m-auto relative rounded-xl overflow-hidden group "
+            className="card-container-3 h-[400px]   relative rounded-xl overflow-hidden group "
           >
             <img
               src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507401/home-page-banner-2023-12-14-04-21-19-3202_yxknz3.jpg"
-              className="   h-[100%] w-[100%] object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out  "
+              className="   h-[100%]  w-[100%]  object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out  "
               alt=""
             />
             <div className="card-overlay absolute top-0 left-0 bg-[#0b2c3d80] rounded-md w-[90%] h-[93%] m-[5%]  flex flex-col gap-5 px-5">
@@ -170,11 +170,11 @@ const Top = () => {
 
           <a
             href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507047/property-thumb-2021-10-12-09-42-04-5671_kuokvt.jpg"
-            className="card-container-4 h-[400px] w-[306px] m-auto lg:m-auto relative rounded-xl overflow-hidden group "
+            className="card-container-4 h-[400px]   relative rounded-xl overflow-hidden group "
           >
             <img
               src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507047/property-thumb-2021-10-12-09-42-04-5671_kuokvt.jpg"
-              className="   h-[100%] w-[100%] object-cover  group-hover:scale-110 transition-transform duration-300 ease-in-out "
+              className="   h-[100%]  w-[100%]  object-cover  group-hover:scale-110 transition-transform duration-300 ease-in-out "
               alt=""
             />
             <div className="card-overlay absolute top-0 left-0 bg-[#0b2c3d80] rounded-md w-[90%] h-[93%] m-[5%]  flex flex-col gap-5 px-5">
