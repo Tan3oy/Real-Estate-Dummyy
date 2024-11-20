@@ -88,6 +88,14 @@ const Property_select = () => {
                     onChange={handleInputChange}
                     className='p-2 outline-none border border-[#919191]'
                 />
+                <input
+                    type="text"
+                    placeholder='Type...'
+                    name="keyword"
+                    value={filters.keyword}
+                    onChange={handleInputChange}
+                    className='p-2 outline-none border border-[#919191]'
+                />
             </div>
             {/* Location Dropdown */}
             <div className="flex flex-col gap-2">

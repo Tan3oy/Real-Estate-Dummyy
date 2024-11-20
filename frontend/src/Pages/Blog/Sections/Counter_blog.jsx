@@ -2,7 +2,7 @@ import React from 'react'
 
 const Counter_blog = () => {
   return (
-    <div>Counter_blog</div>
+    <div>Counters_blog</div>
   )
 }
 
