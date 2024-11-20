@@ -19,6 +19,7 @@ import Contact from './Pages/Contact/Contact'
 import { Route, Routes } from 'react-router-dom'
 import FAQ from './Pages/Pages/FAQ/FAQ'
 import Property_details from './Pages/Properties/All Properties/Sections/Property_details'
+import ScrollTopbtn from './Components/ScrollTopbtn'
 
 function App() {
   
@@ -46,6 +47,7 @@ function App() {
           <Route path='/faq' element={<FAQ/>}/>
           <Route path='/blog' element={<Blog/>}/>
         </Routes>
+        <ScrollTopbtn/>
         <Footer_Find_Estate />
       </div>     
     </>
