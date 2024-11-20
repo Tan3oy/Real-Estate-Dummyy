@@ -8,19 +8,23 @@ import Agents from './Sections/Agents'
 import Services from './Sections/Services'
 import Clients from './Sections/Clients'
 import Blogs from './Sections/Blogs'
+import Top from './Sections/Top'
+import Services from './Sections/Services'
 
  const Home = () => {
   return (
     <div>
         <Hero_Section/>
         <Service_Counter/>
-        <Ourproperties />
-        
+        <Ourproperties/>
+        <Top />
         <Featured_Properties />
+        <Services />
         <Agents/>
         <Services />
         <Clients/>
-        <Blogs />
+        
+       
     </div>
   )
 }

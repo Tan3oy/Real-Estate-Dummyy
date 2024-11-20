@@ -1,7 +1,3 @@
-import Img from "../assets/property thumb.jpg";
-import Img1 from "../assets/property thumb 2.jpg";
-import Img2 from "../assets/property thumb 3.jpg";
-import Img3 from "../assets/property thumb 4.jpg";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaBed } from "react-icons/fa";
 import { FaShower } from "react-icons/fa";
@@ -18,13 +14,13 @@ const Top = () => {
             ever since the when an unknown printer took.
           </h1>
         </div>
-        <div className="card-container  gap-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-col-4 justify-center items-center cursor-pointer ">
+        <div className="card-container  gap-20 lg:gap-20 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-center items-center cursor-pointer ">
           <a
-            href={Img}
-            className="card-container-1  h-[400px] w-[306px] relative rounded-xl mx-auto overflow-hidden group  "
+            href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085087/banner-2021-10-07-08-14-29-5678_e58vxf.jpg"
+            className="card-container-1  h-[400px] w-[306px] relative rounded-xl m-auto lg:m-auto overflow-hidden group  "
           >
             <img
-              src={Img}
+              src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731085087/banner-2021-10-07-08-14-29-5678_e58vxf.jpg"
               className="   h-[100%] w-[100%] object-cover  group-hover:scale-110 transition-transform duration-300 ease-in-out  "
               alt=""
             />
@@ -71,11 +67,11 @@ const Top = () => {
           </a>
 
           <a
-            href={Img1}
-            className="card-container-2 h-[400px] w-[306px] relative rounded-xl overflow-hidden group "
+            href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731744422/property-thumb-2021-10-18-09-34-39-5668_bdq78z.jpg"
+            className="card-container-2 h-[400px] w-[306px] m-auto lg:m-auto relative rounded-xl overflow-hidden group "
           >
             <img
-              src={Img1}
+              src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731744422/property-thumb-2021-10-18-09-34-39-5668_bdq78z.jpg"
               className="   h-[100%] w-[100%] object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out  "
               alt=""
             />
@@ -122,11 +118,11 @@ const Top = () => {
           </a>
 
           <a
-            href={Img2}
-            className="card-container-3 h-[400px] w-[306px] relative rounded-xl overflow-hidden group "
+            href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507401/home-page-banner-2023-12-14-04-21-19-3202_yxknz3.jpg"
+            className="card-container-3 h-[400px] w-[306px] m-auto lg:m-auto relative rounded-xl overflow-hidden group "
           >
             <img
-              src={Img2}
+              src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507401/home-page-banner-2023-12-14-04-21-19-3202_yxknz3.jpg"
               className="   h-[100%] w-[100%] object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out  "
               alt=""
             />
@@ -173,11 +169,11 @@ const Top = () => {
           </a>
 
           <a
-            href={Img3}
-            className="card-container-4 h-[400px] w-[306px] relative rounded-xl overflow-hidden group "
+            href="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507047/property-thumb-2021-10-12-09-42-04-5671_kuokvt.jpg"
+            className="card-container-4 h-[400px] w-[306px] m-auto lg:m-auto relative rounded-xl overflow-hidden group "
           >
             <img
-              src={Img3}
+              src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731507047/property-thumb-2021-10-12-09-42-04-5671_kuokvt.jpg"
               className="   h-[100%] w-[100%] object-cover  group-hover:scale-110 transition-transform duration-300 ease-in-out "
               alt=""
             />
