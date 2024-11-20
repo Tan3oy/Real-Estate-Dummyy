@@ -7,18 +7,23 @@ import Clients from './Sections/Clients'
 
 import Ourproperties from './Sections/Ourproperties'
 import Blogs from './Sections/Blogs'
+import Top from './Sections/Top'
+import Services from './Sections/Services'
 
  const Home = () => {
   return (
     <div>
         <Hero_Section/>
         <Service_Counter/>
+        <Ourproperties/>
+        <Top />
         <Featured_Properties />
+        <Services />
         <Agents/>
         <Blogs />
         <Clients/>
         
-        <Ourproperties/>
+       
     </div>
   )
 }
