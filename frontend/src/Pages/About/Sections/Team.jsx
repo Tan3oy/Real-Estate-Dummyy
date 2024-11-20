@@ -7,14 +7,14 @@ import { BsTwitterX } from "react-icons/bs";
 const Team = () => {
   return (
     <div>
-        <section className='mx-28 pt-5'>
+        <section className='mx-28 mt-8 mb-16'>
             <div className='w-5/6 m-auto text-center py-10'>
             <h4 className='text-4xl font-bold'> Our Team</h4>
             <p className='text-xl text-gray-400 mt-[25px]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took.</p>
             </div>
             <div className='card-containers  gap-20 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-around cursor-pointer'>
                <div className='card-container-1 group'>
-               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-3xl rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
+               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-[0px_0px_10px] shadow-[#c1c1c1] rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
                     <div className='flex justify-center items-center mt-5'>
                     <img src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731506503/Image_2024-11-13_at_19.11.37_19921db4_szbdgf.jpg" className='rounded-full h-[120px] w-[120px] mt-5' alt="" />
                     </div>
@@ -41,7 +41,7 @@ const Team = () => {
                
                </div>
                <div className='card-container-2 group'>
-               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-3xl rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
+               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-[0px_0px_10px] shadow-[#c1c1c1] rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
                     <div className='flex justify-center items-center mt-5'>
                     <img src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751530/WhatsApp_Image_2024-11-13_at_19.11.39_96a2ae81_bqlzuu.jpg" className='rounded-full h-[120px] w-[120px] mt-5' alt="" />
                     </div>
@@ -68,7 +68,7 @@ const Team = () => {
                
                </div>
                <div className='card-container-3 group'>
-               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-3xl rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
+               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-[0px_0px_10px] shadow-[#c1c1c1] rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
                     <div className='flex justify-center items-center mt-5'>
                     <img src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751536/WhatsApp_Image_2024-11-13_at_19.11.39_0b5e6e81_vh4tjd.jpg" className='rounded-full h-[120px] w-[120px] mt-5' alt="" />
                     </div>
@@ -95,7 +95,7 @@ const Team = () => {
                
                </div>
                <div className='card-container-4 group'>
-               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-3xl rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
+               <div className='h-[320px] lg:h-full w-[321px] lg:w-full shadow-[0px_0px_10px] shadow-[#c1c1c1] rounded-xl group-hover:scale-110 transition-transform duration-300 ease-in-out group-hover:border-gray-500'>
                     <div className='flex justify-center items-center mt-5'>
                     <img src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731751547/WhatsApp_Image_2024-11-13_at_19.11.39_67978e67_yomvlc.jpg" className='rounded-full h-[120px] w-[120px] mt-5' alt="" />
                     </div>

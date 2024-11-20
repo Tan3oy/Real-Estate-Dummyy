@@ -12,6 +12,7 @@ const About_details = () => {
               <button className='py-3 px-6 text-white font-semibold hover:bg-green-500 transition duration-300'>Service</button>
               <button className='py-3 px-6 text-white font-semibold hover:bg-green-500 transition duration-300'>History</button>
         </div>
+        
       </div>
     </section>
 
