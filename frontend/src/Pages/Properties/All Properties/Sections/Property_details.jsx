@@ -86,8 +86,8 @@
                                     </button>
                                 </form>
                             </div>
-                            <div className="Property-details p-4 w-full h-fit lg:w-[58%] xl:w-[58%] 2xl:w-[67%] rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
-                                <div className="propert-intro">
+                            <div className="Property-details flex flex-col gap-8 w-full lg:w-[58%] xl:w-[58%] 2xl:w-[67%] ">
+                                <div className="propert-intro h-fit p-4 rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
                                     <div className="property-labels flex gap-3">
                                         <div className="flex items-center gap-3">
                                             {
@@ -164,7 +164,51 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div className=""></div>
+                                <div className="details h-fit py-4 px-6 rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
+                                    <h1 className='font-semibold text-2xl mb-4'>Details & Features</h1>
+                                    <p className='md:flex gap-20'>
+                                        <div className="">
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Property Type :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.propertyType}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Area :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.area}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Bedrooms :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.bedrooms}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Bathrooms :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.bathrooms}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                            <span className='font-medium'>Rooms :</span>
+                                            <span className='text-[#6f6f6f]'>{propertyData.rooms}</span>
+                                        </p>
+                                        </div>
+                                        <div className="">
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Units :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.units}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Floors :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.floors}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Kitchens :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.kitchens}</span>
+                                            </p>
+                                            <p className='flex items-center gap-4 mb-2 text-lg'>
+                                                <span className='font-medium'>Parking Place :</span>
+                                                <span className='text-[#6f6f6f]'>{propertyData.parking}</span>
+                                            </p>
+                                        </div>
+                                    </p>
+                                </div>
                                 <div className=""></div>
                                 <div className=""></div>
                                 <div className=""></div>

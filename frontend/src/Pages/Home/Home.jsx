@@ -4,6 +4,7 @@ import Service_Counter from './Sections/Service_Counter'
 import Featured_Properties from './Sections/Featured_Properties/Featured_Properties'
 import Agents from './Sections/Agents'
 import Clients from './Sections/Clients'
+import ScrollTopbtn from '../../Components/ScrollTopbtn'
 
  const Home = () => {
   return (
@@ -13,6 +14,7 @@ import Clients from './Sections/Clients'
         <Featured_Properties />
         <Agents/>
         <Clients/>
+        <ScrollTopbtn/>
     </div>
   )
 }
