@@ -46,7 +46,27 @@ const Property_cards = () => {
                       </p>
                   </div>
                   <div className='button-place flex items-center justify-between pt-4'>
-                    <Link to={`/all_properties/${items._id}`}><button className='px-6 py-3 rounded-md bg-[#0B2C3D] font-bold text-white'>View Details</button></Link>
+                    <Link to={`/all_properties/${items._id}`}>
+                        <button
+                            className='mx-auto w-40 h-11 rounded-[3px]
+                                bg-[#093B55] text-white font-medium text-[17px]
+                                relative
+                                z-[1] overflow-hidden
+
+                                before:transition-all before:duration-500 before:ease-in-out
+                                before:content-[" "]
+                                before:absolute
+                                before:top-0 before:left-0
+                                before:bg-[#27ae60]
+                                before:h-full before:w-0
+                                before:z-[-1] 
+                                before:opacity-0
+
+                                hover:before:w-full
+                                hover:before:opacity-100'>
+                              View Details
+                        </button>
+                    </Link>
                     <div className='flex items-center'>
                       <div className="ratings-container flex items-center gap-1 pr-2">
                       {

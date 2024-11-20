@@ -19,7 +19,7 @@ const Property_cards = () => {
   return (
     <div className='px-4 sm:w-[576px] flex flex-col gap-8 md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
       {
-        propertyCards.map((items,index)=>(
+        propertyCards.length>0 && propertyCards?(propertyCards.map((items,index)=>(
         <div className="card-wrapper lg:flex lg:gap-2 lg:justify-between p-4 h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md">
             <div className="model-pic h-64 xl:h-72 w-full lg:w-[50%] rounded-md overflow-hidden">
               <img src={items.imgUrl} className='object-cover h-full w-full' />
@@ -46,7 +46,27 @@ const Property_cards = () => {
                       </p>
                   </div>
                   <div className='button-place flex items-center justify-between pt-4'>
-                    <Link to={`/all_properties/${items._id}`}><button className='px-6 py-3 rounded-md bg-[#0B2C3D] font-bold text-white'>View Details</button></Link>
+                    <Link to={`/all_properties/${items._id}`}>
+                        <button
+                            className='mx-auto w-40 h-11 rounded-[3px]
+                                bg-[#093B55] text-white font-medium text-[17px]
+                                relative
+                                z-[1] overflow-hidden
+
+                                before:transition-all before:duration-500 before:ease-in-out
+                                before:content-[" "]
+                                before:absolute
+                                before:top-0 before:left-0
+                                before:bg-[#27ae60]
+                                before:h-full before:w-0
+                                before:z-[-1] 
+                                before:opacity-0
+
+                                hover:before:w-full
+                                hover:before:opacity-100'>
+                              View Details
+                        </button>
+                    </Link>
                     <div className='flex items-center'>
                       <div className="ratings-container flex items-center gap-1 pr-2">
                       {
@@ -63,7 +83,9 @@ const Property_cards = () => {
                 </div>
             </div>
         </div>
-        ))
+        ))):(
+          <p className='pt-40'>No Property</p>
+        )
       }
     </div>
   )
