@@ -2,13 +2,27 @@ import React,{useEffect,useState} from 'react'
 
 import { motion } from 'framer-motion'
 const ScrollTopbtn = () => {
-    const [isVisible,seIsVisible]= useState(true)
+    const [hasRendered, setHasRendered] = useState(false);
+    const [isVisible,setIsVisible]= useState(false)
+    useEffect(()=>{
+    const handleScroll=()=>{
+      console.log(window.scrollY);
+      
+        setIsVisible(window.scrollY>240? true:false)
+        setHasRendered(isVisible?true:false)
+    }
 
+      document.addEventListener('scroll',handleScroll)
+      return ()=>{
+        document.removeEventListener('scroll',handleScroll)
+      }
+    })
   return (
+    isVisible &&(
     <motion.div className='fixed bottom-0 right-10 bg-[#27AE60] text-white py-2 px-4 content-center'
-    initial={{y:'50%',opacity:0}} animate={{y:isVisible?'0%':'100%',opacity:isVisible?1:0}} transition={{duration:10 , ease:'easeInOut', repeat:Infinity}}>
-        <p>Scroll</p>
-    </motion.div>
+    initial={{y:0,opacity:0}} animate={{y: hasRendered? ['0%', '20%', '0%']: "20%", opacity: 1}} transition={{duration:1 , ease:'easeInOut',repeatType:'loop', repeat: hasRendered?Infinity:0}}>
+        <p>Scroll</p>S
+    </motion.div>)
   )
 }
 
