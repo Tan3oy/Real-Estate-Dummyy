@@ -118,7 +118,7 @@ const Content_Blog = () => {
                 >
                   »
                 </button>
-         </div>
+        </div>
   </div>
   );
 };
