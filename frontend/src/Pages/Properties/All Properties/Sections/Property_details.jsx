@@ -22,6 +22,7 @@
             .catch((err)=>console.log(err))
         },[_id])
         console.log(propertyData);
+
     return (
         <div>
             {
@@ -209,7 +210,16 @@
                                         </div>
                                     </p>
                                 </div>
-                                <div className=""></div>
+                                <div className='location_map h-fit py-4 px-6 rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)] overflow-hidden'>
+                                    {/* iframe: either width or height should be specified. both cannot be 100% */}
+                                    <iframe className='w-[100%] h-[300px]'
+                                            
+                                            src={propertyData.mapAddress}
+                                            
+                                            allowfullscreen=""
+                                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>                               
                                 <div className=""></div>
                                 <div className=""></div>
                             </div>
