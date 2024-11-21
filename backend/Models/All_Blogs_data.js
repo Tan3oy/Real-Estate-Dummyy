@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const AllblogSchema = new mongoose.Schema({
+const AllblogsSchema = new mongoose.Schema({
     image:{
         type:String,
         required:true
@@ -28,10 +28,11 @@ const AllblogSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    
     views:{
         type:Number,
         required:true
-    }
+    },
     catagories:[{
         type:String
     }]

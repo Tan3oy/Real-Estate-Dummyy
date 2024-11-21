@@ -22,3 +22,13 @@ export const CreateBlogs = async (req, res)=> {
         res.status(500).json({message:error.message});
     }
 };
+// AllBlog Updated
+export const updateBlog = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updatedBlog = await Blogs_data.findByIdAndUpdate(req.params.id, updatedBlog);
+      res.status(200).json(updatedBlog);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+};

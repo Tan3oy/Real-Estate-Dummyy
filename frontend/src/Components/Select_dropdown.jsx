@@ -21,6 +21,14 @@ const Dropdown = ({placeholder,options}) => {
         width: '100%', // Set the width
         height: '100%', // Set the height
         }),
+        menu: (provided) => ({
+            ...provided,
+            zIndex: 9999, // Ensure dropdown is on top
+        }),
+        menuPortal: (base) => ({
+            ...base,
+            zIndex: 9999
+        }),
         control : (basestyles) => ({
         ...basestyles,
         height: '100%', // Set the height
@@ -52,6 +60,7 @@ const Dropdown = ({placeholder,options}) => {
     <div className="relative text-lg w-full sm:w-auto border border-slate-400"  >
         <Select          
             options={options}
+            defaultValue={placeholder}
             placeholder={placeholder}           
             components={{DropdownIndicator:customIndicator, IndicatorSeparator:()=> null}}
             onMenuOpen={() => setIsOpen(true)} // Trigger when menu opens

@@ -32,6 +32,13 @@ const blogsSchema= new mongoose.Schema({
         type:String,
         reqired:true
     },
+    views:{
+        type:Number,
+        required:true
+    },
+    catagories:[{
+        type:String
+    }]
 })
 const Blogs_data = mongoose.model("Blogs_data", blogsSchema)
 export default Blogs_data
