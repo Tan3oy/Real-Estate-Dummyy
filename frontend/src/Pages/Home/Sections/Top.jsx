@@ -32,7 +32,7 @@ const Top = () => {
                 3015 Grand Avenue,Cocowalk
               </h4>
               <div className="box-details flex justify-between mt-5 text-center ">
-                <div className="box-text px-5">
+                <div className="box-text">
                   <i>
                     <FaBed className="text-[25px] font-thin text-[#ffffff]" />
                   </i>
@@ -42,7 +42,7 @@ const Top = () => {
                     "bed"
                   </span>
                 </div>
-                <div className="box-text px-5 ">
+                <div className="box-text px-4">
                   <i>
                     <FaShower className="text-[25px] text-[#ffffff] " />
                   </i>
@@ -52,7 +52,7 @@ const Top = () => {
                     "bed"
                   </span>
                 </div>
-                <div className="box-text px-5">
+                <div className="box-text">
                   <i>
                     <BsBoundingBoxCircles className="text-[25px] text-[#ffffff]" />
                   </i>

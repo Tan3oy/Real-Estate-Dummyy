@@ -20,7 +20,6 @@ import Top from './Sections/Top'
         <Featured_Properties />
         <Services />
         <Agents/>
-        <Services />
         <Clients/>
         <Blogs />
        
