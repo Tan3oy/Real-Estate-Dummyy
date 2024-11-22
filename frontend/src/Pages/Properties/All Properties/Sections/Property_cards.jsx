@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useSearchParams} from 'react-router-dom'
 // import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { RiHotelBedLine } from "react-icons/ri"
 import { FaShower } from "react-icons/fa";
@@ -8,9 +8,19 @@ import { FaVectorSquare } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6"
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
+import ProductFilter from '../../../../Components/ProductFilter'
 
 const Property_cards = () => {
+
+  
+
+
+
+
   const [propertyCards , setPropertyCards]=useState([])
+  useEffect(() => {
+    console.log("Updated propertyCards state:", propertyCards);
+}, [propertyCards]);
   useEffect(()=>{
     axios.get("http://localhost:5000/api/allproperties")
       .then((res)=>setPropertyCards(res.data))
@@ -31,6 +41,72 @@ const Property_cards = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
+
+
+
+
+  const [searchParams] = useSearchParams();
+  const min_price = searchParams.get('min_price') === null ? '' : searchParams.get('min_price');
+  const max_price = searchParams.get('max_price') === null ? '' : searchParams.get('max_price');
+  const search = searchParams.get('search') === null ? '' : searchParams.get('search');
+  // console.log(`searchParams`, searchParams.get('min_price'));
+
+  useEffect(() => {
+      filterPropertyCards();
+  }, [min_price, max_price, search]);
+  
+
+  const filterPropertyCards = async () => {
+      try {
+          // Fetch all properties from the backend
+          console.log("Filtering with params:", { min_price, max_price, search });
+          const response = await axios.get("http://localhost:5000/api/allproperties");
+          const allProperties = response.data;
+
+          // check minimum one entry occur
+          if (search.length || min_price.length || max_price.length) {
+
+            const min = parseFloat(min_price);
+            const max = parseFloat(max_price);
+
+            // filter products with these conditions
+            const filtered = allProperties.filter(product => {
+
+                // if min_price < product_price then get product
+                if (min > 0 && min > product.price) {
+                    return false;
+                }
+
+                // max_price
+                if (max > 0 && max < product.price) {
+                    return false;
+                }
+
+                // search
+                if (search.length > 0 && ! product.title.toLowerCase().includes(search.toLowerCase())) {
+                    return false;
+                }
+
+                return true;
+            })
+
+
+            // set products
+            console.log("Filtered products:", filtered);
+            setPropertyCards(filtered);
+
+            console.log("Current propertyCards state:", propertyCards);
+          
+            // setCurrentPage(1);
+        }
+      } catch (error) {
+            console.error("Error fetching filtered properties:", error);      
+      }
+  }  
+
+
+
+
   return (
     <div className='px-4 sm:w-[576px]  md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
       <div className="flex flex-col gap-8 mb-8">
@@ -135,6 +211,9 @@ const Property_cards = () => {
                   »
                 </button>
         </div>
+
+        <br />
+        <ProductFilter />
     </div>
   )
 }
