@@ -48,29 +48,36 @@ const Property_cards = () => {
   const [searchParams] = useSearchParams();
   const min_price = searchParams.get('min_price') === null ? '' : searchParams.get('min_price');
   const max_price = searchParams.get('max_price') === null ? '' : searchParams.get('max_price');
-  const search = searchParams.get('search') === null ? '' : searchParams.get('search');
+  const search_address = searchParams.get('search_address') === null ? '' : searchParams.get('search_address');
   // console.log(`searchParams`, searchParams.get('min_price'));
 
   useEffect(() => {
       filterPropertyCards();
-  }, [min_price, max_price, search]);
+  }, [min_price, max_price, search_address]);
   
 
   const filterPropertyCards = async () => {
       try {
           // Fetch all properties from the backend
-          console.log("Filtering with params:", { min_price, max_price, search });
+          console.log("Filtering with params:", { min_price, max_price, search_address });
           const response = await axios.get("http://localhost:5000/api/allproperties");
           const allProperties = response.data;
+          console.log("All properties:", allProperties);
 
           // check minimum one entry occur
-          if (search.length || min_price.length || max_price.length) {
+          if (search_address.length || min_price.length || max_price.length) {
 
             const min = parseFloat(min_price);
             const max = parseFloat(max_price);
 
             // filter products with these conditions
             const filtered = allProperties.filter(product => {
+
+                // const title = product.title ? product.title.toLowerCase() : '';
+
+                // test
+                // console.log("product.title:", product.title);
+                // console.log("product.price:", product.price);
 
                 // if min_price < product_price then get product
                 if (min > 0 && min > product.price) {
@@ -82,10 +89,13 @@ const Property_cards = () => {
                     return false;
                 }
 
-                // search
-                if (search.length > 0 && ! product.title.toLowerCase().includes(search.toLowerCase())) {
+                // search_address
+                if (search_address.length > 0 && ! product.address.toLowerCase().includes(search_address.toLowerCase()) && ! product.speciality.toLowerCase().includes(search_address.toLowerCase()) && ! product.propertyType.toLowerCase().includes(search_address.toLowerCase())) {
                     return false;
                 }
+                // if (search.length > 0 && !title.includes(search.toLowerCase())) {
+                //     return false;
+                // }
 
                 return true;
             })

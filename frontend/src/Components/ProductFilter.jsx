@@ -7,7 +7,7 @@ const ProductFilter = () => {
         &nbsp;&nbsp;
         <input name='max_price' placeholder='Max Price' type='number' style={{ width: 100 }} />
         &nbsp;&nbsp;
-        <input name='search' placeholder='Search' type='text' />
+        <input name='search_address' placeholder='Search Address' type='text' />
         &nbsp;&nbsp;
         <button type='submit'>Search</button>
     </form>

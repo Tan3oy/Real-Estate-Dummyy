@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useSearchParams } from 'react-router-dom';
 import Dropdown from "../../../../Components/Select_dropdown"
 import { IoSearch } from "react-icons/io5";
 import { propertyTypeOptions,locationOptions,propertyPurpose } from "../../../../Constants/Menu_data"
@@ -7,6 +8,7 @@ import { propertyTypeOptions,locationOptions,propertyPurpose } from "../../../..
 
 
 const Property_select = () => {
+    const searchParams = useSearchParams();
       // State to store filter inputs
     const [ filters, setFilters ] = useState({
         keyword: "",
@@ -34,6 +36,9 @@ const Property_select = () => {
                   // Fetch all properties from the backend
                   const response = await axios.get("http://localhost:5000/api/allproperties");
                   const allProperties = response.data;
+
+                  // test
+                  console.log("All properties1:", allProperties);
 
                 // Filter the data based on selected filters
                 const filtered = allProperties.filter((property) => {
