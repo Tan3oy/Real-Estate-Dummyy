@@ -8,8 +8,9 @@ import { BsClock } from "react-icons/bs";<BsClock />
 const Details_Card = () => {
     const {_id} = useParams()
     const [BlogsData, setBlogsData] = useState(null);
+    
     useEffect(()=>{
-        axios.get(`http://localhost:5000/api/blogs/${_id}`)
+        axios.get(`http://localhost:5000/api/blog/${id}`)
         .then((res)=>setBlogsData(res.data))
         .catch((err)=>console.log(err))
     },[_id])
@@ -30,7 +31,7 @@ const Details_Card = () => {
                 </div>
                 <div className='flex items-center'>
                     <BsChatSquareText className='text-white mr-2' />
-                    <span className='text-white font-semibold'>{BlogsData?.comments?.length}</span>
+                    <span className='text-white font-semibold'>{BlogsData?.comments.length}</span>
                 </div>
                 {/* Content Section */}
                <div className='p-4'>
@@ -47,7 +48,7 @@ const Details_Card = () => {
                 </div>
                 {/* sunbmit comment section */}
                 <div className='mt-6'>
-                  <h3 className='text-lg font-bold text-gray-900'>Submit a comment</h3
+                  <h3 className='text-lg font-bold text-gray-900'>Submit a comment</h3>
               </div>
               {/* Comment Form */}
               <div>
@@ -64,8 +65,8 @@ const Details_Card = () => {
                     {/* Comment */}
                     <div>
                       <textarea rows="4" placeholder="Comment" className="border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none" defaultValue="" id=""></textarea>
-
-                  </div>
+                    </div>
+                  
                   {/* Submit Button */}
                   <div className='text-left'>
                     <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none">

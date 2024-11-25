@@ -36,3 +36,12 @@ export const updateBlog = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
 };
+//Fetch a specific Blog
+export const getBlog = async (req, res) => {
+    try {
+      const blog = await Blogs_data.findById(req.params.id);
+      res.json(blog);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
