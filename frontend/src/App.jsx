@@ -15,6 +15,7 @@ import Agents from './Pages/Properties/Agents/Agents'
     import Page_1 from './Pages/Pages/Page 1/Page_1'
     import Page_2 from './Pages/Pages/Page 2/Page_2'
 import Blog from './Pages/Blog/Blog'
+import Details_Card from './Pages/Blog/Sections/Details_Card'
 import Contact from './Pages/Contact/Contact'
 import { Route, Routes } from 'react-router-dom'
 import FAQ from './Pages/Pages/FAQ/FAQ'
@@ -46,6 +47,7 @@ function App() {
               <Route path="/page_2" element={<Page_2 />} />
           <Route path='/faq' element={<FAQ/>}/>
           <Route path='/blog' element={<Blog/>}/>
+          <Route path='/blog/:_id' element={<Details_Card/>}/>
         </Routes>
         <ScrollTopbtn/>
         <Footer_Find_Estate />

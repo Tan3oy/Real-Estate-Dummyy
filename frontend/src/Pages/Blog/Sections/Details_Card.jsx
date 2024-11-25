@@ -8,13 +8,18 @@ import { BsClock } from "react-icons/bs";<BsClock />
 const Details_Card = () => {
     const {_id} = useParams()
     const [BlogsData, setBlogsData] = useState(null);
+
+    // test
+    // console.log("Fetching blog with ID:", _id);
     
     useEffect(()=>{
-        axios.get(`http://localhost:5000/api/blog/${id}`)
+        axios.get(`http://localhost:5000/api/blog/${_id}`)
         .then((res)=>setBlogsData(res.data))
         .catch((err)=>console.log(err))
     },[_id])
-    console.log(BlogsData);
+
+    // test
+    // console.log(BlogsData);
   return (
     <div>
         <div className='flex flex-col-reverse gap-y-6 lg:flex-row mx-auto my-28 px-8 md:px-24 lg:px-8 xl:px-24 gap-x-6 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px]'>
