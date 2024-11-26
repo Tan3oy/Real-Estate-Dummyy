@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useSearchParams} from 'react-router-dom'
 // import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { RiHotelBedLine } from "react-icons/ri"
 import { FaShower } from "react-icons/fa";
@@ -9,34 +9,76 @@ import { FaRegStar } from "react-icons/fa6"
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 
+
 const Property_cards = () => {
-  const [propertyCards , setPropertyCards]=useState([])
+  // const [propertyCards , setPropertyCards]=useState([])
+  const [filteredCards, setFilteredCards] = useState([]); //...&balcony=true&alchohol=false..
+//const balcony = searchParams.get("balcony")===true ?"balcony":""
+  const [searchParams]= useSearchParams()
+  const keyword= searchParams.get("keyword")===null ? "": searchParams.get("keyword")
+  const type= searchParams.get("type")===null ? "": searchParams.get("type")
+  console.log(`type`, type);
+  const price = searchParams.get("price") === null ? "" : Number(searchParams.get("price"))
+  console.log(`price=`, price);
+  const balcony= searchParams.get("balcony")===true ? "balcony":"" 
+  const location = searchParams.get("location")==null ? "": searchParams.get("location")
+  const purpose= searchParams.get("purpose")=== null || searchParams.get("purpose")=="any" ? "":  searchParams.get("purpose")
+  console.log("purpose", purpose);
+  
+
   useEffect(()=>{
     axios.get("http://localhost:5000/api/allproperties")
-      .then((res)=>setPropertyCards(res.data))
+      .then((res)=>
+        {
+          const propertyCards=res.data
+          if (keyword.length > 0 || type.length > 0 || purpose.length > 0 || location.length >0 || price > 0) {
+            const filtered = propertyCards.filter((item) =>(
+              item.propertyType.toLowerCase().includes(type.toLowerCase())&& 
+              item.speciality.toLowerCase().includes(keyword.toLowerCase())&&
+              (item.price === price || price === 0)&&
+              item.label.some((labelItem)=> labelItem.toLowerCase().includes(purpose.toLowerCase()))&&
+              item.address.toLowerCase().includes(location.toLowerCase())&&
+              item.aminities.some((item)=>item.toLowerCase().includes(balcony.toLowerCase()))
+            )
+            );
+            console.log(`filtered`, filtered);
+            
+            setFilteredCards(filtered);
+          } else {
+            // Reset to all properties when search is empty
+            setFilteredCards(propertyCards);
+          }
+        })
       .catch((err)=>console.log(err))
-  },[])
-  const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 4; // Number of cards per page
+  },[keyword,type,location,purpose,price])
 
-  // Calculate the number of pages
-  const totalPages = Math.ceil(propertyCards.length / cardsPerPage);
-
-  // Get the cards for the current page
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = propertyCards.slice(indexOfFirstCard, indexOfLastCard);
-
-  // Handle page change
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const setViewFilter = () => {
+    const sortedCards=[...filteredCards].sort((a,b)=>a.view-b.view)
+    console.log(sortedCards);    
+    setFilteredCards(sortedCards)
+    console.log(filteredCards); 
   }
+  const setFeaturedFilter=()=>{
+    const featuredCards=[...filteredCards].filter((item)=>item.featured===true)
+    console.log(featuredCards);
+    setFilteredCards(featuredCards)
+  }
+  const setUrgentFilter=()=>{
+    const urgentCards=[...filteredCards].filter((item)=>item.label.some((labelItems)=>labelItems.toLowerCase().includes("urgent")))    
+    setFilteredCards(urgentCards)
+  }
+  
   return (
     <div className='px-4 sm:w-[576px]  md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
+      <div className="py-10 flex justify-center">
+        <button type="button" className='rounded-md p-4 bg-slate-300' onClick={()=>setViewFilter()}>onViews</button>
+        <button type="button" className='rounded-md p-4 bg-slate-300' onClick={()=>setFeaturedFilter()}>Featured</button>
+        <button type="button" className='rounded-md p-4 bg-slate-300' onClick={()=>setUrgentFilter()}>Urgent</button>
+      </div>
       <div className="flex flex-col gap-8 mb-8">
         {
-        currentCards.map((items,index)=>(
-        <div className="card-wrapper lg:flex lg:gap-2 lg:justify-between p-4 h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md">
+        filteredCards.map((items,index)=>(
+        <div className="card-wrapper lg:flex lg:gap-2 lg:justify-between p-4 h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md" key={index}>
             <div className="model-pic h-64 xl:h-72 w-full lg:w-[50%] rounded-md overflow-hidden">
               <img src={items.imgUrl} className='object-cover h-full w-full' />
             </div>
@@ -102,39 +144,6 @@ const Property_cards = () => {
         ))
       }
       </div>
-      {/* Pagination Control */}
-      <div className="pagination flex justify-center items-center gap-2 pb-24 group">
-                <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                    className="px-3 py-1 bg-gray-300 rounded-full disabled:opacity-50"
-                >
-                  «
-                </button>
-
-                {
-                    [...Array(totalPages)].map((_, index) =>
-                          (
-                                <button
-                                      key       = { index }
-                                      onClick   = { () => handlePageChange(index + 1) }
-                                      className = {
-                                                      `px-3 py-1 rounded-full ${ currentPage === index + 1 ? ' outline-[#27ae60] outline outline-1 text-[#27ae60] font-medium group-hover:bg-[#27ae60] group-hover:text-[#fff]' : 'bg-gray-300' }`
-                                                  }
-                                >
-                                      {index + 1}
-                                </button>
-                          ))
-                }
-                
-                <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                    className="px-3 py-1 bg-gray-300 rounded-full disabled:opacity-50"
-                >
-                  »
-                </button>
-        </div>
     </div>
   )
 }

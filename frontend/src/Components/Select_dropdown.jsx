@@ -3,7 +3,7 @@ import { useState } from "react"
 import { IoMdArrowDropdown , IoMdArrowDropup } from "react-icons/io"
 import Select, {components} from 'react-select'
 
-const Dropdown = ({placeholder,options}) => {
+const Dropdown = ({placeholder,options,onChange}) => {
     const [IsOpen,setIsOpen] = useState(null);
     const customIndicator = (props) => {
         return(
@@ -67,6 +67,8 @@ const Dropdown = ({placeholder,options}) => {
             onMenuClose={() => setIsOpen(false)} // Trigger when menu closes           
             styles={customStyles}
             theme={customTheme}
+            // value={value}
+            onChange={onChange}
         />
     </div>
     )

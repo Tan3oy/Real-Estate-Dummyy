@@ -6,7 +6,7 @@ const ScrollTopbtn = () => {
     const [isVisible,setIsVisible]= useState(false)
     useEffect(()=>{
     const handleScroll=()=>{
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
       
         setIsVisible(window.scrollY>240? true:false)
         setHasRendered(isVisible?true:false)
