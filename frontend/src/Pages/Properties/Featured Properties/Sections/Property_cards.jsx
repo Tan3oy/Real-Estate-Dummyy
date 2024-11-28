@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import { motion } from 'framer-motion'
 import {Link, useSearchParams} from 'react-router-dom'
 // import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { RiHotelBedLine } from "react-icons/ri"
@@ -84,7 +85,7 @@ const Property_cards = () => {
   return (
     <div className='px-4 sm:w-[576px] md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
       <div className="view-controller mt-4 mb-8">
-        <div className="flex justify-between w-full border border-[#c1c1c1] bg-[#0B2C3D] md:bg-white">
+        <div className="flex justify-between w-full md:border md:border-[#c1c1c1] bg-[#0B2C3D] md:bg-white">
             <div className="md:block hidden w-[40%] lg:w-[30%] border-r border-[#c1c1c1]">
               <Dropdown options={filterButtons} placeholder="Select Type" onChange={(data)=>buttonHandler(data)}/>
             </div>
@@ -94,10 +95,10 @@ const Property_cards = () => {
             </div>
 
             <div className="stretch-icon md:hidden text-white flex items-center px-4 bg-blue-600" onClick={()=>setOpenForm((prev)=>!prev)}><ImPlus/></div>
-            <div className="text-white py-3 md:hidden">Find Your Property</div>
+            <div className="text-white font-bold text-xl pr-4 py-3 md:hidden">Find Your Property</div>
         </div>
+        <motion.div initial={{height: 0}} animate={{height : openForm?"fit-content":0}} transition={{duration:0.7, ease:"easeInOut"}} className='overflow-hidden border shadow-[0px_0px_8px_0px] shadow-[#97999db8]'><Property_select containerStyle="block md:hidden w-full"/></motion.div>
       </div>
-      
       
       {
         !gridView ? (

@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 import { FaAngleDown } from "react-icons/fa6";
 import { propertyTypeOptions,locationOptions,propertyPurpose } from "../../../../Constants/Menu_data"
 import Dropdown from "../../../../Components/Select_dropdown"
-const Property_select = () => {
+const Property_select = ({containerStyle,formStyle}) => {
 
 const navigate = useNavigate()
 // const [type,setType]= useState(null)
@@ -57,12 +57,12 @@ const submitHandler=()=>{
 // }
 
 return (
-    <div className='hidden md:block xl:w-[28%]'>
-        <div className="bg-[#0B2C3D] text-white font-bold p-4 flex items-center justify-between">
+    <div className={`${containerStyle}`}>
+        <div className="bg-[#0B2C3D] text-white font-bold p-4 hidden md:flex items-center justify-between">
             <p className='text-lg'>Find Your Property</p>
             <span><IoSearch className='text-xl'/></span>
         </div>
-        <form className='flex flex-col gap-3 p-4  border shadow-[0px_0px_8px_0px_#97999db8]'  onSubmit={(e)=>{e.preventDefault();submitHandler()}} >
+        <form className={`flex flex-col gap-3 p-4 ${formStyle}`}  onSubmit={(e)=>{e.preventDefault();submitHandler()}} >
             {/* Keyword Input */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Keyword</p>
