@@ -26,6 +26,8 @@ const Property_select = () => {
 
     const handleDropdownChange = (name, value) => {
         setFilters({ ...filters, [name]: value });
+        console.log(filters);
+        
     };
 
       // Fetch and filter data
@@ -63,7 +65,9 @@ const Property_select = () => {
                   console.error("Error fetching filtered properties:", error);
               }
       };
-
+useEffect(()=>{
+    fetchFilteredProperties();
+},[filters])
     // Fetch data when the user clicks "Search"
     const handleSearch = (e) => {
         e.preventDefault();

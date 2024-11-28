@@ -1,82 +1,68 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Dropdown from "../../../../Components/Select_dropdown"
+import { useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
+import {motion} from 'framer-motion'
+import { FaAngleDown } from "react-icons/fa6";
 import { propertyTypeOptions,locationOptions,propertyPurpose } from "../../../../Constants/Menu_data"
-
-
-
+import Dropdown from "../../../../Components/Select_dropdown"
 const Property_select = () => {
-      // State to store filter inputs
-    const [ filters, setFilters ] = useState({
-        keyword: "",
-        location: "",        
-        propertyType: "",        
-        propertyPurpose: "",
-    });
 
-      // State to store filtered properties
-    const [ filteredProperties, setFilteredProperties ] = useState([]);
+const navigate = useNavigate()
+// const [type,setType]= useState(null)
+// const [purpose,setPurpose]= useState(null)
+// const [location,setLocation]= useState(null)
+// const [checkData, setCheckData] = useState({
+//     balcony: false,
+//     alcohol: false,
+// });
+const [openCheckBox, setOpenCheckBox] = useState(null)
+const [selectData, setSelectData] = useState({})
 
-      // Handle form input changes
-    const handleInputChange = (e) => {    
-        const { name, value } = e.target;
-        setFilters({ ...filters, [name]: value });
-    };
+// const handleCheckbox =(state)=>{
+//     setCheckData({...checkData,[state.name]:state?.checked || ""})
+//     console.log(checkData);
+// }
+const formValueGrabber=(value,name)=>{
+    console.log(value,name);
+    setSelectData({...selectData,[name]:value})
+    console.log(selectData); 
+}
 
-    const handleDropdownChange = (name, value) => {
-        setFilters({ ...filters, [name]: value });
-    };
+const submitHandler=()=>{
+    // e.preventDefault();
+    const query= new URLSearchParams(selectData).toString()
+    console.log(query);
 
-      // Fetch and filter data
-      const fetchFilteredProperties = async () => {
-          try {
-                  // Fetch all properties from the backend
-                  const response = await axios.get("http://localhost:5000/api/allproperties");
-                  const allProperties = response.data;
+    navigate(`?${query}`)
+}
 
-                // Filter the data based on selected filters
-                const filtered = allProperties.filter((property) => {
+// const handleChange = (e) => {
+//     e.preventDefault();
+//     const formdata = new FormData(e.target)
+//     const keyword= formdata.get("keyword")
+//     const price= formdata.get("price")
+//     // console.log("price", price);
+    
+//     const formValues ={
+//     type: type?.value || "",
+//     purpose:purpose?.value || "",
+//     location: location?.value || "",
+//     keyword,
+//     price
+//     }
+    
+//     console.log(`formValues`, formValues);
+//     console.log(query);
+    
+// }
 
-                    const matchesKeyword =
-                    filters.keyword === "" ||
-                    property.label.some((label) =>
-                      label.toLowerCase().includes(filters.keyword.toLowerCase())
-                    );
-
-                    const matchesLocation =
-                    filters.location === "" ||
-                    property.address.toLowerCase().includes(filters.location.toLowerCase());
-
-                    const matchesPropertyType =
-                    filters.propertyType === "" || property.propertyType === filters.propertyType;
-                  
-                    const matchesPropertyPurpose =
-                      filters.propertyPurpose === "" || property.speciality.toLowerCase().includes(filters.propertyPurpose.toLowerCase());
-            
-                    return matchesKeyword && matchesLocation && matchesPropertyType && matchesPropertyPurpose;
-                  });
-                  console.log("Filtered Properties:", filtered); // Debug log
-                  setFilteredProperties(filtered);
-              }
-          catch (error) {
-                  console.error("Error fetching filtered properties:", error);
-              }
-      };
-
-    // Fetch data when the user clicks "Search"
-    const handleSearch = (e) => {
-        e.preventDefault();
-        fetchFilteredProperties();
-    };
-
-  return (
+return (
     <div className='hidden md:block xl:w-[28%]'>
         <div className="bg-[#0B2C3D] text-white font-bold p-4 flex items-center justify-between">
             <p className='text-lg'>Find Your Property</p>
             <span><IoSearch className='text-xl'/></span>
         </div>
-        <form className='flex flex-col gap-3 p-4  border shadow-[0px_0px_8px_0px_#97999db8]' onSubmit={handleSearch} >
+        <form className='flex flex-col gap-3 p-4  border shadow-[0px_0px_8px_0px_#97999db8]'  onSubmit={(e)=>{e.preventDefault();submitHandler()}} >
             {/* Keyword Input */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Keyword</p>
@@ -84,37 +70,74 @@ const Property_select = () => {
                     type="text"
                     placeholder='Type...'
                     name="keyword"
-                    value={filters.keyword}
-                    onChange={handleInputChange}
                     className='p-2 outline-none border border-[#919191]'
+                    onChange={(e)=>formValueGrabber(e.target.value,e.target.name)}
+                />
+                <p className='font-bold text-lg'>Price</p>
+                <input
+                    type="number"
+                    placeholder='Price'
+                    name="price"
+                    className='p-2 outline-none border border-[#919191]'
+                    onChange={(e)=>formValueGrabber(e.target.value,e.target.name)}
                 />
             </div>
             {/* Location Dropdown */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Location</p>
-                <Dropdown
+                <div className="border border-slate-400">
+                    <Dropdown
+                    name="location"
                     options={locationOptions}
                     placeholder='Location'
-                    onChange={(value) => handleDropdownChange("location", value)}
-                />              
+                    // value={value}
+                    onChange={(data,actionMeta)=>formValueGrabber(data.value,actionMeta.name)}
+                />
+                </div>              
             </div>
             {/* Property Type Dropdown */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Property Type</p>
-                <Dropdown
+                <div className="border border-slate-400">
+                    <Dropdown
+                    name="type"
                     options={propertyTypeOptions}
                     placeholder='Property Type'
-                    onChange={(value) => handleDropdownChange("propertyType", value)}
-                />
+                    onChange={(data,actionMeta)=>formValueGrabber(data.value,actionMeta.name)}
+                    />
+                </div>
             </div>
             {/* Property Purpose Dropdown */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Property Purpose</p>
-                <Dropdown
+                <div className="border border-slate-400">
+                    <Dropdown
+                    name="purpose"
                     options={propertyPurpose}
                     placeholder='Any'
-                    onChange={(value) => handleDropdownChange("propertyPurpose", value)}
-                />
+                    onChange={(data,actionMeta)=>formValueGrabber(data.value,actionMeta.name)
+                    }
+                    />
+                </div>
+            </div>    
+            <div className="flex flex-col justify-center">
+                <div className="w-full border border-[#919191] py-2 flex items-center justify-center gap-2" onClick={()=>setOpenCheckBox((prev)=>!prev)}>
+                    <span className='w-4/5 text-center text-lg'>Aminities</span><span className={`${openCheckBox?"rotate-180":""} transition-transform duration-300 ease-in-out`}><FaAngleDown/></span>
+                </div>
+                <motion.div className="overflow-hidden"
+                initial={{height:0}}
+                animate ={{height:openCheckBox?"auto":0}}
+                transition={{duration:0.3}}>
+                    <div className="flex flex-col py-4">
+                    <div className="flex gap-2">
+                        <input type="checkbox" name='balcony' onChange={(e)=>formValueGrabber(e.target.checked,e.target.name)} /><label>Balcony</label>
+                    </div>
+                    <div className="flex gap-2">
+                        <input type="checkbox" name='alcohol' onChange={(e)=>formValueGrabber(e.target.checked,e.target.name)} /><label>Alcohol</label>
+                    </div>
+                    
+                    </div> 
+                </motion.div>                        
             </div>
             {/* Search Button */}
             <div>
@@ -141,26 +164,42 @@ const Property_select = () => {
                     Search
                 </button>            
             </div>
-        </form>
-
-        {/* Render Filtered Properties */}
-        <div className="mt-4">
-        {filteredProperties.length > 0 ? (
-          filteredProperties.map((property) => (
-            <div key={property._id} className="p-4 border shadow-md mb-4">
-              <img src={property.imgUrl} alt={property.label.join(", ")} className="w-full h-40 object-cover mb-2" />
-              <h3 className="font-bold">{property.label.join(", ")}</h3>
-              <p>Price: ${property.price}</p>
-              <p>Type: {property.propertyType}</p>
-              <p>Location: {property.address}</p>
-            </div>
-          ))
-        ) : (
-          <p></p>
-        )}
-      </div>
+        </form>        
     </div>
-  )
+);
 }
 
 export default Property_select
+// import React, { useState, useEffect } from 'react'
+// import axios from 'axios'
+
+// const Property_select = () => {
+
+//   return (
+//     <form method="GET" className='pt-40 flex flex-col gap-4'>
+//     <input
+//       // defaultValue={min_price}
+//       name="type"
+//       placeholder="Property type"
+//       type="text"
+//       style={{ width: 100 }}
+//     />
+//     &nbsp;&nbsp;
+//     <input
+//       // defaultValue={search}
+//       name="keyword"
+//       placeholder="KeyWord"
+//       type="text"
+//     />
+//     &nbsp;&nbsp;
+//     <input name='price' type="number" placeholder='Price'/>
+//     &nbsp;&nbsp;
+//     <input name='purpose' type="text" placeholder='Property Purpose'/>
+//     &nbsp;&nbsp;
+//     <input name='address' type="text" placeholder='Property Location'/>
+//     <button type="submit">Search</button>
+//   </form>
+// );
+// }
+
+// export default Property_select
