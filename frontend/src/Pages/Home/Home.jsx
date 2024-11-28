@@ -19,7 +19,6 @@ import Top from './Sections/Top'
         <Top />
         <Featured_Properties />
         <Agents/>
-        <Services />
         <Clients/>
         <Blogs />
        

@@ -1,20 +1,20 @@
 import React,{useEffect ,useState} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import { BsChatSquareText } from "react-icons/bs";
 const Content_Blog = () => {
-  const [isOpen,setIsOpen] =useState(null);
+  // const [isOpen,setIsOpen] =useState(null);
   const [Blogs_data, setBlogs_data] = useState([]);
   useEffect(()=>{
-      axios
-      .get("http://localhost:5000/api/AllBlogs")
-      .then((res)=>(
-          setBlogs_data(res.data),
-          console.log(res.data))
-      )
+      axios.get("http://localhost:5000/api/AllBlogs")
+      .then((res)=> setBlogs_data(res.data))
       .catch((err)=>console.log(err))
   },[])
-  console.log(Blogs_data)
+
+  // test
+  // console.log(Blogs_data);
+
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 6; // Number of cards per page
 
@@ -78,9 +78,9 @@ const Content_Blog = () => {
                 />
                 <span className="text-gray-700">{items.author}</span>
               </div>
-              <a href="#" className="text-green-600 hover:underline">
+              <Link to={`/blog/${items._id}`} className="text-green-600 hover:underline">
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         </div>

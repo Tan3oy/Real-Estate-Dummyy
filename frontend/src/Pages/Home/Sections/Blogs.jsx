@@ -12,8 +12,7 @@ const Blogs = () => {const [isOpen,setIsOpen] =useState(null);
         axios
         .get("http://localhost:5000/api/AllBlogs")
         .then((res)=>(
-            setBlogs_data(res.data),
-            console.log(res.data))
+            setBlogs_data(res.data))
         )
         .catch((err)=>console.log(err))
     },[])
