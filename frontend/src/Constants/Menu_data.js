@@ -4,6 +4,8 @@ export const locationOptions = [
     { value: "england", label: "England" },
     { value: "los angeles", label: "Los Angeles" },
     { value: "miami", label: "Miami" },
+    { value: "lynwood", label: "Lynwood" },
+    { value: "long beach", label: "Long Beach" },
     { value: "oaklen", label: "Oaklen" },
     { value: "tampa", label: "Tampa" },
     { value: "tezpur", label: "Tezpur" },
@@ -23,4 +25,10 @@ export const propertyPurpose= [
     { value: "any", label: "Any" },
     { value: "sale", label: "Sell" },
     { value: "rent", label: "Rent" },
+]
+
+export const filterButtons=[
+    { value: "featured", label: "Featured" },
+    { value: "views", label: "On Views" },
+    { value: "urgent", label: "Urgent" },
 ]
