@@ -27,7 +27,7 @@ export const NavItems=[
                 name:"Urgent Properties"
             },
             {
-                link:"/agents",
+                link:"properties/agents",
                 name:"Agents"
             }
         ]
@@ -43,15 +43,15 @@ export const NavItems=[
         subLinks:[
             {
                 name:"Custom Page 1",
-                link:"/page_1"
+                link:"pages/page_1"
             },
             {
                 name:"Custom Page 2",
-                link:"/page_2"
+                link:"pages/page_2"
             },
             {
                 name:"FAQ",
-                link:"/faq"
+                link:"pages/faq"
             }
         ]
     },
