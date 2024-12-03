@@ -26,6 +26,7 @@ function App() {
           <Route path="/properties/*" element={<Property_Routes/>}/>
           <Route path="/pages/*" element={<Pages_Routes/>}/>
           <Route path='/blog' element={<Blog/>}/>
+          <Route path='/blog/:_id' element={<Details_Card/>}/>
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
           <Route path='/contact' element={<Contact/>}/>
         </Routes>
