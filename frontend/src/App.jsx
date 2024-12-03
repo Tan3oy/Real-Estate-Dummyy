@@ -36,12 +36,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
-          <Route path='/contact' element={<Contact/>}/>
-          <Route path='/pricing_plan' element={<Pricing_plan/>}/>
-          <Route path='/all_properties' element={<All_Properties/>}/>
           <Route path="/properties/*" element={<Property_Routes/>}/>
           <Route path="/pages/*" element={<Pages_Routes/>}/>
           <Route path='/blog' element={<Blog/>}/>
+          <Route path='/pricing_plan' element={<Pricing_plan/>}/>
+          <Route path='/contact' element={<Contact/>}/>
         </Routes>
         <ScrollTopbtn/>
         <Footer_Find_Estate />
