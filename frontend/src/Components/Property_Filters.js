@@ -1,11 +1,5 @@
 import axios from "axios"
 import { useEffect,useState } from "react"
-import { useSearchParams } from "react-router-dom"
-
-// const [searchParams]= useSearchParams()
-// const keyWord= searchParams.get("keyword")===null ? "": searchParams.get("keyword")
-
-//fetchFilters
 export const allPropertyCards = () => {
     const [allProperties,setAllProperties] = useState([])
     useEffect(()=>{
@@ -29,18 +23,6 @@ export const featuredPropertyCards = () => {
     },[])
     return featuredProperties;
 }
-export const urgentPropertyCards = () => {
-    const [urgentProperties,setUrgentProperties] = useState([])
-    useEffect(()=>{
-        axios.get("http://localhost:5000/api/allproperties")
-        .then((res)=>{
-            const tempData = res.data;
-            const urgent= tempData.filter((el)=>el.label.some((labelItems)=>labelItems.toLowerCase().includes("urgent")))
-            setUrgentProperties(urgent)            
-    })},[])
-    return urgentProperties
-}
-
 export const topPropertyCards = () => {
     const [topCards, setTopCards] = useState([])
     const [viewArr, setViewArr]=useState([])
@@ -63,6 +45,19 @@ export const topPropertyCards = () => {
     return topCards //topScore
     
 }
+
+export const urgentPropertyCards = () => {
+    const [urgentProperties,setUrgentProperties] = useState([])
+    useEffect(()=>{
+        axios.get("http://localhost:5000/api/allproperties")
+        .then((res)=>{
+            const tempData = res.data;
+            const urgent= tempData.filter((el)=>el.label.some((labelItems)=>labelItems.toLowerCase().includes("urgent")))
+            setUrgentProperties(urgent)            
+    })},[])
+    return urgentProperties
+}
+
 
 //Query Filters
 
@@ -108,7 +103,9 @@ export const topPropertyCards = () => {
 
 export const queryFilter=(queries,Cards)=>{
     // const [filteredData,setFilteredData]=useState([])
-    const {keyword="",type="",location="",purpose="",price=0,balcony=""}=queries
+    const {keyword="",type="",location="",price=0}=queries
+    const purpose=queries.purpose==="any"|| queries.purpose===null?"":queries.purpose
+    const balcony=queries.balcony===true?"balcony":""
     console.log("queries ::",keyword,type,location,purpose,price,balcony);
     if(keyword || type || location || purpose || price || balcony){
         console.log("if logic entered");     
@@ -137,8 +134,8 @@ export const buttonFilter=(input,cards)=>{
     if (input=== "featured"){ return [...cards].filter((item)=>item.featured===true)}
     if(input==="urgent") {return [...cards].filter((item)=>item.label.some((labelItem)=>labelItem.toLowerCase().includes("urgent")))}
 }
-export const setFeaturedFilter=(arr)=>{
-        const featuredCards=[...arr].filter((item)=>item.featured===true)
-        console.log(featuredCards);
-        setFilteredCards(featuredCards)
-    }
+// export const setFeaturedFilter=(arr)=>{
+//         const featuredCards=[...arr].filter((item)=>item.featured===true)
+//         console.log(featuredCards);
+//         setFilteredCards(featuredCards)
+//     }
