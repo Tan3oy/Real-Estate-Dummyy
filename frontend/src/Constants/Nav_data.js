@@ -27,7 +27,7 @@ export const NavItems=[
                 name:"Urgent Properties"
             },
             {
-                link:"/agents",
+                link:"properties/agents",
                 name:"Agents"
             }
         ]

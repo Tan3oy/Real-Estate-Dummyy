@@ -38,28 +38,11 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
-
           <Route path='/all_properties' element={<All_Properties/>}/>
-          <Route path='/all_properties/:_id' element={<Property_details/>}/>
-          {/* <Route path="/properties" element={<Hero_Property/>}>
-            <Route path="top_properties" element={<Property_cards fetchedData={topPropertyCards()}/>}/>
-            <Route path="top_properties/:_id" element={<Property_details/>}/>
-
-            <Route path="featured_properties" element={<Property_cards fetchedData={featuredPropertyCards()}/>}/>
-            <Route path="featured_properties/:_id" element={<Property_details/>}/>
-
-            <Route path="all_properties" element={<Property_cards fetchedData={allPropertyCards()}/>}/>
-            <Route path="urgent_properties" element={<Property_cards fetchedData={urgentPropertyCards()}/>}/>
-          </Route> */}
-          <Route path="/*" element={<Property_Routes/>}/>
-          <Route path='/top_properties' element={<Top_Properties/>}/>
-          {/* <Route path='/featured_properties' element={<Featured_Properties/>}/> */}
-          <Route path='/urgent_properties' element={<Urgent_Properties/>}/>
-          <Route path='/agents' element={<Agents/>}/>
+          <Route path="/properties/*" element={<Property_Routes/>}/>
           <Route path="/pages/*" element={<Pages_Routes/>}/>
           <Route path='/blog' element={<Blog/>}/>
         </Routes>
-       
         <ScrollTopbtn/>
         <Footer_Find_Estate />
       </div>     
