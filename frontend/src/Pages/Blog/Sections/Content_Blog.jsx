@@ -1,35 +1,69 @@
 import React,{useEffect ,useState} from "react";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { BsChatSquareText } from "react-icons/bs";
+
 const Content_Blog = () => {
   // const [isOpen,setIsOpen] =useState(null);
-  const [Blogs_data, setBlogs_data] = useState([]);
+
+  const [searchParams] = useSearchParams();
+  // access the query ?type=… in Content_Blog.jsx from route
+  const keyword = searchParams.get("type") === null? "" : searchParams.get("type");
+  // access the query ?category=… in Content_Blog.jsx from route
+  const keyword1 = searchParams.get("category") === null? "" : searchParams.get("category");
+  // const [Blogs_data, setBlogs_data] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   useEffect(()=>{
       axios.get("http://localhost:5000/api/AllBlogs")
-      .then((res)=> setBlogs_data(res.data))
-      .catch((err)=>console.log(err))
+      .then((res)=> {
+        const Blogs_dataTemp = res.data;
+        if (keyword.length > 0) {
+          const filtered = Blogs_dataTemp.filter((item) => {
+            return item?.title.toLowerCase().includes(keyword?.toLowerCase()) ||
+                   item?.author.toLowerCase().includes(keyword?.toLowerCase());
+          });
+          setFilteredData(filtered);          
+        } else if (keyword1.length > 0) {
+          const filtered = Blogs_dataTemp.filter((item) => {
+            return item?.categoryType.toLowerCase().includes(keyword1?.toLowerCase());
+          });
+          setFilteredData(filtered);
+        }
+        else {
+          setFilteredData(Blogs_dataTemp);
+        }
+      }
+    )
+    .catch((err)=>console.log(err))
   },[])
+  
+  // test: whether filtering is happening or not
+  console.log("filteredData::::",filteredData);
+  // let [cou, setCou] = useState([]);
+  // setCou(filteredData.length);
 
-  // test
-  // console.log(Blogs_data);
-
+  // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 6; // Number of cards per page
 
   // Calculate the number of pages
-  const totalPages = Math.ceil(Blogs_data.length / cardsPerPage);
+  const totalPages = Math.ceil(filteredData.length / cardsPerPage);
 
   // Get the cards for the current page
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = Blogs_data.slice(indexOfFirstCard, indexOfLastCard);
+  const currentCards = filteredData.slice(indexOfFirstCard, indexOfLastCard);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  // test
+  const xxx = filteredData.map((item) => item.title + "শিরোনাম ও নাম" + item.author);
+  console.log("xxx::::",xxx);
 
   return (
     <div>

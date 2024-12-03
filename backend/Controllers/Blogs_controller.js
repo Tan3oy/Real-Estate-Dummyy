@@ -14,8 +14,8 @@ export const getAllBlogs = async (req, res)=>{
 //Post A New Blog
 export const CreateBlogs = async (req, res)=> {
     try {
-       const { image, year, day, title, description, comments, author, authorImage, views, catagories } = req.body;
-       let newBlogs = new Blogs_data({ image, year, day, title, description, comments, author, authorImage, views, catagories });
+       const { image, year, day, title, description, comments, author, authorImage, views, categoryType } = req.body;
+       let newBlogs = new Blogs_data({ image, year, day, title, description, comments, author, authorImage, views, categoryType });
        newBlogs =await newBlogs.save();
        res.status(201).json(newBlogs);
     } catch (error) {
@@ -25,9 +25,9 @@ export const CreateBlogs = async (req, res)=> {
 // AllBlog Updated
 export const updateBlog = async (req, res) => {
     try {
-      const { image, year, day, title, description, comments, author, authorImage, views, catagories } = req.body;
+      const { image, year, day, title, description, comments, author, authorImage, views, categoryType } = req.body;
 
-      let updatedBlog = new Blogs_data({ image, year, day, title, description, comments, author, authorImage, views, catagories, _id: req.params.id }); 
+      let updatedBlog = new Blogs_data({ image, year, day, title, description, comments, author, authorImage, views, categoryType, _id: req.params.id }); 
 
       updatedBlog = await Blogs_data.findByIdAndUpdate(req.params.id, updatedBlog);
 

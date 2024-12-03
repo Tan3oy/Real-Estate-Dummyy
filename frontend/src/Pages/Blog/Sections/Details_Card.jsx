@@ -1,31 +1,82 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+// import Content_Blog from "./Content_Blog";
+// import Content_Blog from "./Content_Blog"
 // import { BsChatSquareText } from "react-icons/bs";
 // import { FaEye } from "react-icons/fa6";
-// import { BsClock } from "react-icons/bs";
-
-{/* <BsClock />; */}
+import { BsClock } from "react-icons/bs";
 
 const Details_Card = () => {
   const { _id } = useParams();
   const [BlogsData, setBlogsData] = useState(null);
 
   // test
-  console.log("Fetching blog with ID:", _id);
+  // console.log("Fetching blog with ID:", _id);
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/blog/${_id}`)
-      .then((res) => setBlogsData(res.data))
+      .then((res) => {
+            setBlogsData(res.data);
+      })
       .catch((err) => console.log(err));
   }, [_id]);
 
-  // test
-  console.log(BlogsData);
+// passing an empty object to selectData first
+  const [selectData, setSelectData] = useState({});
+// create an anonymous function to accept name as type and take value (text written in the input field) and store the function in the variable formValueGrabber
+  const formValueGrabber=(name,value)=>{
+    setSelectData({...selectData, [name]: value})
+    console.log("name::::",name,"value::::",value);
+    console.log("selectData::::",selectData);
+}
+// test: updated selectData print on console.log
+useEffect(() => {
+console.log('selectData::::>', selectData);
+}, [selectData]);
+
+// send a query to the route in a dynamic manner
+  const query= new URLSearchParams(selectData).toString()
+  console.log(`query string::::${query}`);
+//   console.log("filteredData num::::",filteredData.length);
+
+const [preShuffleData, setpreShuffleData] = useState([]);
+const [selectedCards, setSelectedCards] = useState([]);
+useEffect(() => {
+  axios
+    .get(`http://localhost:5000/api/AllBlogs`)
+    .then((res) => {
+        setpreShuffleData(res.data);
+        // Randomly select cards as soon as data is fetched
+        selectRandomCards(res.data, 5); // Choose 5 cards for example
+    })
+    .catch((err) => console.log(err));
+}, []);
+console.log("preShuffleData::::",preShuffleData);
+
+  // Function to shuffle and select a subset of cards
+  const selectRandomCards = (data, numberOfCards) => {
+      const shuffleArray = (array) => {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const randomIndex = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
+        }
+        return shuffled;
+      };
+  
+      // Shuffle and slice the array
+      const randomCards = shuffleArray(data).slice(0, numberOfCards);
+      setSelectedCards(randomCards);
+    };
+
+
+
   return (
       <>
             {/* entire container of the middle section (vertically) */}
@@ -36,8 +87,7 @@ const Details_Card = () => {
                         {/* left div */}
                         <div className="flex flex-col gap-y-6 w-full h-fit lg:w-[67%]">
                               {/* upper div of the left div */}
-                              <div className="mx-auto py-7 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">         
-                                    <div className="">           
+                              <div className="mx-auto py-7 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">          
                                     <div className="h-full w-full">
                                           <img src={BlogsData?.image} className="w-full h-full object-cover rounded-[10px]" />
                                     </div>
@@ -65,9 +115,7 @@ const Details_Card = () => {
                                                       </g>
                                                 </svg>
                                                 &nbsp;
-                                                <span>
-                                                      {BlogsData?.author}
-                                                </span>
+                                                <p>{BlogsData?.author}</p>
                                           </div>
                                           <div className="flex items-center">
                                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -92,11 +140,7 @@ const Details_Card = () => {
                                                       </g>
                                                 </svg>
                                                 &nbsp;
-                                                <span>
-                                                {BlogsData?.comments}
-                                                </span>
-                                                &nbsp;
-                                                <p>comments</p>
+                                                <p>{BlogsData?.comments} comments</p>
                                           </div>                          
                                           <div className="flex items-center">                 
                                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -115,16 +159,12 @@ const Details_Card = () => {
                                                       </g>
                                                 </svg>
                                                 &nbsp;
-                                                <p>80 views</p>
-                                          <span>
-                                                {BlogsData?.views}
-                                          </span>
+                                                <p>{BlogsData?.views} views</p>
                                           </div>      
                                     </div>
                                     <div className="py-1">
                                           <h1 className="text-2xl font-bold text-[#163f54]">{BlogsData?.title}</h1>
                                           <p className="py-3 text-[#848385]">{BlogsData?.description}</p>
-                                    </div>
                                     </div>
                               </div>
                               {/* lower div of the left div */}
@@ -193,6 +233,8 @@ const Details_Card = () => {
                                                 <input
                                                 type="text"
                                                 placeholder="…Type"
+                                                name="type"
+                                                onChange={(e) => {console.log(e.target.name, e.target.value);formValueGrabber(e.target.name, e.target.value)}}
                                                 className="w-full h-fit
                                                       placeholder:text-lg focus:outline-none pl-5 leading-[44px]"
                                                 />
@@ -216,8 +258,11 @@ const Details_Card = () => {
 
                                                       hover:before:w-full
                                                       hover:before:opacity-100'
+                                                      // onClick={handleSearch}
                                                 >
-                                                      <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                                      <Link to={`/blog?${query}`}>
+                                                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                                      </Link>
                                                 </button>
                                           </div>
                                     </div>                        
@@ -226,30 +271,67 @@ const Details_Card = () => {
                               <div className="mx-auto pt-6 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
                                     <h1 className='text-[#0a2f3d] text-xl font-bold'>Categories</h1>
                                     <div className="flex flex-col divide-y-[1px] text-[17px] py-3">
-                                          <div className="flex justify-between items-center py-2">
-                                                <p className="text-[#0a2f3d]">Fitness</p>
-                                                <p className="text-[#848385]">0</p>
-                                          </div>
-                                          <div className="flex justify-between items-center py-2">
-                                                <p className="text-[#0a2f3d]">Lifestyle</p>
-                                                <p className="text-[#848385]">5</p>
-                                          </div>
-                                          <div className="flex justify-between items-center py-2">
-                                                <p className="text-[#0a2f3d]">Event</p>
-                                                <p className="text-[#848385]">3</p>
-                                          </div>
-                                          <div className="flex justify-between items-center py-2">
-                                                <p className="text-[#0a2f3d]">Bar & Cafe</p>
-                                                <p className="text-[#848385]">2</p>
-                                          </div>
-                                          <div className="flex justify-between items-center py-2">
-                                                <p className="text-[#0a2f3d]">Food & Drink</p>
-                                                <p className="text-[#848385]">2</p>
-                                          </div>
+                                          <Link to={`/blog?category=Fitness`}>
+                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
+                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Fitness</p>                                                
+                                                      <p className="text-[#848385] group-hover:text-green-500">0</p>
+                                                </div>
+                                          </Link>
+                                          <Link to={`/blog?category=Lifestyle`}>
+                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
+                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Lifestyle</p>
+                                                      <p className="text-[#848385] group-hover:text-green-500">3</p>
+                                                </div>
+                                          </Link>
+                                          <Link to={`/blog?category=Event`}>
+                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
+                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Event</p>
+                                                      <p className="text-[#848385] group-hover:text-green-500">4</p>
+                                                </div>
+                                          </Link>
+                                          <Link to={`/blog?category=Bar & Cafe`}>
+                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
+                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Bar & Cafe</p>
+                                                      <p className="text-[#848385] group-hover:text-green-500">1</p>
+                                                </div>
+                                          </Link>
+                                          <Link to={`/blog?category=Food & Drink`}>
+                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
+                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Food & Drink</p>
+                                                      <p className="text-[#848385] group-hover:text-green-500">2</p>
+                                                </div>
+                                          </Link>
                                     </div>
                               </div>
                               {/* trending posts: lower div of the right div */}
-                              <div className="mx-auto py-7 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">Trending Posts</div>
+                              <div className="flex flex-col gap-3 mx-auto py-7 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
+                                    <h1 className='text-[#0a2f3d] text-xl font-bold'>Trending Posts</h1>
+                                    <div className="flex flex-col divide-y-[1px]">
+                                          
+                                          {
+                                                selectedCards.length > 0 ? (
+                                                selectedCards.map((card) => (
+                                                      <Link to={`/blog/${card._id}`}>
+                                                      <div key={card.id} className="flex flex-col py-4">
+                                                            <div className="w-full h-full">
+                                                                  <img src={card.image} className="w-full h-full object-cover rounded-[10px] mb-2" />
+                                                            </div>
+                                                            <h3 className="text-base font-semibold text-[#163f54]">{card.title}</h3>
+                                                            <div className="flex gap-1 text-[#848385] text-sm">
+                                                                  <div className="flex justify-center items-center"><BsClock /></div>
+                                                                  <div>{card.day}</div>
+                                                                  <div>{card.year}</div>
+                                                            </div>
+                                                      </div>
+                                                      </Link>
+                                                ))
+                                                ) : (
+                                                <p>Loading trending cards...</p>
+                                                )
+                                          }
+                                          
+                                    </div>
+                              </div>
                         </div>
 
                   </div>
