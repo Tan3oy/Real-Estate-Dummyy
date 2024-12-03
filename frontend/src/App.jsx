@@ -7,7 +7,7 @@ import About from './Pages/About/About'
 import Pricing_plan from './Pages/Pricing Plan/Pricing_plan'
 
 import All_Properties from './Pages/Properties/All Properties/All_Properties'
-import Featured_Properties from './Pages/Properties/Featured Properties/Featured_Properties'
+// import Featured_Properties from './Pages/Properties/Featured Properties/Featured_Properties'
 import Top_Properties from './Pages/Properties/Top Properties/Top_Properties'
 import Urgent_Properties from './Pages/Properties/Urgent Properties/Urgent_Properties'
 import Agents from './Pages/Properties/Agents/Agents'
@@ -20,9 +20,11 @@ import { Route, Routes } from 'react-router-dom'
 import FAQ from './Pages/Pages/FAQ/FAQ'
 import Property_details from './Pages/Properties/All Properties/Sections/Property_details'
 import ScrollTopbtn from './Components/ScrollTopbtn'
-import Hero_Property from './Pages/Properties/Featured Properties/Sections/Hero_Property'
-import Property_cards from './Pages/Properties/Featured Properties/Sections/Property_cards'
-import {topPropertyCards,featuredPropertyCards, allPropertyCards, urgentPropertyCards} from './Components/Property_Filters'
+// import Hero_Property from './Pages/Properties/Featured Properties/Sections/Hero_Property'
+// import Property_cards from './Pages/Properties/Featured Properties/Sections/Property_cards'
+// import {topPropertyCards,featuredPropertyCards, allPropertyCards, urgentPropertyCards} from './Components/Property_Filters'
+import Property_Routes from './Pages/Properties/Featured Properties/Property_Routes'
+import Pages_Routes from './Pages/Pages/Pages_Routes'
 
 function App() {
   
@@ -39,20 +41,22 @@ function App() {
 
           <Route path='/all_properties' element={<All_Properties/>}/>
           <Route path='/all_properties/:_id' element={<Property_details/>}/>
-          <Route path="/properties" element={<Hero_Property/>}>
+          {/* <Route path="/properties" element={<Hero_Property/>}>
             <Route path="top_properties" element={<Property_cards fetchedData={topPropertyCards()}/>}/>
+            <Route path="top_properties/:_id" element={<Property_details/>}/>
+
             <Route path="featured_properties" element={<Property_cards fetchedData={featuredPropertyCards()}/>}/>
+            <Route path="featured_properties/:_id" element={<Property_details/>}/>
+
             <Route path="all_properties" element={<Property_cards fetchedData={allPropertyCards()}/>}/>
             <Route path="urgent_properties" element={<Property_cards fetchedData={urgentPropertyCards()}/>}/>
-          </Route>
+          </Route> */}
+          <Route path="/*" element={<Property_Routes/>}/>
           <Route path='/top_properties' element={<Top_Properties/>}/>
-          <Route path='/featured_properties' element={<Featured_Properties/>}/>
+          {/* <Route path='/featured_properties' element={<Featured_Properties/>}/> */}
           <Route path='/urgent_properties' element={<Urgent_Properties/>}/>
           <Route path='/agents' element={<Agents/>}/>
-
-              <Route path="/page_1" element={<Page_1 />} />
-              <Route path="/page_2" element={<Page_2 />} />
-          <Route path='/faq' element={<FAQ/>}/>
+          <Route path="/pages/*" element={<Pages_Routes/>}/>
           <Route path='/blog' element={<Blog/>}/>
         </Routes>
        

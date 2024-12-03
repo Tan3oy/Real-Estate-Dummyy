@@ -113,7 +113,7 @@ const Property_cards = ({fetchedData}) => {
                       </p>
                     </div>
                     <div className='button-place flex items-center justify-between pt-4'>
-                      <Link to={`/all_properties/${items._id}`}>
+                      <Link to={`${items._id}`}>
                           <button
                               className='mx-auto w-40 h-11 rounded-[3px]
                                   bg-[#093B55] text-white font-medium text-[17px]
@@ -192,7 +192,7 @@ const Property_cards = ({fetchedData}) => {
                       </p>
                       </div>
                       <div className='button-place flex items-center justify-between'>
-                        <Link to={`/all_properties/${items._id}`}>
+                        <Link to={`${items._id}`}>
                             <button
                                 className='mx-auto w-40 h-11 rounded-[3px]
                                     bg-[#093B55] text-white font-medium text-[17px]
