@@ -21,6 +21,9 @@ import { Route, Routes } from 'react-router-dom'
 import FAQ from './Pages/Pages/FAQ/FAQ'
 import Property_details from './Pages/Properties/All Properties/Sections/Property_details'
 import ScrollTopbtn from './Components/ScrollTopbtn'
+import Hero_Property from './Pages/Properties/Featured Properties/Sections/Hero_Property'
+import Property_cards from './Pages/Properties/Featured Properties/Sections/Property_cards'
+import {topPropertyCards,featuredPropertyCards, allPropertyCards, urgentPropertyCards} from './Components/Property_Filters'
 
 function App() {
   
@@ -37,9 +40,14 @@ function App() {
 
           <Route path='/all_properties' element={<All_Properties/>}/>
           <Route path='/all_properties/:_id' element={<Property_details/>}/>
-
-          <Route path='/featured_properties' element={<Featured_Properties/>}/>
+          <Route path="/properties" element={<Hero_Property/>}>
+            <Route path="top_properties" element={<Property_cards fetchedData={topPropertyCards()}/>}/>
+            <Route path="featured_properties" element={<Property_cards fetchedData={featuredPropertyCards()}/>}/>
+            <Route path="all_properties" element={<Property_cards fetchedData={allPropertyCards()}/>}/>
+            <Route path="urgent_properties" element={<Property_cards fetchedData={urgentPropertyCards()}/>}/>
+          </Route>
           <Route path='/top_properties' element={<Top_Properties/>}/>
+          <Route path='/featured_properties' element={<Featured_Properties/>}/>
           <Route path='/urgent_properties' element={<Urgent_Properties/>}/>
           <Route path='/agents' element={<Agents/>}/>
 
@@ -49,6 +57,7 @@ function App() {
           <Route path='/blog' element={<Blog/>}/>
           <Route path='/blog/:_id' element={<Details_Card/>}/>
         </Routes>
+       
         <ScrollTopbtn/>
         <Footer_Find_Estate />
       </div>     
