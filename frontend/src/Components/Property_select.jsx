@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import {motion} from 'framer-motion'
 import { FaAngleDown } from "react-icons/fa6";
-import { propertyTypeOptions,locationOptions,propertyPurpose } from "../../../../Constants/Menu_data"
-import Dropdown from "../../../../Components/Select_dropdown"
-const Property_select = ({containerStyle,formStyle}) => {
+import { propertyTypeOptions,locationOptions,propertyPurpose } from "../Constants/Menu_data"
+import Dropdown from "./Select_dropdown"
+const Property_select = ({containerStyle,formStyle,onSearch}) => {
 
 const navigate = useNavigate()
 // const [type,setType]= useState(null)
@@ -32,10 +32,11 @@ const submitHandler=()=>{
     // e.preventDefault();
     const query= new URLSearchParams(selectData).toString()
     console.log(query);
-
     navigate(`?${query}`)
 }
-
+const handleSearch=()=>{
+    onSearch(selectData)
+}
 // const handleChange = (e) => {
 //     e.preventDefault();
 //     const formdata = new FormData(e.target)
@@ -62,7 +63,7 @@ return (
             <p className='text-lg'>Find Your Property</p>
             <span><IoSearch className='text-xl'/></span>
         </div>
-        <form className={`flex flex-col gap-3 p-4 ${formStyle}`}  onSubmit={(e)=>{e.preventDefault();submitHandler()}} >
+        <form className={`flex flex-col gap-3 p-4 ${formStyle}`}  onSubmit={(e)=>{e.preventDefault();submitHandler();handleSearch()}} >
             {/* Keyword Input */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Keyword</p>

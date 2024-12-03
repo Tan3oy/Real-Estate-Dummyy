@@ -1,16 +1,22 @@
 import React from 'react'
 import Hero_Property from './Sections/Hero_Property'
 import Property_cards from './Sections/Property_cards'
-import Property_select from './Sections/Property_select'
+import { topPropertyCards } from '../../../Components/Property_Filters';
 
 const Featured_Properties = () => {
+  // const [topCards,topRanges]=topPropertyCards();
+  // console.log("topCards::",topCards);
+  // console.log("Ranges::",topRanges);
+  // const filteredData= FilteredFiltred()
+  // console.log("featured datas :: ",filteredData);
+  
+  
+  
   return (
     <div>
       {/* <Hero_Property/> */}
-      <div className="flex justify-between px-8 py-6 lg:px-4 md:w-[768px] lg:w-[992px] xl:w-[1200px] mx-auto">
-      <Property_select containerStyle="hidden md:block xl:w-[28%]" formStyle="border shadow-[0px_0px_8px_0px_#97999db8]"/>
-      <Property_cards />
-      </div>
+      <Hero_Property/>    
+      {/* <Property_cards fetchedData={filteredData} /> */}
     </div>
   )
 }

@@ -11,19 +11,19 @@ export const NavItems=[
         name:"Properties",
         subLinks:[
             {
-                link:"/all_properties",
+                link:"properties/all_properties",
                 name:"All Properties"                
             },
             {
-                link:"/featured_properties",
+                link:"properties/featured_properties",
                 name:"Featured Properties"
             } ,
             {
-                link:"/top_properties",
+                link:"properties/top_properties",
                 name:"Top Properties"
             },
             {
-                link:"/urgent_properties",
+                link:"properties/urgent_properties",
                 name:"Urgent Properties"
             },
             {
