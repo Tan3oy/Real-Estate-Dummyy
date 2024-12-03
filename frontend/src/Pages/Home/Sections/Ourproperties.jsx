@@ -12,7 +12,7 @@ const Ourproperties = () => {
             Lorem Ipsum is simply dummy text
           </h1>
         </div>
-        <div className=" m-auto flex px-4 flex-col lg:flex-row gap-6 sm:w-[540px] md:w-[696px] lg:w-[960px] xl:w-[1140px] 2xl:w-[1320px] ">
+        <div className="m-auto flex px-4 flex-col lg:flex-row gap-6 sm:w-[540px] md:w-[696px] lg:w-[960px] xl:w-[1140px] 2xl:w-[1320px]">
           <div className="image-container w-[100%] lg:w-[50%]  ">
             <img
               src="https://res.cloudinary.com/dx42ztqx9/image/upload/v1731506636/Image_2024-11-13_at_19.11.37_9c9ee27f_s3l5g3.jpg"

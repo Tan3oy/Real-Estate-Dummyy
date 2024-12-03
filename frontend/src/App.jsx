@@ -8,6 +8,7 @@ import Property_Routes from './Pages/Properties/Featured Properties/Property_Rou
 import Pricing_plan from './Pages/Pricing Plan/Pricing_plan'
 import Pages_Routes from './Pages/Pages/Pages_Routes'
 import Blog from './Pages/Blog/Blog'
+import Details_Card from './Pages/Blog/Sections/Details_Card'
 import Contact from './Pages/Contact/Contact'
 import ScrollTopbtn from './Components/ScrollTopbtn'
 import Footer_Find_Estate from './Components/Footer_Find_Estate/Footer_Find_Estate'

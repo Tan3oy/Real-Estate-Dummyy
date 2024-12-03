@@ -18,9 +18,7 @@ import Top from './Sections/Top'
         <Ourproperties/>
         <Top />
         <Featured_Properties />
-        <Services />
         <Agents/>
-        <Services />
         <Clients/>
         <Blogs />
        

@@ -33,7 +33,8 @@ const allpropertySchema = new mongoose.Schema({
         description: { type: String, default: '' },
         aminities: [{ type: String, required: true }],
         propertyVideo: { type: String, default: '' },
-        nearestPlace: { type: [NearestPlaceSchema], default: [] }
+        nearestPlace: { type: [NearestPlaceSchema], default: [] },
+        mapAddress: { type: String, required: true }
 });
 
 const All_Properties_data = mongoose.model("All_Properties_data", allpropertySchema);

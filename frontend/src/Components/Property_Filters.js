@@ -104,9 +104,9 @@ export const urgentPropertyCards = () => {
 export const queryFilter=(queries,Cards)=>{
     // const [filteredData,setFilteredData]=useState([])
     const {keyword="",type="",location="",price=0}=queries
-    const purpose=queries.purpose==="any"|| queries.purpose===null?"":queries.purpose
+    const purpose=queries.purpose==="any"|| queries.purpose===null || queries.purpose===undefined? "":queries.purpose
     const balcony=queries.balcony===true?"balcony":""
-    console.log("queries ::",keyword,type,location,purpose,price,balcony);
+    console.log("queries ::",purpose,price,balcony);
     if(keyword || type || location || purpose || price || balcony){
         console.log("if logic entered");     
         const filtered = Cards.filter((item) =>(

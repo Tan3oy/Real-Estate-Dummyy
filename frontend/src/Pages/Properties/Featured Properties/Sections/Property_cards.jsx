@@ -63,10 +63,10 @@ const Property_cards = ({fetchedData}) => {
     setCurrentPage(pageNumber);
   }
   return (
-    <div className="flex justify-between px-8 py-6 lg:px-4 md:w-[768px] lg:w-[992px] xl:w-[1200px] mx-auto">
+    <div className="flex justify-between px-8 py-8 lg:px-4 md:w-[768px] lg:w-[992px] xl:w-[1200px] mx-auto">
       <Property_select containerStyle="hidden md:block xl:w-[28%]" formStyle="border shadow-[0px_0px_8px_0px_#97999db8]" onSearch={handleQuerySearch} />
       <div className='Cards-container px-4 sm:w-[576px] md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
-        <div className="view-controller mt-4 mb-8">
+        <div className="view-controller mb-8">
           <div className="flex justify-between w-full md:border md:border-[#c1c1c1] bg-[#0B2C3D] md:bg-white">
               <div className="md:block hidden w-[40%] lg:w-[30%] border-r border-[#c1c1c1]">
                 <Dropdown options={filterButtons} placeholder="Select Type" onChange={(value)=>buttonHandler(value)} />
