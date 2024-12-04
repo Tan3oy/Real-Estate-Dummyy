@@ -18,7 +18,7 @@ const Property_Routes = () => {
   return (
     <div>
       <Routes>
-        <Route path="*" element={<Hero_Property/>}>
+        <Route path="" element={<Hero_Property/>}>
           {/* Top Properties Routes */}
           <Route path="top_properties" element={<Property_cards fetchedData={topPropertyCards()}/>}/>
           <Route path="top_properties/:_id" element={<Property_details/>}/>
