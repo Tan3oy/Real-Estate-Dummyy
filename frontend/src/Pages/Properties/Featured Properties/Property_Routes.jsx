@@ -18,21 +18,29 @@ const Property_Routes = () => {
   return (
     <div>
       <Routes>
-        <Route path="" element={<Hero_Property/>}>
+          {/* All Properties */}
+          <Route path="" element={<><Hero_Property/><Property_cards fetchedData={allPropertyCards()}/></>}/>
+          <Route path=":_id" element={<Property_details relatedData={allPropertyCards()}/>}/>
+
           {/* Top Properties Routes */}
-          <Route path="top_properties" element={<Property_cards fetchedData={topPropertyCards()}/>}/>
-          <Route path="top_properties/:_id" element={<Property_details/>}/>
+          <Route path="top_properties" element={<><Hero_Property/><Property_cards fetchedData={topPropertyCards()}/></>}/>          
+          <Route path="top_properties/:_id" element={<Property_details relatedData={topPropertyCards()}/>}/>
+
           {/* Featured Properties Routes */}
-          <Route path="featured_properties" element={<Property_cards fetchedData={featuredPropertyCards()}/>}/>
-          <Route path="featured_properties/:_id" element={<Property_details/>}/>
-          {/* All Properties Routes */}
-          <Route path="all_properties" element={<Property_cards fetchedData={allPropertyCards()}/>}/>
-          <Route path="all_properties/:_id" element={<Property_details/>}/>
+          <Route path="featured_properties" element={<><Hero_Property/><Property_cards fetchedData={featuredPropertyCards()}/></>}/>          
+          <Route path="featured_properties/:_id" element={<Property_details relatedData={featuredPropertyCards()}/>}/>
+
           {/* Urgent Properties Routes */}
-          <Route path="urgent_properties" element={<Property_cards fetchedData={urgentPropertyCards()}/>}/>
-          <Route path="urgent_properties/:_id" element={<Property_details/>}/>
+          <Route path="urgent_properties" element={<><Hero_Property/><Property_cards fetchedData={urgentPropertyCards()}/></>}/>          
+          <Route path="urgent_properties/:_id" element={<Property_details relatedData={urgentPropertyCards()}/>}/>
+
+          {/* All Properties Routes */}
+          <Route path="all_properties" element={<><Hero_Property/><Property_cards fetchedData={allPropertyCards()}/></>}/>          
+          <Route path="all_properties/:_id" element={<Property_details relatedData={allPropertyCards()}/>}/>
+
+          {/* Agent Routes */}
+          <Route path="agents" element={<Agents/>}>        
         </Route>
-        <Route path="agents" element={<Agents/>}/>
 
       </Routes>
     </div>

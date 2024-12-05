@@ -25,14 +25,14 @@ export const featuredPropertyCards = () => {
 }
 export const topPropertyCards = () => {
     const [topCards, setTopCards] = useState([])
-    const [viewArr, setViewArr]=useState([])
+    // const [viewArr, setViewArr]=useState([])
     
     useEffect(()=>{
         const fetchData = async()=>{
             const res = await axios.get("http://localhost:5000/api/allproperties")
             const tempData=res.data;
             const tempArr= tempData.map((el)=>((el.view*0.25)+(el.rating*0.15)+(el.price*0.6)))
-            setViewArr(tempArr)
+            // setViewArr(tempArr)
             const topRange= Math.max(...(tempData.map((el)=>(el.view*0.2)+(el.rating*0.3)+(el.price*0.5))))
             const filtered=tempData.filter((el)=>(el.view+el.rating+el.price)>=topRange)
             // setTopScore(top)
