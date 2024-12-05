@@ -11,10 +11,12 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 // import { BsChatSquareText } from "react-icons/bs";
 // import { FaEye } from "react-icons/fa6";
 import { BsClock } from "react-icons/bs";
+import {  useBlogCounter } from "../../../Components/Blogs_Catagory_Counter";
 
 const Details_Card = () => {
   const { _id } = useParams();
   const [BlogsData, setBlogsData] = useState(null);
+  const CatagoryArr=["Fitness","LifeStyle","Event","Bar & Cafe","Food & Drink"]
 
   // test
   // console.log("Fetching blog with ID:", _id);
@@ -60,6 +62,25 @@ useEffect(() => {
 }, []);
 console.log("preShuffleData::::",preShuffleData);
 
+// //Catagory Counter Array
+// const catagoryCounter=(ques)=>{
+//       console.log("ques:::",ques);
+//       // const [data, setData] = useState(0);
+//             const fetchData=async()=>{ 
+//             const res= await axios.get("http://localhost:5000/api/AllBlogs")
+//             const tempData=res.data
+//             const lifeStyleCards= [...(tempData.filter((el)=>el.categoryType===ques))].length
+//             return lifeStyleCards
+//       }
+//       const result=  fetchData().then(res=>{return res})
+//       return result
+
+
+// }
+const ques1=useBlogCounter("Lifestyle")
+const ques2=useBlogCounter("Event")
+console.log("lifestyle blogs:::",ques1,ques2);
+
   // Function to shuffle and select a subset of cards
   const selectRandomCards = (data, numberOfCards) => {
       const shuffleArray = (array) => {
@@ -96,7 +117,9 @@ if (!validPathRegex.test(location.pathname)) {
             {/* entire container of the middle section (vertically) */}
             <div className="p-24">
                   {/* the container inside the entire container of the middle section (vertically) */}
-                  <div className="flex gap-6 mx-auto w-full h-fit justify-center">
+                  {
+                 
+                  (<div className="flex gap-6 mx-auto w-full h-fit justify-center">
 
                         {/* left div */}
                         <div className="flex flex-col gap-y-6 w-full h-fit lg:w-[67%]">
@@ -285,43 +308,22 @@ if (!validPathRegex.test(location.pathname)) {
                               <div className="mx-auto pt-6 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
                                     <h1 className='text-[#0a2f3d] text-xl font-bold'>Categories</h1>
                                     <div className="flex flex-col divide-y-[1px] text-[17px] py-3">
-                                          <Link to={`/blog?category=Fitness`}>
-                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
-                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Fitness</p>                                                
-                                                      <p className="text-[#848385] group-hover:text-green-500">0</p>
+                                          {
+                                                CatagoryArr.map((el,indx)=>(
+                                                <Link to={`/blog?category=${el}`}>
+                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group" key={indx}>
+                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">{el}</p>   
+                                                      <p className="text-[#848385] group-hover:text-green-500">{useBlogCounter(el)}</p>
                                                 </div>
-                                          </Link>
-                                          <Link to={`/blog?category=Lifestyle`}>
-                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
-                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Lifestyle</p>
-                                                      <p className="text-[#848385] group-hover:text-green-500">3</p>
-                                                </div>
-                                          </Link>
-                                          <Link to={`/blog?category=Event`}>
-                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
-                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Event</p>
-                                                      <p className="text-[#848385] group-hover:text-green-500">4</p>
-                                                </div>
-                                          </Link>
-                                          <Link to={`/blog?category=Bar & Cafe`}>
-                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
-                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Bar & Cafe</p>
-                                                      <p className="text-[#848385] group-hover:text-green-500">1</p>
-                                                </div>
-                                          </Link>
-                                          <Link to={`/blog?category=Food & Drink`}>
-                                                <div className="flex justify-between items-center py-2 hover:bg-green-50 group">
-                                                      <p className="text-[#0a2f3d] group-hover:text-green-500">Food & Drink</p>
-                                                      <p className="text-[#848385] group-hover:text-green-500">2</p>
-                                                </div>
-                                          </Link>
+                                                </Link>
+                                                ))     
+                                          }
                                     </div>
                               </div>
                               {/* trending posts: lower div of the right div */}
                               <div className="flex flex-col gap-3 mx-auto py-7 px-6 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
                                     <h1 className='text-[#0a2f3d] text-xl font-bold'>Trending Posts</h1>
                                     <div className="flex flex-col divide-y-[1px]">
-                                          
                                           {
                                                 selectedCards.length > 0 ? (
                                                 selectedCards.map((card) => (
@@ -348,7 +350,9 @@ if (!validPathRegex.test(location.pathname)) {
                               </div>
                         </div>
 
-                  </div>
+                  </div>)
+                  // (<div className="flex justify-center items-center"><p>Blog Not Found</p></div>) 
+                  }
             </div>
       </>
   );

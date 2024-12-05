@@ -7,11 +7,12 @@ import About from './Pages/About/About'
 import Property_Routes from './Pages/Properties/Featured Properties/Property_Routes'
 import Pricing_plan from './Pages/Pricing Plan/Pricing_plan'
 import Pages_Routes from './Pages/Pages/Pages_Routes'
-import Blog from './Pages/Blog/Blog'
+// import Blog from './Pages/Blog/Blog'
 import Details_Card from './Pages/Blog/Sections/Details_Card'
 import Contact from './Pages/Contact/Contact'
 import ScrollTopbtn from './Components/ScrollTopbtn'
 import Footer_Find_Estate from './Components/Footer_Find_Estate/Footer_Find_Estate'
+import BlogRouter from './Pages/Blog/BlogRouter'
 
 function App() {
   
@@ -25,8 +26,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path="/properties/*" element={<Property_Routes/>}/>
           <Route path="/pages/*" element={<Pages_Routes/>}/>
-          <Route path='/blog' element={<Blog/>}/>
-          <Route path='/blog/:_id' element={<Details_Card/>}/>
+          <Route path="/blog/*" element={<BlogRouter/>}/> 
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
           <Route path='/contact' element={<Contact/>}/>
         </Routes>

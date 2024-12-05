@@ -1,4 +1,5 @@
 import React , {useState,useRef, useEffect} from 'react'
+import { useLocation } from 'react-router-dom';
 import {NavLink} from 'react-router-dom'
 import MenuToggle from '../Components/MenuToggle';
 import {motion} from 'framer-motion';
@@ -13,7 +14,9 @@ const Navbar = () => {
   const menuRef=useRef(null);
   const navRef=useRef(null);
   const [IsMenuOpen,setIsMenuOpen]=useState(null);
+  const location=useLocation()
   
+  console.log("current path::::",location.pathname);
   
   const toggleNavDropdown=(index)=>{
     setIsNavDropdownOpen(IsNavDropdownOpen==index?null:index)   
@@ -111,11 +114,13 @@ const Navbar = () => {
           {
             NavItems.map((items,index)=>(
               items.subLinks?(
-                <motion.li className={"nav-link relative list-none text-base text-white hover:text-green-500 items-center flex gap-2"} variants={!isScrolled?navVariantss:''} onClick={()=>toggleNavDropdown(index)} key={index}>
-                    <h1 className='font-bold '>{items.name}</h1>
+                <motion.li className={`nav-drpdwn relative list-none text-base text-white hover:text-green-500 items-center flex gap-2
+                ${items.subLinks.some((link) => `/${link.link}` === location.pathname) ? "nav-drpdwn active":""}
+                `} variants={!isScrolled?navVariantss:''} onClick={()=>toggleNavDropdown(index)} key={index}>
+                    <h1 className='font-bold relative'>{items.name}</h1>
                     <IoMdArrowDropdown className={`text-xl ${IsNavDropdownOpen==index?"rotate-180":"rotate-0"} transition-all duration-500 ease-in-out`}/>
                     {
-                    <motion.div className={`absolute top-14 w-56 flex flex-col gap-3 py-3 bg-[#0B2C3D]`} 
+                    <motion.div className={`absolute top-14 w-56 flex flex-col gap-3 py-3 bg-[#0B2C3D] rounded-[10px]`} 
                         variants={{
                           closed:{clipPath:"inset(10% 50% 90% 50% round 10px)",visibility:'hidden',opacity:0,transition:{type:"spring",delay:0.3, staggerChildren:0.1, staggerDirection:-1}},
                           open:{clipPath: "inset(0% 0% 0% 0% round 10px)",visibility:'visible', opacity:IsNavDropdownOpen==index?1:0,transition:{duration:0.3,delayChildren:0.3,staggerChildren:0.1}}
@@ -158,9 +163,9 @@ const Navbar = () => {
                 item.subLinks ? (
                   <motion.div className='nav-link-container w-60 py-4 flex justify-center items-center font-bold relative lg:hidden  text-white hover:text-green-500 hover:bg-[#19648a94] cursor-pointer' onClick={()=>toggleMenuDropdown(index)}  key={index} variants={navVariants}>
                 
-                  <div className="nav-link relative flex text-center gap-1 ">
-                    <h1 className=''>{item.name}</h1>
-                    <span className='text-xl text-center'>
+                  <div className={`nav-drpdwn relative flex text-center gap-1 ${item.subLinks.some((link) => `/${link.link}` === location.pathname) ? "nav-drpdwn active":""}`} >
+                    <h1 className="relative">{item.name}</h1>
+                    <span className='text-xl flex items-center'>
                       {(IsMenuDropdownOpen==index? <IoMdArrowDropleft/>:<IoMdArrowDropdown/>)}
                     </span>
                   </div>                  

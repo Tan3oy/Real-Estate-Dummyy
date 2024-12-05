@@ -10,7 +10,7 @@ const Hero_Property = () => {
           <h2 className='text-xl font-medium text-white text-center'>Home - Property</h2>
         </div>      
       </section>
-      <Outlet/>
+      {/* <Outlet/> */}
     </>
   )
 }
