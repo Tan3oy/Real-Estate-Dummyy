@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 // import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { CiLocationOn } from "react-icons/ci";
@@ -23,6 +24,36 @@ const Property_details = () => {
     },[_id])
     console.log(propertyData);
 
+    const [preShuffleData, setpreShuffleData] = useState([]);
+    const [selectedCards, setSelectedCards] = useState([]);
+    useEffect(() => {
+      axios
+        .get(`http://localhost:5000/api/allproperties`)
+        .then((res) => {
+            setpreShuffleData(res.data);
+            // Randomly select cards as soon as data is fetched
+            selectRandomCards(res.data, 2); // Choose 5 cards for example
+        })
+        .catch((err) => console.log(err));
+    }, []);
+    console.log("preShuffleData::::",preShuffleData);
+    
+      // Function to shuffle and select a subset of cards
+      const selectRandomCards = (data, numberOfCards) => {
+          const shuffleArray = (array) => {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+              const randomIndex = Math.floor(Math.random() * (i + 1));
+              [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
+            }
+            return shuffled;
+          };
+      
+          // Shuffle and slice the array
+          const randomCards = shuffleArray(data).slice(0, numberOfCards);
+          setSelectedCards(randomCards);
+        };
+console.log("selectedCards::::,,",selectedCards);
 return (
     <div>
         {
@@ -36,58 +67,85 @@ return (
                     </div>      
                     </section>
                     <div className="flex flex-col-reverse gap-y-6 lg:flex-row mx-auto my-28 px-8 md:px-24 lg:px-8 xl:px-24 gap-x-6 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px]">
-                        <div className="property_contact p-4 w-full h-fit lg:w-[40%] xl:w-[40%] 2xl:w-[31%] rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
-                            <div className="contractor_details bg-[#27ae60] flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-4 p-4 rounded-t-xl text-white">
-                                <div className='w-[72px] h-[72px] rounded-[50%] overflow-hidden'>
-                                    <img src='https://demo.websolutionus.com/findestate/uploads/website-images/earl-newell-2021-10-07-08-20-15-5266.jpg' className='w-full h-full object-cover' />
-                                </div>
-                                <div>
-                                    <p className='font-bold text-xl'>John Doe</p>
-                                    <div className='flex gap-1'>
-                                        <p className='text-[20px] font-normal'><FontAwesomeIcon icon={faEnvelope} /></p>
-                                        <div className='pt-[1.9px]'><p className='text-lg font-normal break-words'>admin@gmail.com</p></div>
+                        <div className="Property-details-left flex flex-col gap-8 w-full lg:w-[40%] xl:w-[40%] 2xl:w-[31%]">
+                            <div className="property_contact p-4 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
+                                <div className="contractor_details bg-[#27ae60] flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-4 p-4 rounded-t-xl text-white">
+                                    <div className='w-[72px] h-[72px] rounded-[50%] overflow-hidden'>
+                                        <img src='https://demo.websolutionus.com/findestate/uploads/website-images/earl-newell-2021-10-07-08-20-15-5266.jpg' className='w-full h-full object-cover' />
+                                    </div>
+                                    <div>
+                                        <p className='font-bold text-xl'>John Doe</p>
+                                        <div className='flex gap-1'>
+                                            <p className='text-[20px] font-normal'><FontAwesomeIcon icon={faEnvelope} /></p>
+                                            <div className='pt-[1.9px]'><p className='text-lg font-normal break-words'>admin@gmail.com</p></div>
+                                        </div>
                                     </div>
                                 </div>
+                                <form className='flex flex-col gap-5'>
+                                    <div className=" flex flex-col gap-1 mt-7">
+                                        <p className='font-medium text-[#093B55]'>Name</p>
+                                        <input type="text" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px]' />
+                                    </div>
+                                    <div className=" flex flex-col gap-1">
+                                        <p className='font-medium text-[#093B55]'>Email</p>
+                                        <input type="text" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px]' />
+                                    </div>
+                                    <div className=" flex flex-col gap-1">
+                                        <p className='font-medium text-[#093B55]'>Phone</p>
+                                        <input type="text" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px]' />
+                                    </div>
+                                    <div className=" flex flex-col gap-1">
+                                        <p className='font-medium text-[#093B55]'>Description</p>
+                                        <textarea name="" id="" cols="5" rows="5" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px] resize-none'></textarea>
+                                    </div>
+                                    <button className='mx-auto w-40 h-11 rounded-[3px]
+                                                bg-[#093B55] text-white font-medium text-[17px]
+                                                relative
+                                                z-[1] overflow-hidden
+
+                                                before:transition-all before:duration-500 before:ease-in-out
+                                                before:content-[" "]
+                                                before:absolute
+                                                before:top-0 before:left-0
+                                                before:bg-[#27ae60]
+                                                before:h-full before:w-0
+                                                before:z-[-1] 
+                                                before:opacity-0
+
+                                                hover:before:w-full
+                                                hover:before:opacity-100'
+                                    >
+                                        Send Message
+                                    </button>
+                                </form>
                             </div>
-                            <form className='flex flex-col gap-5'>
-                                <div className=" flex flex-col gap-1 mt-7">
-                                    <p className='font-medium text-[#093B55]'>Name</p>
-                                    <input type="text" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px]' />
+                            <div className="property_related hidden lg:block p-4 w-full h-fit rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
+                                <div className='flex justify-center items-center pt-2'>
+                                    <h1 className='text-[#0a2f3d] text-xl font-medium'>Related Properties</h1>
                                 </div>
-                                <div className=" flex flex-col gap-1">
-                                    <p className='font-medium text-[#093B55]'>Email</p>
-                                    <input type="text" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px]' />
+                                <div>
+                                {
+                                    selectedCards.length > 0 ? (
+                                    selectedCards.map((card) => (
+                                            <Link to={`/allproperties/${card._id}`}>
+                                            <div key={card.id} className="flex flex-col py-2">
+                                                <div className="w-full h-full pt-6">
+                                                        <img src={card.imgUrl} className="w-full h-full object-cover rounded-[5px] mb-2" />
+                                                </div>
+                                                <h3 className="text-base font-bold text-[#163f54] pt-1">{card.speciality}</h3>
+                                                <div className='text-[#848385] text-sm pt-1'>{card.address}</div>
+                                                <div className='text-green-600 font-bold text-xl pt-1'>${card.price}</div>
+                                            </div>
+                                            </Link>
+                                    ))
+                                    ) : (
+                                    <p>Loading trending cards...</p>
+                                    )
+                                }
                                 </div>
-                                <div className=" flex flex-col gap-1">
-                                    <p className='font-medium text-[#093B55]'>Phone</p>
-                                    <input type="text" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px]' />
-                                </div>
-                                <div className=" flex flex-col gap-1">
-                                    <p className='font-medium text-[#093B55]'>Description</p>
-                                    <textarea name="" id="" cols="5" rows="5" className='p-4 border border-solid outline-none border-[#eee] w-full rounded-[5px] [box-shadow:rgba(0,_0,_0,_0.1)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.06)_0px_1px_2px_0px] resize-none'></textarea>
-                                </div>
-                                <button className='mx-auto w-40 h-11 rounded-[3px]
-                                            bg-[#093B55] text-white font-medium text-[17px]
-                                            relative
-                                            z-[1] overflow-hidden
-
-                                            before:transition-all before:duration-500 before:ease-in-out
-                                            before:content-[" "]
-                                            before:absolute
-                                            before:top-0 before:left-0
-                                            before:bg-[#27ae60]
-                                            before:h-full before:w-0
-                                            before:z-[-1] 
-                                            before:opacity-0
-
-                                            hover:before:w-full
-                                            hover:before:opacity-100'
-                                >
-                                    Send Message
-                                </button>
-                            </form>
+                            </div>
                         </div>
-                        <div className="Property-details flex flex-col gap-8 w-full lg:w-[58%] xl:w-[58%] 2xl:w-[67%] ">
+                        <div className="Property-details-right flex flex-col gap-8 w-full lg:w-[58%] xl:w-[58%] 2xl:w-[67%] ">
                             <div className="propert-intro h-fit p-4 rounded-[10px] [box-shadow:0px_0px_10px_0px_rgba(0,_0,_0,_0.2)]">
                                 <div className="property-labels flex gap-3">
                                     <div className="flex items-center gap-3">
