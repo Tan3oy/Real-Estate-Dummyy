@@ -21,16 +21,16 @@ const Property_Routes = () => {
         <Route path="*" element={<Hero_Property/>}>
           {/* Top Properties Routes */}
           <Route path="top_properties" element={<Property_cards fetchedData={topPropertyCards()}/>}/>
-          <Route path="top_properties/:_id" element={<Property_details/>}/>
+          <Route path="top_properties/:_id" element={<Property_details relatedData={topPropertyCards()}/>}/>
           {/* Featured Properties Routes */}
           <Route path="featured_properties" element={<Property_cards fetchedData={featuredPropertyCards()}/>}/>
-          <Route path="featured_properties/:_id" element={<Property_details/>}/>
+          <Route path="featured_properties/:_id" element={<Property_details relatedData={featuredPropertyCards()}/>}/>
           {/* All Properties Routes */}
           <Route path="all_properties" element={<Property_cards fetchedData={allPropertyCards()}/>}/>
-          <Route path="all_properties/:_id" element={<Property_details/>}/>
+          <Route path="all_properties/:_id" element={<Property_details relatedData={allPropertyCards()}/>}/>
           {/* Urgent Properties Routes */}
           <Route path="urgent_properties" element={<Property_cards fetchedData={urgentPropertyCards()}/>}/>
-          <Route path="urgent_properties/:_id" element={<Property_details/>}/>
+          <Route path="urgent_properties/:_id" element={<Property_details relatedData={urgentPropertyCards()}/>}/>
         </Route>
         <Route path="agents" element={<Agents/>}/>
 

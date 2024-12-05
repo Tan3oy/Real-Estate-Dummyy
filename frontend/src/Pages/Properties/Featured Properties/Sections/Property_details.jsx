@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 // import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { CiLocationOn } from "react-icons/ci";
 import { RiHotelBedLine } from "react-icons/ri"
@@ -14,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
-const Property_details = () => {
+const Property_details = ({relatedData}) => {
     const {_id} = useParams()
     const [propertyData, setPropertyData]= useState(null)
     useEffect(()=>{
@@ -24,20 +23,47 @@ const Property_details = () => {
     },[_id])
     console.log(propertyData);
 
+    // stick to current url, like, (all for all, featured for featured, top for top, urgent for urgent), while clicking to related properties
+    const location = useLocation();
+    console.log("location::::",location);
+    const [all_featured_top_urgent, setall_featured_top_urgent] = useState("");
+    useEffect(() => {
+        if (location.pathname.includes("all")) {
+            setall_featured_top_urgent("all");
+        }
+        else if (location.pathname.includes("featured")) {
+            setall_featured_top_urgent("featured");
+        }
+        else if (location.pathname.includes("top")) {
+            setall_featured_top_urgent("top");
+        }
+        else if (location.pathname.includes("urgent")) {
+            setall_featured_top_urgent("urgent");
+        }
+    }, [all_featured_top_urgent]);
+
+    
+
     const [preShuffleData, setpreShuffleData] = useState([]);
     const [selectedCards, setSelectedCards] = useState([]);
-    useEffect(() => {
-      axios
-        .get(`http://localhost:5000/api/allproperties`)
-        .then((res) => {
-            setpreShuffleData(res.data);
-            // Randomly select cards as soon as data is fetched
-            selectRandomCards(res.data, 2); // Choose 2 cards for example
-        })
-        .catch((err) => console.log(err));
-    }, []);
-    console.log("preShuffleData::::",preShuffleData);
-    
+    // useEffect(() => {
+    //   axios
+    //     .get(`http://localhost:5000/api/allproperties`)
+    //     .then((res) => {
+    //         setpreShuffleData(res.data);
+    //         // Randomly select cards as soon as data is fetched
+    //         selectRandomCards(res.data, 2); // Choose 2 cards for example
+    //     })
+    //     .catch((err) => console.log(err));
+    // }, []);
+    // console.log("preShuffleData::::",preShuffleData);
+
+      useEffect(() => {
+        setpreShuffleData(relatedData);
+        selectRandomCards(relatedData, 2);
+      }, [relatedData]);
+      console.log("preShuffleData::::",preShuffleData);
+      
       // Function to shuffle and select a subset of cards
       const selectRandomCards = (data, numberOfCards) => {
           const shuffleArray = (array) => {
@@ -47,12 +73,12 @@ const Property_details = () => {
               [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
             }
             return shuffled;
-          };
-      
+          };     
           // Shuffle and slice the array
           const randomCards = shuffleArray(data).slice(0, numberOfCards);
           setSelectedCards(randomCards);
         };
+// test        
 console.log("selectedCards::::,,",selectedCards);
 return (
     <div>
@@ -127,7 +153,7 @@ return (
                                 {
                                     selectedCards.length > 0 ? (
                                     selectedCards.map((card) => (
-                                            <Link to={`/properties/all_properties/${card._id}`}>
+                                            <Link to={`/properties/${all_featured_top_urgent}_properties/${card._id}`}>
                                             <div key={card.id} className="flex flex-col py-2">
                                                 <div className="w-full h-full pt-6">
                                                         <img src={card.imgUrl} className="w-full h-full object-cover rounded-[5px] mb-2" />
