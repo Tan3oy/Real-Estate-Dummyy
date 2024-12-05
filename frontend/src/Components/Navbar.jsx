@@ -16,7 +16,6 @@ const Navbar = () => {
   const [IsMenuOpen,setIsMenuOpen]=useState(null);
   const location=useLocation()
   
-  console.log("current path::::",location.pathname);
   
   const toggleNavDropdown=(index)=>{
     setIsNavDropdownOpen(IsNavDropdownOpen==index?null:index)   
