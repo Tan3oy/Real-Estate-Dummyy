@@ -32,7 +32,7 @@ const Property_details = () => {
         .then((res) => {
             setpreShuffleData(res.data);
             // Randomly select cards as soon as data is fetched
-            selectRandomCards(res.data, 2); // Choose 5 cards for example
+            selectRandomCards(res.data, 2); // Choose 2 cards for example
         })
         .catch((err) => console.log(err));
     }, []);
@@ -127,7 +127,7 @@ return (
                                 {
                                     selectedCards.length > 0 ? (
                                     selectedCards.map((card) => (
-                                            <Link to={`/allproperties/${card._id}`}>
+                                            <Link to={`/properties/all_properties/${card._id}`}>
                                             <div key={card.id} className="flex flex-col py-2">
                                                 <div className="w-full h-full pt-6">
                                                         <img src={card.imgUrl} className="w-full h-full object-cover rounded-[5px] mb-2" />
