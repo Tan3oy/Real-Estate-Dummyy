@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Footer_Find_Estate-style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
@@ -30,31 +31,31 @@ const Footer_Find_Estate = () => {
                 <div className='footer-grid-items'>
                         <h3>Short Links</h3>
                         <ul>
-                            <li className='footer-p footer-column-2_3'><a href="#">About Us</a></li>
-                            <li className='footer-p footer-column-2_3'><a href="#">All Properties</a></li>
-                            <li className='footer-p footer-column-2_3'><a href="#">Blog</a></li>
-                            <li className='footer-p footer-column-2_3'><a href="#">Pricing Plan</a></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/about">About Us</Link></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/properties/all_properties">All Properties</Link></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/blog">Blog</Link></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/pricing_plan">Pricing Plan</Link></li>
                         </ul>   
                 </div>
 
                 <div className='footer-grid-items'>
                         <h3>Help Link</h3>
                         <ul>
-                            <li className='footer-p footer-column-2_3'><a href="#">Terms And Conditions</a></li>
-                            <li className='footer-p footer-column-2_3'><a href="#">Privacy Policy</a></li>
-                            <li className='footer-p footer-column-2_3'><a href="#">FAQ</a></li>
-                            <li className='footer-p footer-column-2_3'><a href="#">Contact</a></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/terms_and_conditions">Terms And Conditions</Link></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/privacy_policy">Privacy Policy</Link></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/pages/faq">FAQ</Link></li>
+                            <li className='footer-p footer-column-2_3'><Link to="/contact">Contact</Link></li>
                         </ul>                  
                 </div>
 
                 <div className='footer-grid-items'>
                         <h3>Follow Us</h3>
                         <div className="footer-social-icons footer-p">
-                            <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
-                            <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
-                            <a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-                            <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
-                            <a href="#"><FontAwesomeIcon icon={faYoutube} /></a>
+                            <a href="https://www.facebook.com"><FontAwesomeIcon icon={faFacebookF} /></a>
+                            <a href="https://www.twitter.com"><FontAwesomeIcon icon={faTwitter} /></a>
+                            <a href="https://www.linkedin.com"><FontAwesomeIcon icon={faLinkedinIn} /></a>
+                            <a href="https://www.instagram.com"><FontAwesomeIcon icon={faInstagram} /></a>
+                            <a href="https://www.youtube.com"><FontAwesomeIcon icon={faYoutube} /></a>
                         </div>
                         <div className='footer-column-4 footer-p'>
                             <div><i class="fa-solid fa-location-dot footer-flag"></i></div>

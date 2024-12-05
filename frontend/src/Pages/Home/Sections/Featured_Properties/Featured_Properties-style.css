@@ -40,7 +40,7 @@
 
 .card {
     position: relative;
-    width: 48%;
+    width: 30%;
     margin: 2px;
     margin-bottom: 40px;
     box-shadow: 0 2px 10px rgb(0, 0, 0);
@@ -155,7 +155,7 @@
 }
   
 
-@media (max-width: 575px) {
+@media (min-width: 360px) and (max-width: 768px) {
     .featured-properties-and-container-box {
         padding: 20px;
     }
@@ -177,6 +177,8 @@
     .container {
       flex-direction: column;
       padding-top: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
       /* align-items: center;
       justify-content: space-evenly; */
       /* min-width: 400px; */
@@ -214,18 +216,18 @@
         margin-top: 5px;
     }
     .price {
-        font-size: 1em;
+        font-size: 18px;
         font-weight: bold;
     }
     .button-click {
-        font-size: 0.8em;
+        font-size: 16px;
         padding: 5px 10px;
         border-radius: 5px;
         cursor: pointer;
-    }   
+    }
 }
 
-@media (min-width: 575px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1200px) {
     .featured-properties-box {
         margin: 20px;
         padding-left: 20px;
@@ -235,13 +237,34 @@
     }
     .container {
         padding-top: 25px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .card {
+        width: 48%;
     }
     .price {
-        font-size: 1em;
+        font-size: 18px;
         font-weight: bold;
     }
     .button-click {
-        font-size: 0.8em;
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card {
+        width: 30%;
+    }
+    .price {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .button-click {
+        font-size: 20px;
         padding: 5px 10px;
         border-radius: 5px;
         cursor: pointer;

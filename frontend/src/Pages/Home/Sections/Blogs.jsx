@@ -1,5 +1,5 @@
 import React,{useEffect ,useState} from 'react'
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { BsChatSquareText } from "react-icons/bs";
@@ -71,9 +71,9 @@ const Blogs = () => {const [isOpen,setIsOpen] =useState(null);
                 />
                 <span className="text-gray-700">{items.author}</span>
               </div>
-              <a href="#" className="text-green-600 hover:underline">
+              <Link to={`/blog/${items._id}`} className="text-green-600 hover:underline">
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         </div>

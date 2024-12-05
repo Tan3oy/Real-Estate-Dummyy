@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -96,7 +97,19 @@ console.log("lifestyle blogs:::",ques1,ques2);
       setSelectedCards(randomCards);
     };
 
-console.log(BlogsData? BlogsData:"blogsData Not Found");
+// error-route set
+const location = useLocation();
+const navigate = useNavigate();
+
+// Regular expression for valid paths
+const validPathRegex = /^\/blog(\/[a-fA-F0-9]{24})$/;
+
+// Redirect if the path doesn't match the regex
+if (!validPathRegex.test(location.pathname)) {
+  console.log("Invalid path:", location.pathname);
+     navigate("/404"); // Redirect to a 404 page or another route
+  }
+
 
 
   return (
