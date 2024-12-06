@@ -13,6 +13,8 @@ import Contact from './Pages/Contact/Contact'
 import ScrollTopbtn from './Components/ScrollTopbtn'
 import Footer_Find_Estate from './Components/Footer_Find_Estate/Footer_Find_Estate'
 import BlogRouter from './Pages/Blog/BlogRouter'
+import Terms_And_Conditions from './Pages/Terms_And_Conditions/Terms_And_Conditions'
+import Privacy_Policy from './Pages/Privacy_Policy/Privacy_Policy'
 
 function App() {
   
@@ -29,6 +31,8 @@ function App() {
           <Route path="/blog/*" element={<BlogRouter/>}/> 
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
           <Route path='/contact' element={<Contact/>}/>
+          <Route path='/terms_and_conditions' element={<Terms_And_Conditions/>}/>
+          <Route path='/privacy_policy' element={<Privacy_Policy/>}/>
         </Routes>
         <ScrollTopbtn/>
         <Footer_Find_Estate />
