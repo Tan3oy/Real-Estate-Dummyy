@@ -25,18 +25,20 @@ const [selectData, setSelectData] = useState({})
 const formValueGrabber=(value,name)=>{
     console.log(value,name);
     setSelectData({...selectData,[name]:value})
-    console.log(selectData); 
+    console.log("onChange search inputs",selectData); 
 }
 
 const submitHandler=()=>{
     // e.preventDefault();
     const query= new URLSearchParams(selectData).toString()
     console.log(query);
-    navigate(`?${query}`)
+    navigate(`?${query}`,{state:selectData})
 }
-const handleSearch=()=>{
-    onSearch(selectData)
-}
+
+// const handleSearch=()=>{
+    // onSearch(selectData)
+// }
+
 // const handleChange = (e) => {
 //     e.preventDefault();
 //     const formdata = new FormData(e.target)
@@ -63,7 +65,7 @@ return (
             <p className='text-lg'>Find Your Property</p>
             <span><IoSearch className='text-xl'/></span>
         </div>
-        <form className={`flex flex-col gap-3 p-4 ${formStyle}`}  onSubmit={(e)=>{e.preventDefault();submitHandler();handleSearch()}} >
+        <form className={`flex flex-col gap-3 p-4 ${formStyle}`}  onSubmit={(e)=>{e.preventDefault();submitHandler()}} >
             {/* Keyword Input */}
             <div className="flex flex-col gap-2">
                 <p className='font-bold text-lg'>Keyword</p>

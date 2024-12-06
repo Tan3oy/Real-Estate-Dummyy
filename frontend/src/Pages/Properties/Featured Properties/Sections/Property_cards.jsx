@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import { motion } from 'framer-motion'
-import {Link, useSearchParams} from 'react-router-dom'
+import {Link, useLocation, useSearchParams} from 'react-router-dom'
 // import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
 import { RiHotelBedLine } from "react-icons/ri"
 import { FaShower } from "react-icons/fa";
@@ -23,18 +23,35 @@ const Property_cards = ({fetchedData}) => {
   const [gridView, setGridView] = useState(false)
   const [openForm, setOpenForm] = useState(null)
   const [filteredCards, setFilteredCards] = useState([]); 
+  const location = useLocation()
 
   //Fetching Main Cards
-  useEffect(() => {
-    setFilteredCards(fetchedData);
-  }, [fetchedData]);
+  // useEffect(() => {
+  //   setFilteredCards(fetchedData);
+  // }, [fetchedData]);
+  
+  console.log("location items",location);
+  const state=location.state;
+  
   
   // Filter by Search Queries
-  const handleQuerySearch=(selectData)=>{
-    const queryResult= queryFilter(selectData,fetchedData)
-    setFilteredCards(queryResult)
-    console.log("selectData :: ",selectData);
-  }
+  // const handleQuerySearch=(selectData)=>{
+    useEffect(()=>{
+      const handleFilter=()=>{
+        if(state!==null){
+          console.log("entered if");
+          
+        setFilteredCards(queryFilter(state,fetchedData))
+      }else{
+        console.log("else entered");
+        
+        setFilteredCards(fetchedData)
+      }
+      }
+      handleFilter();
+    },[fetchedData,state])
+    // console.log("selectData :: ",selectData);
+  // }
   
   //Filter by Buttons
   const buttonHandler=(data)=>{
@@ -43,7 +60,7 @@ const Property_cards = ({fetchedData}) => {
     setFilteredCards(buttonFilter(data.value,filteredCards))
   }
   
-  console.log(filteredCards);
+  // console.log(filteredCards);
   
   //Pagination controllers
 
@@ -64,7 +81,7 @@ const Property_cards = ({fetchedData}) => {
   }
   return (
     <div className="flex justify-between px-8 py-8 lg:px-4 md:w-[768px] lg:w-[992px] xl:w-[1200px] mx-auto">
-      <Property_select containerStyle="hidden md:block xl:w-[28%]" formStyle="border shadow-[0px_0px_8px_0px_#97999db8]" onSearch={handleQuerySearch} />
+      <Property_select containerStyle="hidden md:block xl:w-[28%]" formStyle="border shadow-[0px_0px_8px_0px_#97999db8]"/>
       <div className='Cards-container px-4 sm:w-[576px] md:w-[80%] xl:w-[70%] mx-auto md:m-0 '>
         <div className="view-controller mb-8">
           <div className="flex justify-between w-full md:border md:border-[#c1c1c1] bg-[#0B2C3D] md:bg-white">

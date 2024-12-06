@@ -14,6 +14,7 @@ import ScrollTopbtn from './Components/ScrollTopbtn'
 import Footer_Find_Estate from './Components/Footer_Find_Estate/Footer_Find_Estate'
 import BlogRouter from './Pages/Blog/BlogRouter'
 import Hero_property_select from './Components/Hero_property_select'
+import { allPropertyCards } from './Components/Property_Filters'
 
 function App() {
   
@@ -30,7 +31,7 @@ function App() {
           <Route path="/blog/*" element={<BlogRouter/>}/> 
           <Route path='/pricing_plan' element={<Pricing_plan/>}/>
           <Route path='/contact' element={<Contact/>}/>
-          <Route path='/testing' element={<Hero_property_select/>}/>
+          <Route path='/testing' element={<Hero_property_select fetchedData={allPropertyCards()}/>}/>
         </Routes>
         <ScrollTopbtn/>
         <Footer_Find_Estate />
