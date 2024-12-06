@@ -29,7 +29,6 @@ const navigate=useNavigate()
         const query= new URLSearchParams(selectData).toString()
         navigate(`/properties/all_properties?${query}`,{state:selectData})
     }
-
   return (
     <div className=''>
          <div className="hero-contents">
