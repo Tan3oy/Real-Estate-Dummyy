@@ -11,23 +11,23 @@ export const NavItems=[
         name:"Properties",
         subLinks:[
             {
-                link:"/all_properties",
+                link:"properties/all_properties",
                 name:"All Properties"                
             },
             {
-                link:"/featured_properties",
+                link:"properties/featured_properties",
                 name:"Featured Properties"
             } ,
             {
-                link:"/top_properties",
+                link:"properties/top_properties",
                 name:"Top Properties"
             },
             {
-                link:"/urgent_properties",
+                link:"properties/urgent_properties",
                 name:"Urgent Properties"
             },
             {
-                link:"/agents",
+                link:"properties/agents",
                 name:"Agents"
             }
         ]
@@ -43,15 +43,15 @@ export const NavItems=[
         subLinks:[
             {
                 name:"Custom Page 1",
-                link:"/page_1"
+                link:"pages/page_1"
             },
             {
                 name:"Custom Page 2",
-                link:"/page_2"
+                link:"pages/page_2"
             },
             {
                 name:"FAQ",
-                link:"/faq"
+                link:"pages/faq"
             }
         ]
     },

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { IoMdArrowDropdown , IoMdArrowDropup } from "react-icons/io"
 import Select, {components} from 'react-select'
 
-const Dropdown = ({placeholder,options}) => {
+const Dropdown = ({placeholder,options,onChange,value,name}) => {
     const [IsOpen,setIsOpen] = useState(null);
     const customIndicator = (props) => {
         return(
@@ -20,6 +20,14 @@ const Dropdown = ({placeholder,options}) => {
         ...basestyles,
         width: '100%', // Set the width
         height: '100%', // Set the height
+        }),
+        menu: (provided) => ({
+            ...provided,
+            zIndex: 9999, // Ensure dropdown is on top
+        }),
+        menuPortal: (base) => ({
+            ...base,
+            zIndex: 9999
         }),
         control : (basestyles) => ({
         ...basestyles,
@@ -49,15 +57,19 @@ const Dropdown = ({placeholder,options}) => {
     });
 
     return (
-    <div className="relative text-lg w-full sm:w-auto border border-slate-400"  >
+    <div className="relative text-lg w-full h-full sm:w-auto "  >
         <Select          
             options={options}
+            defaultValue={placeholder}
             placeholder={placeholder}           
             components={{DropdownIndicator:customIndicator, IndicatorSeparator:()=> null}}
             onMenuOpen={() => setIsOpen(true)} // Trigger when menu opens
             onMenuClose={() => setIsOpen(false)} // Trigger when menu closes           
             styles={customStyles}
             theme={customTheme}
+            value={value}
+            name={name}
+            onChange={onChange}
         />
     </div>
     )

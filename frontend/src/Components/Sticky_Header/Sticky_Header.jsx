@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom'
 import './Sticky_Header-style.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,11 +51,11 @@ const Sticky_Header = () => {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div className='sticky-header-grid-items-column1-and-column2'>
                     <div className='sticky-header-social-icons'>
-                        <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
-                        <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
-                        <a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-                        <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
-                        <a href="#"><FontAwesomeIcon icon={faYoutube} /></a>
+                        <Link to="https://www.facebook.com"><FontAwesomeIcon icon={faFacebookF} /></Link>
+                        <Link to="https://www.twitter.com"><FontAwesomeIcon icon={faTwitter} /></Link>
+                        <Link to="https://www.linkedin.com"><FontAwesomeIcon icon={faLinkedinIn} /></Link>
+                        <Link to="https://www.instagram.com"><FontAwesomeIcon icon={faInstagram} /></Link>
+                        <Link to="https://www.youtube.com"><FontAwesomeIcon icon={faYoutube} /></Link>
                     </div>
                 </div>
             </div>
