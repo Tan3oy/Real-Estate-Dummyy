@@ -1,8 +1,6 @@
 import React,{useEffect,useState} from 'react'
-import axios from 'axios'
 import { motion } from 'framer-motion'
-import {Link, useLocation, useSearchParams} from 'react-router-dom'
-// import {Property_Cards_data} from '../../../../Constants/All_Properties_data'
+import {Link, useLocation} from 'react-router-dom'
 import { RiHotelBedLine } from "react-icons/ri"
 import { FaShower } from "react-icons/fa";
 import { FaListUl } from "react-icons/fa";
@@ -12,10 +10,10 @@ import { FaRegStar } from "react-icons/fa6"
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { ImPlus } from "react-icons/im";
-import { filterButtons } from '../../../../Constants/Menu_data';
-import Dropdown from '../../../../Components/Select_dropdown';
-import Property_select from '../../../../Components/Property_select'
-import { queryFilter,buttonFilter } from '../../../../Components/Property_Filters'
+import { filterButtons } from '../../../Constants/Menu_data';
+import Dropdown from '../../../Components/Select_dropdown';
+import Property_select from '../../../Components/Property_select'
+import { queryFilter,buttonFilter } from '../../../Components/Property_Filters'
 
 
 const Property_cards = ({fetchedData}) => {
