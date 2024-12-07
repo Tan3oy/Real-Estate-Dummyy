@@ -2,9 +2,9 @@ import React from 'react'
 import Hero_Property from './Sections/Hero_Property'
 import Property_cards from './Sections/Property_cards'
 import Property_details from './Sections/Property_details'
-import { allPropertyCards, featuredPropertyCards, topPropertyCards, urgentPropertyCards } from '../../../Components/Property_Filters';
+import { allPropertyCards, featuredPropertyCards, topPropertyCards, urgentPropertyCards } from '../../Components/Property_Filters';
 import { Route, Routes } from 'react-router-dom';
-import Agents from '../Agents/Agents';
+import Agents from './Agents/Agents';
 
 const Property_Routes = () => {
   // const [topCards,topRanges]=topPropertyCards();

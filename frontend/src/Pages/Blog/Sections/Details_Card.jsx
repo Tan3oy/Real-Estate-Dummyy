@@ -12,6 +12,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 // import { FaEye } from "react-icons/fa6";
 import { BsClock } from "react-icons/bs";
 import {  useBlogCounter } from "../../../Components/Blogs_Catagory_Counter";
+import BreadCrumbs from "../../../Components/BreadCrumbs";
 
 const Details_Card = () => {
   const { _id } = useParams();
@@ -114,6 +115,12 @@ if (!validPathRegex.test(location.pathname)) {
 
   return (
       <>
+            <section id='hero_blog' className='bg-blog-hero-image bg-no-repeat bg-cover bg-center [border-image:linear-gradient(#0b2c3d70,#0b2c3d70)_fill_1]'>
+                  <div className=" pt-40 pb-44 w-full ">
+                        <h1 className='text-4xl font-bold text-white text-center mb-6'>{BlogsData?.title}</h1>
+                        <h2 className='flex gap-1 justify-center text-base font-medium text-white text-center'><BreadCrumbs/>{BlogsData?.title}</h2>
+                  </div>
+            </section>
             {/* entire container of the middle section (vertically) */}
             <div className="p-24">
                   {/* the container inside the entire container of the middle section (vertically) */}
