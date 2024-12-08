@@ -103,8 +103,12 @@ const Property_cards = ({fetchedData}) => {
           {
           currentCards.map((items,index)=>(
           <div className="card-wrapper lg:flex lg:gap-2 lg:justify-between p-4 h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md" key={index}>
-              <div className="model-pic h-64 xl:h-72 w-full lg:w-[50%] rounded-md overflow-hidden">
+              <div className="model-pic relative h-64 xl:h-72 w-full lg:w-[50%] rounded-md overflow-hidden">
                 <img src={items.imgUrl} className='object-cover h-full w-full' />
+                <div className="labels absolute top-0 left-0 flex justify-between w-full">
+                  <span className=' text-white bg-[#27AE60] px-4 py-2 text-lg font-semibold rounded-tr-md rounded-b-md'>{items.label[0]}</span>
+                  <span className=' text-white bg-[#1B6EEA] px-4 py-2 text-lg font-semibold rounded-tl-md rounded-b-md'>{items.label[1]}</span>
+                </div>
               </div>
               <div className="model-details divide-y-[1px] lg:w-[46%] divide-[#91919167]">
                   <div className="flex justify-between text-[#27AE60] pt-4 pb-2">
@@ -174,8 +178,12 @@ const Property_cards = ({fetchedData}) => {
             {
               currentCards.map((items,index)=>(
                 <div className="card-wrapper h-fit shadow-[0px_1px_10px_1px_#97999db8] rounded-md" key={index}>
-                  <div className="model-pic h-64 xl:h-72 rounded-t-md overflow-hidden">
+                  <div className="model-pic relative h-64 xl:h-72 rounded-t-md overflow-hidden">
                     <img src={items.imgUrl} className='object-cover h-full w-full' />
+                    <div className="labels absolute top-0 left-0 flex justify-between w-full">
+                      <span className=' text-white bg-[#27AE60] px-4 py-2 text-lg font-semibold rounded-tr-md rounded-b-md'>{items.label[0]}</span>
+                      <span className=' text-white bg-[#1B6EEA] px-4 py-2 text-lg font-semibold rounded-tl-md rounded-b-md'>{items.label[1]}</span>
+                    </div>
                   </div>
                   <div className="model-details py-4 px-8 divide-y-[1px] divide-[#91919167]">
                     <div className="flex justify-between pb-2">
