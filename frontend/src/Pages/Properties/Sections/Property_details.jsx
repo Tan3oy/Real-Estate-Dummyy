@@ -91,7 +91,7 @@ return (
                         <div className=" pt-40 pb-44 w-full ">
                         <h1 className='text-4xl font-bold text-white text-center mb-6'>Properties</h1>
                         {/* <h1 className='text-base text-white text-center mb-6'><BreadCrumbs/></h1> */}
-                        <h2 className='flex justify-center text-xl font-medium text-white text-center'><BreadCrumbs/>{propertyData.speciality}</h2>
+                        <h2 className='flex flex-wrap justify-center text-[8px] md:text-sm lg:text-lg font-medium text-white text-center'><BreadCrumbs/>&nbsp;-&nbsp;{propertyData.speciality}</h2>
                     </div>      
                     </section>
                     <div className="flex flex-col-reverse gap-y-6 lg:flex-row mx-auto my-28 px-8 md:px-24 lg:px-8 xl:px-24 gap-x-6 sm:w-[576px] md:w-[768px] lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px]">

@@ -23,10 +23,10 @@ body {
 }
 
 .sticky-header-grid-container {
-    padding-left: 8%;
+    padding-left: 10px;
     padding-top: 0.4%;
     padding-bottom: 0.4%;
-    padding-right: 8%;
+    padding-right: 10px;
 
     background-color: rgb(11, 44, 61);
     margin: auto;
@@ -97,4 +97,15 @@ body {
 
 .sticky-header-grid-container-bottom-empty-div {
     padding-top: 90px; /* Adds space to prevent content from being hidden behind the navbar */
+}
+
+@media (max-width: 1000px) {
+    .fgj {
+        display: none;
+    }
+    .fgj1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
