@@ -130,7 +130,7 @@ export const queryFilter=(queries,Cards)=>{
 //Button Filters
 
 export const buttonFilter=(input,cards)=>{
-    if(input==="views"){ return [...cards].sort((a,b)=>a.view-b.view)}  
+    if(input==="views"){ return [...cards].sort((a,b)=>b.view-a.view)}  
     if (input=== "featured"){ return [...cards].filter((item)=>item.featured===true)}
     if(input==="urgent") {return [...cards].filter((item)=>item.label.some((labelItem)=>labelItem.toLowerCase().includes("urgent")))}
 }

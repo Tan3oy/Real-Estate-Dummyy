@@ -11,25 +11,25 @@ const BreadCrumbs = () => {
     console.log("Path Arr2",paths2);
     console.log(routePath);
     let BreadCrumbPath=""
-    // console.log("BreadCrumbPath",BreadCrumbPath);
     
     
   return (
     <div className='flex'>
-        <p><Link to="/">Home - </Link></p>
+        <p><Link to="/" className='text-[8px] md:text-sm lg:text-lg'>Home</Link></p>
       {
             paths2.map((el,i)=>{
               BreadCrumbPath+=`/${el}`
               console.log("BreadCrumbPath",BreadCrumbPath);
               
                 return <span key={i}>
-                  <Link to={BreadCrumbPath}>                   
-                    <span className='pl-1 capitalize'>{el}</span>
+                  <Link to={BreadCrumbPath}>               
+                    <span className='capitalize text-[8px] md:text-sm lg:text-lg'>&nbsp;-&nbsp;{el.replace(/_/g," ")}</span>
                   </Link>
-                  <span className='pl-1'>-</span>
+                  {/* <span className=''>&nbsp;-&nbsp;</span> */}
                 </span>               
               })
-        }</div>
+      }
+    </div>
   )
 }
 
