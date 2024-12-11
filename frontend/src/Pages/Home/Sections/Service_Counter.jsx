@@ -25,6 +25,7 @@ const Service_Counter = () => {
     .catch((err)=>console.log(err)
     )
   },[])
+  // console.log(import.meta.env.VITE_API_URL); // Vite 
   
   return (
     <section ref={counterContainer} className='service-counter relative '>
