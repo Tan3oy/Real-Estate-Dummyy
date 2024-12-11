@@ -20,11 +20,12 @@ const Service_Counter = () => {
     }
   },[])
   useEffect(()=>{
-    axios.get("http://localhost:5000/api/allcounters")
+    axios.get(`/api/allcounters`)
     .then((res)=>setCounterData(res.data))
     .catch((err)=>console.log(err)
     )
   },[])
+  // console.log(import.meta.env.VITE_API_URL); // Vite 
   
   return (
     <section ref={counterContainer} className='service-counter relative '>

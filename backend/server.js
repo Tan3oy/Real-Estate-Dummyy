@@ -12,7 +12,7 @@ import All_Properties_Routes from "./Routes/All_Properties_Routes.js";
 
 import Blogs_Routers from "./Routes/Blogs_Routers.js"
 
-const port = 5000;
+const port = process.env.PORT ||5000;
 const app = express();
 
 connectDB();
