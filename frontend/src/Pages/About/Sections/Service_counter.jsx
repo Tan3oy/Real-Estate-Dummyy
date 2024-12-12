@@ -8,7 +8,7 @@ import { FaAffiliatetheme } from "react-icons/fa";
 export const Service_counter = () => {
   const [counterData,setCounterData]=useState([])
   useEffect(()=>{
-    axios.get("http://localhost:5000/api/allcounters")
+    axios.get("api/allcounters")
     .then((res)=>setCounterData(res.data))
     .catch((err)=>console.log(err)
     )

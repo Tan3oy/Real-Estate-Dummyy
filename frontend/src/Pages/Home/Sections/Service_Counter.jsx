@@ -20,7 +20,7 @@ const Service_Counter = () => {
     }
   },[])
   useEffect(()=>{
-    axios.get("/api/allcounters")
+    axios.get("api/allcounters")
     .then((res)=>setCounterData(res.data))
     .catch((err)=>console.log(err)
     )
