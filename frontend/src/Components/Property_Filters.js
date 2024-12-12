@@ -14,7 +14,7 @@ export const featuredPropertyCards = () => {
     const [featuredProperties,setFeaturedProperties] = useState([])
     useEffect(()=>{
         const fetchData= async()=>{
-            const res = await axios.get("http://localhost:5000/api/allproperties")
+            const res = await axios.get("api/allproperties")
             // const tempData=res.data;
             const filtered= res.data.filter((el)=>el.featured===true)
             setFeaturedProperties(filtered)
@@ -29,7 +29,7 @@ export const topPropertyCards = () => {
     
     useEffect(()=>{
         const fetchData = async()=>{
-            const res = await axios.get("http://localhost:5000/api/allproperties")
+            const res = await axios.get("api/allproperties")
             const tempData=res.data;
             const tempArr= tempData.map((el)=>((el.view*0.25)+(el.rating*0.15)+(el.price*0.6)))
             // setViewArr(tempArr)
@@ -49,7 +49,7 @@ export const topPropertyCards = () => {
 export const urgentPropertyCards = () => {
     const [urgentProperties,setUrgentProperties] = useState([])
     useEffect(()=>{
-        axios.get("http://localhost:5000/api/allproperties")
+        axios.get("api/allproperties")
         .then((res)=>{
             const tempData = res.data;
             const urgent= tempData.filter((el)=>el.label.some((labelItems)=>labelItems.toLowerCase().includes("urgent")))

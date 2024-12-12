@@ -9,7 +9,7 @@ const Pricing_Plans = () => {
   const [Pricing_Cards_data, setPricing_Cards_data] = useState([]);
   useEffect(()=>{
       axios
-      .get("http://localhost:5000/api/allpricingcards")
+      .get("api/allpricingcards")
       .then((res)=>(
           setPricing_Cards_data(res.data),
           console.log(res.data))

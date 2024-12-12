@@ -9,7 +9,7 @@ const Profile_Agents = () => {
   const [Agent_data, setAgent_data] = useState([]);
   useEffect(()=>{
       axios
-      .get("http://localhost:5000/api/allagents")
+      .get("api/allagents")
       .then((res)=>(
           setAgent_data(res.data),
           console.log(res.data))

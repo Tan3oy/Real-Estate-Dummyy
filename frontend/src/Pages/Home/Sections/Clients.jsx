@@ -15,7 +15,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 const Clients = () => {
   const [clientData, setClientData] = useState([])
   useEffect(()=>{  
-    axios.get ("http://localhost:5000/api/allclients")
+    axios.get ("api/allclients")
     .then((res)=>setClientData(res.data))
     .catch((err)=>console.log(err))
   })

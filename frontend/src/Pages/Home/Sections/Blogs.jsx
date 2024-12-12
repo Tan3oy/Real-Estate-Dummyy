@@ -10,7 +10,7 @@ const Blogs = () => {const [isOpen,setIsOpen] =useState(null);
     const [Blogs_data, setBlogs_data] = useState([]);
     useEffect(()=>{
         axios
-        .get("http://localhost:5000/api/AllBlogs")
+        .get("api/AllBlogs")
         .then((res)=>(
             setBlogs_data(res.data))
         )
