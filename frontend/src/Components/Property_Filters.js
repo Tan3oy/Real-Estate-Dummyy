@@ -3,7 +3,7 @@ import { useEffect,useState } from "react"
 export const allPropertyCards = () => {
     const [allProperties,setAllProperties] = useState([])
     useEffect(()=>{
-        axios.get("http://localhost:5000/api/allproperties")
+        axios.get("api/allproperties")
         .then((res)=>{
             const tempData = res.data;
             setAllProperties(tempData)            
