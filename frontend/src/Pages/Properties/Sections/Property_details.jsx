@@ -18,7 +18,7 @@ const Property_details = ({relatedData}) => {
     const {_id} = useParams()
     const [propertyData, setPropertyData]= useState(null)
     useEffect(()=>{
-        axios.get(`api/allproperties/${_id}`)
+        axios.get(`/api/allproperties/${_id}`)
         .then((res)=>setPropertyData(res.data))
         .catch((err)=>console.log(err))
     },[_id])

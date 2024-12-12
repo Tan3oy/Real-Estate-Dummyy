@@ -16,7 +16,7 @@ const Content_Blog = () => {
   // const [Blogs_data, setBlogs_data] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   useEffect(()=>{
-      axios.get("api/AllBlogs")
+      axios.get("/api/AllBlogs")
       .then((res)=> {
         const Blogs_dataTemp = res.data;
         if (keyword.length > 0) {

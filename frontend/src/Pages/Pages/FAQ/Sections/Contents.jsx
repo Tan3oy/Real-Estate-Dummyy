@@ -8,7 +8,7 @@ const Contents = () => {
     const [faq_data, setFaq_data] = useState([]);
     useEffect(()=>{
         axios
-        .get("api/allfaqs")
+        .get("/api/allfaqs")
         .then((res)=>(
             setFaq_data(res.data),
             console.log(res.data))
